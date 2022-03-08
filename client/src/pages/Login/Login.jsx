@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
 		email: '',
 		password: '',
@@ -26,7 +26,9 @@ const Login = () => {
 
 			const parseRes = await response.json();
 
-			console.log(parseRes);
+			localStorage.setItem('token', parseRes.token);
+
+			setAuth(true);
 		} catch (error) {
 			console.error(error.message);
 		}
