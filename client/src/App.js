@@ -26,23 +26,22 @@ const App = () => {
 	return (
 		<>
 			<Router>
-				<Navbar setAuth={setAuth} />
+				<Navbar />
 				<Routes>
 					<Route exact path='/' element={<Homepage />} />
 					<Route exact path='/my-questions' element={<MyQuestions />} />
 					<Route exact path='/profile' element={<Profile />} />
 					<Route exact path='/questions' element={<Questions />} />
+
 					<Route
 						exact
 						path='/register'
-						element={
-							isAuth ? <Navigate to='/' /> : <Register setAuth={setAuth} />
-						}
+						element={isAuth === true ? <Navigate to='/' /> : <Register />}
 					/>
 					<Route
 						exact
 						path='/login'
-						element={isAuth ? <Navigate to='/' /> : <Login setAuth={setAuth} />}
+						element={isAuth === true ? <Navigate to='/' /> : <Login />}
 					/>
 				</Routes>
 			</Router>

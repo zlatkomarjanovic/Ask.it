@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import RegisterLogic from './RegisterLogic';
 
-const Register = ({ setAuth }) => {
+const Register = () => {
 	const { onSubmitForm, ime, onChange, prezime, email, password } =
-		RegisterLogic;
+		RegisterLogic();
 
 	return (
 		<div className='container'>

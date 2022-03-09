@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const RegisterLogic = () => {
 	//defining the state
@@ -16,7 +16,7 @@ const RegisterLogic = () => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
-	//API call to localhost:5000 - needs to be put in a services or api folder
+	//submiting the form to the backend
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
@@ -30,6 +30,7 @@ const RegisterLogic = () => {
 
 			const parseRes = await response.json();
 
+			console.log(parseRes);
 			localStorage.setItem('token', parseRes.token);
 
 			//setAuth(true);
@@ -37,7 +38,14 @@ const RegisterLogic = () => {
 			console.error(error.message);
 		}
 	};
-	return { onSubmitForm, ime, onChange, prezime, email, password };
+	return {
+		onSubmitForm,
+		ime,
+		onChange,
+		prezime,
+		email,
+		password,
+	}; //returning all the necessary values
 };
 
 export default RegisterLogic;

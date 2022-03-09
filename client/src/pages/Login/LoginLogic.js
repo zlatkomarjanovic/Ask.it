@@ -1,17 +1,21 @@
 import { useState } from 'react';
 
 const LoginLogic = () => {
+	//defining the inputs
 	const [inputs, setInputs] = useState({
 		email: '',
 		password: '',
 	});
 
+	//destructuring the inputs
 	const { email, password } = inputs;
 
+	//setting the inputs
 	const onChange = (e) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
+	//submiting the form
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
@@ -25,11 +29,12 @@ const LoginLogic = () => {
 
 			const parseRes = await response.json();
 
-			localStorage.setItem('token', parseRes.token);
+			localStorage.setItem('token', parseRes.jwtToken);
 		} catch (error) {
 			console.error(error.message);
 		}
 	};
+	//returning the necessary values
 	return { onSubmitForm, email, onChange, password };
 };
 

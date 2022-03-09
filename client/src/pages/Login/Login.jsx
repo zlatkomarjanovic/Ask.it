@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginLogic from './LoginLogic';
 
-const Login = ({ setAuth }) => {
+const Login = () => {
 	const { onSubmitForm, email, password, onChange } = LoginLogic();
 
 	return (
@@ -14,9 +14,11 @@ const Login = ({ setAuth }) => {
 						type='email'
 						name='email'
 						placeholder='E-mail'
-						className='form-control my-3'
+						className={'form-control my-3'}
 						value={email}
-						onChange={(e) => onChange(e)}
+						onChange={(e) => {
+							onChange(e);
+						}}
 					/>
 					<input
 						type='password'

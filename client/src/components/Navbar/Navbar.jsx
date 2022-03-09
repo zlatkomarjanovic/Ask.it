@@ -6,9 +6,7 @@ const Navbar = ({ setAuth }) => {
 	return (
 		<>
 			<nav className='navbar navbar-expand-md bg-dark navbar-dark fixed-top'>
-				<a className='navbar-brand' href='#'>
-					Ask.it
-				</a>
+				<div className='navbar-brand'>Ask.it</div>
 
 				<button
 					className='navbar-toggler'
