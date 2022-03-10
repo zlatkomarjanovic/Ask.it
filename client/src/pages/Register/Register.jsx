@@ -42,7 +42,7 @@ const Register = () => {
 					value={password}
 					onChange={(e) => onChange(e)}
 				/>
-				<button className='btn btn-info btn-block'>Submit</button>
+				<button className='btn btn-primary btn-block rounded-5'>Submit</button>
 			</form>
 			<Link to='/login'>Already have an account?</Link>
 		</div>

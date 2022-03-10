@@ -20,7 +20,7 @@ const Navbar = () => {
 	return (
 		<>
 			<nav className='navbar navbar-expand-md bg-dark navbar-dark fixed-top'>
-				<div className='navbar-brand'>Ask.it</div>
+				<div className='navbar-brand'>Askit</div>
 
 				<button
 					className='navbar-toggler'
@@ -68,12 +68,14 @@ const Navbar = () => {
 							<>
 								<li className='nav-item mx-3'>
 									<NavLink className='nav-link h4' to='/register' exact>
-										Register
+										<button className='btn btn-primary rounded'>
+											Register
+										</button>
 									</NavLink>
 								</li>
-								<li className='nav-item mx-3'>
+								<li className='nav-item  mx-3'>
 									<NavLink className='nav-link h4' to='/login' exact>
-										Login
+										<button className='btn btn-info '>Login</button>
 									</NavLink>
 								</li>
 							</>
