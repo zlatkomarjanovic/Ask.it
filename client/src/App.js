@@ -16,8 +16,12 @@ import {
 	Register,
 } from './pages';
 import Footer from './components/Footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { trueFalse } from './features/isAuthenticated';
 
 const App = () => {
+	const isAuth = useSelector((state) => state.isAuth.value);
+	const dispatch = useDispatch();
 	async function isAuthen() {
 		try {
 			const response = await fetch('http://localhost:5000/auth/verify', {
@@ -27,7 +31,9 @@ const App = () => {
 
 			const parsedRes = await response.json();
 
-			parsedRes === true ? setAuth(true) : setAuth(false);
+			parsedRes === true
+				? dispatch(trueFalse(true))
+				: dispatch(trueFalse(false));
 		} catch (error) {
 			console.error(error.message);
 		}
@@ -37,16 +43,10 @@ const App = () => {
 		isAuthen();
 	});
 
-	const [isAuth, setIsAuth] = useState(false);
-
-	const setAuth = (boolean) => {
-		setIsAuth(boolean);
-	};
-
 	return (
 		<>
 			<Router>
-				<Navbar setAuth={setAuth} isAuth={isAuth} />
+				<Navbar />
 				<div style={{ height: '80vh' }}>
 					<Routes>
 						<Route exact path='/' element={<Homepage />} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginLogic from './LoginLogic';
 
-const Login = () => {
+const Login = ({ setAuth }) => {
 	const { onSubmitForm, email, password, onChange } = LoginLogic();
 
 	return (

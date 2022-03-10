@@ -1,13 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './navbar.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { trueFalse } from '../../features/isAuthenticated';
 
-const Navbar = ({ setAuth, isAuth }) => {
+const Navbar = () => {
+	const dispatch = useDispatch();
+	const isAuth = useSelector((state) => state.isAuth.value);
+
 	const logout = async (e) => {
 		e.preventDefault();
 		try {
 			localStorage.removeItem('token');
-			setAuth(false);
+			dispatch(trueFalse(false));
 		} catch (err) {
 			console.error(err.message);
 		}
@@ -49,15 +54,16 @@ const Navbar = ({ setAuth, isAuth }) => {
 							</NavLink>
 						</li>
 						{isAuth === true ? (
-							<>
-								<li className='nav-item mx-5'>
-									<div className='nav-link h4'>
-										<button className='btn btn-info' onClick={(e) => logout(e)}>
-											Log out
-										</button>
-									</div>
-								</li>
-							</>
+							<li className='nav-item mx-5 float-right'>
+								<div className='nav-link h4 float-right'>
+									<button
+										className='btn btn-info mt-1 float-right'
+										onClick={(e) => logout(e)}
+									>
+										Log out
+									</button>
+								</div>
+							</li>
 						) : (
 							<>
 								<li className='nav-item mx-3'>

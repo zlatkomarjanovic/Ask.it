@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
+import { trueFalse } from '../../features/isAuthenticated';
+
 const LoginLogic = () => {
+	const isAuth = useSelector((state) => state.isAuth.value);
+	const dispatch = useDispatch();
 	//defining the inputs
 	const [inputs, setInputs] = useState({
 		email: '',
@@ -31,10 +36,12 @@ const LoginLogic = () => {
 
 			if (parseRes.jwtToken) {
 				localStorage.setItem('token', parseRes.jwtToken);
-				//setAuth(true);
+				dispatch(trueFalse(true));
+
 				toast.success('Logged in Successfully');
 			} else {
-				//setAuth(false);
+				dispatch(trueFalse(true));
+
 				toast.error(parseRes);
 			}
 		} catch (error) {

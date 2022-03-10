@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { trueFalse } from '../../features/isAuthenticated';
 
 const RegisterLogic = () => {
+	const dispatch = useDispatch();
 	//defining the state
 	const [inputs, setInputs] = useState({
 		ime: '',
@@ -31,6 +34,12 @@ const RegisterLogic = () => {
 			const parseRes = await response.json();
 
 			localStorage.setItem('token', parseRes.jwtToken);
+			if (parseRes.jwtToken) {
+				localStorage.setItem('token', parseRes.jwtToken);
+				dispatch(trueFalse(true));
+			} else {
+				dispatch(trueFalse(true));
+			}
 		} catch (error) {
 			console.error(error.message);
 		}
