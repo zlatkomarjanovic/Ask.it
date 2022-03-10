@@ -30,10 +30,7 @@ const RegisterLogic = () => {
 
 			const parseRes = await response.json();
 
-			console.log(parseRes);
-			localStorage.setItem('token', parseRes.token);
-
-			//setAuth(true);
+			localStorage.setItem('token', parseRes.jwtToken);
 		} catch (error) {
 			console.error(error.message);
 		}
