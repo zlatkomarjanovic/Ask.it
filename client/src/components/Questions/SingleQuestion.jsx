@@ -38,6 +38,18 @@ const SingleQuestion = () => {
 						</div>
 						<h4>Comment 1</h4>
 						<h4>Comment 2</h4>
+						<div className='input-group'>
+							<input
+								className='form-control'
+								type='text'
+								placeholder='Write a comment'
+							/>
+							<span className='input-group-btn'>
+								<buton className='btn btn-primary input-group-prepend'>
+									Comment
+								</buton>
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>
