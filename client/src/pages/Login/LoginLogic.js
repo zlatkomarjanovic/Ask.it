@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { trueFalse } from '../../features/isAuthenticated';
 
 const LoginLogic = () => {
-	const isAuth = useSelector((state) => state.isAuth.value);
 	const dispatch = useDispatch();
 	//defining the inputs
 	const [inputs, setInputs] = useState({
@@ -40,7 +39,7 @@ const LoginLogic = () => {
 
 				toast.success('Logged in Successfully');
 			} else {
-				dispatch(trueFalse(true));
+				dispatch(trueFalse(false));
 
 				toast.error(parseRes);
 			}

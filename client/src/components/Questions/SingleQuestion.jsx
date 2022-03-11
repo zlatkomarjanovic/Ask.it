@@ -2,20 +2,20 @@ import React from 'react';
 import Gravatar from 'react-gravatar';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import './SingleQuestion.css';
-const SingleQuestion = () => {
+const SingleQuestion = ({ question }) => {
 	return (
 		<>
 			<div className='container bg-light rounded-box'>
 				<table className='row bg-primary p-3 rounded-table'>
 					<td className='col-1'>
 						<Gravatar
-							email='zlajaa2000@gmail.com'
+							email={question.postedby}
 							size={30}
 							className='rounded-circle'
 						/>
 					</td>
 					<td className='col'>
-						<h5>Posted by "some user"</h5>
+						<h5>Posted by {question.postedby}</h5>
 					</td>
 					<td className='col align-items-end'>
 						<button className='btn btn-info right'>Join</button>
@@ -24,17 +24,13 @@ const SingleQuestion = () => {
 
 				<div className='p-4'>
 					<div>
-						<h4>
-							Bank of America calls police on "Black Panther" director Ryan
-							Coogler after attempting to withdraw 12.000$ from his own bank
-							account
-						</h4>
+						<h4>{question.title}</h4>
 					</div>
 
 					<div>
 						<div>
-							<AiOutlineArrowUp size={25} />
-							<AiOutlineArrowDown size={25} />
+							<AiOutlineArrowUp size={25} /> {question.upvotes}
+							<AiOutlineArrowDown size={25} /> {question.downvotes}
 						</div>
 						<h4>Comment 1</h4>
 						<h4>Comment 2</h4>
@@ -45,9 +41,9 @@ const SingleQuestion = () => {
 								placeholder='Write a comment'
 							/>
 							<span className='input-group-btn'>
-								<buton className='btn btn-primary input-group-prepend'>
+								<button className='btn btn-primary input-group-prepend'>
 									Comment
-								</buton>
+								</button>
 							</span>
 						</div>
 					</div>

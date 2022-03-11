@@ -8,9 +8,8 @@ app.use(cors());
 
 //ROUTES
 
-//dashboard route
-
-app.use('/dashboard', require('./routes/dashboard'));
+//question routes
+app.use('/', require('./routes/questions'));
 
 //register and login routes
 app.use('/auth', require('./routes/jwtAuth'));
