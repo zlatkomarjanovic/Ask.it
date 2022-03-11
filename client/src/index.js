@@ -6,11 +6,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import isAuth from './features/isAuthenticated';
 import questions from './features/questions';
+import currentProfile from './features/currentProfile';
 
 const store = configureStore({
 	reducer: {
 		isAuth: isAuth,
 		questions: questions,
+		currentProfile: currentProfile,
 	},
 });
 

@@ -9,7 +9,7 @@ const QuestionsLogic = () => {
 			const response = await fetch('http://localhost:5000/questions');
 
 			const parseRes = await response.json();
-
+			console.log(parseRes);
 			dispatch(setQuestions(parseRes));
 		} catch (error) {
 			console.error(error.message);

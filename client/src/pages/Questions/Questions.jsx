@@ -12,7 +12,7 @@ const Questions = () => {
 			<h3 className='mb-5'>Questions</h3>
 
 			{data.map((question) => (
-				<SingleQuestion key={question.question_id} question={question} />
+				<SingleQuestion key={question.id} question={question} />
 			))}
 		</div>
 	);

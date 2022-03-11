@@ -8,6 +8,9 @@ app.use(cors());
 
 //ROUTES
 
+//profile
+app.use('/', require('./routes/profile'));
+
 //question routes
 app.use('/', require('./routes/questions'));
 
