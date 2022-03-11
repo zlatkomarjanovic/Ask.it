@@ -6,7 +6,19 @@ CREATE TABLE users(
     ime VARCHAR(255) NOT NULL, 
     prezime VARCHAR(255) NOT NULL, 
     email VARCHAR(255) NOT NULL, 
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL, 
+    userPosts,
+);
+
+CREATE TABLE posts(
+    post_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    postedBy, 
+    postedAt, 
+    upvotes, 
+    downvotes, 
+    title, 
+    numberOfComments, 
+    replies, 
 );
 
 --generating some users

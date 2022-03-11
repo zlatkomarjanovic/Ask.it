@@ -47,7 +47,12 @@ const App = () => {
 		<>
 			<Router>
 				<Navbar />
-				<div style={{ height: '80vh' }}>
+				<div
+					style={{
+						position: 'relative',
+						minHeight: '100vh',
+					}}
+				>
 					<Routes>
 						<Route exact path='/' element={<Homepage />} />
 						<Route exact path='/my-questions' element={<MyQuestions />} />
@@ -65,8 +70,9 @@ const App = () => {
 							element={isAuth ? <Navigate to='/' /> : <Login />}
 						/>
 					</Routes>
+
+					<Footer />
 				</div>
-				<Footer />
 			</Router>
 		</>
 	);
