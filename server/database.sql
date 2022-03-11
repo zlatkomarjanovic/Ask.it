@@ -12,13 +12,10 @@ CREATE TABLE users(
 
 CREATE TABLE posts(
     post_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    postedBy, 
-    postedAt, 
-    upvotes, 
-    downvotes, 
-    title, 
-    numberOfComments, 
-    replies, 
+    postedBy INT NOT NULL,  
+    title TEXT NOT NULL, 
+    comments TEXT NOT NULL, 
+    CONSTRAINT fk_author FOREIGN KEY(postedBy) REFERENCES users(user_id)
 );
 
 --generating some users
