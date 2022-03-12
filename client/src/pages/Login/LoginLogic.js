@@ -1,22 +1,19 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { trueFalse } from '../../features/isAuthenticated';
+import login from '../../features/login';
 
 const LoginLogic = () => {
 	const dispatch = useDispatch();
-	//defining the inputs
-	const [inputs, setInputs] = useState({
-		email: '',
-		password: '',
-	});
+	const inputs = useSelector((state) => state.login.value);
 
 	//destructuring the inputs
 	const { email, password } = inputs;
 
 	//setting the inputs
 	const onChange = (e) => {
-		setInputs({ ...inputs, [e.target.name]: e.target.value });
+		dispatch(login({ ...inputs, [e.target.name]: e.target.value }));
 	};
 
 	//submiting the form

@@ -1,22 +1,17 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { trueFalse } from '../../features/isAuthenticated';
+import { register } from '../../features/register';
 
 const RegisterLogic = () => {
 	const dispatch = useDispatch();
-	//defining the state
-	const [inputs, setInputs] = useState({
-		ime: '',
-		prezime: '',
-		email: '',
-		password: '',
-	});
+	const inputs = useSelector((state) => state.register.value);
 
 	const { ime, prezime, email, password } = inputs;
 
 	//populating the state
 	const onChange = (e) => {
-		setInputs({ ...inputs, [e.target.name]: e.target.value });
+		dispatch(register({ ...inputs, [e.target.name]: e.target.value }));
 	};
 
 	//submiting the form to the backend

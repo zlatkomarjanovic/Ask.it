@@ -14,7 +14,7 @@ const Profile = () => {
 			className='container
 		'
 		>
-			<div className='container mt-5 bg-light p-5 rounded mb-5'>
+			<div className='container mt-5 bg-light p-5 rounded mb-5 shadow'>
 				<div class='d-flex flex-column align-items-center text-center'>
 					<Gravatar
 						size={120}
@@ -66,14 +66,6 @@ const Profile = () => {
 							<h5 className='modal-title' id='exampleModalLongTitle'>
 								Edit your profile
 							</h5>
-							<button
-								type='button'
-								className='close'
-								data-dismiss='modal'
-								aria-label='Close'
-							>
-								<span aria-hidden='true'>&times;</span>
-							</button>
 						</div>
 						<div className='modal-body'>
 							<form>

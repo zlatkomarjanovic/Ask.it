@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { Navbar } from './components';
 import {
@@ -16,43 +16,17 @@ import {
 	Register,
 } from './pages';
 import Footer from './components/Footer/Footer';
-import { useDispatch, useSelector } from 'react-redux';
-import { trueFalse } from './features/isAuthenticated';
+import { useSelector } from 'react-redux';
+import AppLogic from './AppLogic';
 
 const App = () => {
 	const isAuth = useSelector((state) => state.isAuth.value);
-	const dispatch = useDispatch();
-	async function isAuthen() {
-		try {
-			const response = await fetch('http://localhost:5000/auth/verify', {
-				method: 'POST',
-				headers: { token: localStorage.token },
-			});
-
-			const parsedRes = await response.json();
-
-			parsedRes === true
-				? dispatch(trueFalse(true))
-				: dispatch(trueFalse(false));
-		} catch (error) {
-			console.error(error.message);
-		}
-	}
-
-	useEffect(() => {
-		isAuthen();
-	});
-
+	const {} = AppLogic();
 	return (
 		<>
 			<Router>
 				<Navbar />
-				<div
-					style={{
-						position: 'relative',
-						minHeight: '100vh',
-					}}
-				>
+				<div className='maindiv'>
 					<Routes>
 						<Route exact path='/' element={<Homepage />} />
 						<Route exact path='/my-questions' element={<MyQuestions />} />

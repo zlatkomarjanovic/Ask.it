@@ -37,6 +37,27 @@ router.post('/register', validInfo, async (req, res) => {
 	}
 });
 
+router.put('/update-user', validInfo, async (req, res) => {
+	const { ime, prezime, email, password, user_id } = req.body;
+
+	try {
+		const salt = await bcrypt.genSalt(10);
+		const bcryptPassword = await bcrypt.hash(password, salt);
+
+		let updatedUser = await pool.query(
+			'UPDATE users SET ime=$1, prezime=$2, email=$3, password=$4 WHERE user_id = $5 RETURNING *',
+			[ime, prezime, email, bcryptPassword, user_id]
+		);
+
+		const jwtToken = jwtGenerator(updatedUser.rows[0].user_id);
+
+		return res.json({ jwtToken });
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server error');
+	}
+});
+
 router.post('/login', validInfo, async (req, res) => {
 	const { email, password } = req.body;
 

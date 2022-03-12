@@ -7,12 +7,16 @@ import { Provider } from 'react-redux';
 import isAuth from './features/isAuthenticated';
 import questions from './features/questions';
 import currentProfile from './features/currentProfile';
+import register from './features/register';
+import login from './features/login';
 
 const store = configureStore({
 	reducer: {
 		isAuth: isAuth,
 		questions: questions,
 		currentProfile: currentProfile,
+		register: register,
+		login: login,
 	},
 });
 

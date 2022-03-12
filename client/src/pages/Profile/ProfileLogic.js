@@ -13,7 +13,6 @@ const ProfileLogic = () => {
 			});
 
 			const parseRes = await response.json();
-			console.log(parseRes);
 			dispatch(setCurrentProfile(parseRes));
 		} catch (error) {
 			console.error(error.message);
