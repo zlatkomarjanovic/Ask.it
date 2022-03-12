@@ -26,7 +26,7 @@ const App = () => {
 		<>
 			<Router>
 				<Navbar />
-				<div className='maindiv'>
+				<div style={{ position: 'relative', minHeight: '100vh' }}>
 					<Routes>
 						<Route exact path='/' element={<Homepage />} />
 						<Route exact path='/my-questions' element={<MyQuestions />} />

@@ -33,7 +33,8 @@ router.post('/ask', async (req, res) => {
 			[req.body.postedby, req.body.title]
 		);
 
-		res.json(questions.rows);
+		const newRes = await res.json(questions);
+		console.log(newRes);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json('Server Error');
