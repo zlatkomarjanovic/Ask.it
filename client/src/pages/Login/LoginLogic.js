@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { trueFalse } from '../../features/isAuthenticated';
-import login from '../../features/login';
+import { login } from '../../features/login';
 
 const LoginLogic = () => {
 	const dispatch = useDispatch();
@@ -30,17 +29,19 @@ const LoginLogic = () => {
 
 			const parseRes = await response.json();
 
+			localStorage.setItem('token', parseRes.jwtToken);
+
 			if (parseRes.jwtToken) {
+				toast.success('Logged in successfully');
 				localStorage.setItem('token', parseRes.jwtToken);
 				dispatch(trueFalse(true));
-
-				toast.success('Logged in Successfully');
 			} else {
 				dispatch(trueFalse(false));
 
-				toast.error(parseRes);
+				toast.warning(parseRes);
 			}
 		} catch (error) {
+			toast.warning(error);
 			console.error(error.message);
 		}
 	};

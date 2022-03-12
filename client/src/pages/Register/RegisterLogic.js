@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { trueFalse } from '../../features/isAuthenticated';
 import { register } from '../../features/register';
 
@@ -7,6 +7,7 @@ const RegisterLogic = () => {
 	const dispatch = useDispatch();
 	const inputs = useSelector((state) => state.register.value);
 
+	//destructuring the inputs
 	const { ime, prezime, email, password } = inputs;
 
 	//populating the state
@@ -29,14 +30,18 @@ const RegisterLogic = () => {
 			const parseRes = await response.json();
 
 			localStorage.setItem('token', parseRes.jwtToken);
+
 			if (parseRes.jwtToken) {
+				toast.success('Registered successfully!');
 				localStorage.setItem('token', parseRes.jwtToken);
 				dispatch(trueFalse(true));
 			} else {
-				dispatch(trueFalse(true));
+				dispatch(trueFalse(false));
+				toast.warning(parseRes);
 			}
 		} catch (error) {
 			console.error(error.message);
+			toast.warning(error.message);
 		}
 	};
 	return {

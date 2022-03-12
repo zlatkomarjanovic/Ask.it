@@ -37,24 +37,24 @@ const Navbar = () => {
 				<div className='collapse navbar-collapse' id='collapsibleNavbar'>
 					<ul className='navbar-nav'>
 						<li className='nav-item mx-3'>
-							<NavLink className='nav-link h4' to='/' exact>
+							<NavLink className='nav-link h4' to='/'>
 								Homepage
 							</NavLink>
 						</li>
 						<li className='nav-item mx-3'>
-							<NavLink className='nav-link h4' to='/questions' exact>
+							<NavLink className='nav-link h4' to='/questions'>
 								Questions
 							</NavLink>
 						</li>
-						{isAuth === true ? (
+						{isAuth ? (
 							<>
 								<li className='nav-item mx-3'>
-									<NavLink className='nav-link h4' to='/my-questions' exact>
+									<NavLink className='nav-link h4' to='/my-questions'>
 										MyQuestions
 									</NavLink>
 								</li>
 								<li className='nav-item mx-3'>
-									<NavLink className='nav-link h4' to='/profile' exact>
+									<NavLink className='nav-link h4' to='/profile'>
 										Profile
 									</NavLink>
 								</li>
@@ -72,14 +72,14 @@ const Navbar = () => {
 						) : (
 							<>
 								<li className='nav-item mx-3'>
-									<NavLink className='nav-link h4' to='/register' exact>
+									<NavLink className='nav-link h4' to='/register'>
 										<button className='btn btn-primary rounded'>
 											Register
 										</button>
 									</NavLink>
 								</li>
 								<li className='nav-item  mx-3'>
-									<NavLink className='nav-link h4' to='/login' exact>
+									<NavLink className='nav-link h4' to='/login'>
 										<button className='btn btn-info '>Login</button>
 									</NavLink>
 								</li>

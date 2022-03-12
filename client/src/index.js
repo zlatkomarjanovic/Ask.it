@@ -9,6 +9,8 @@ import questions from './features/questions';
 import currentProfile from './features/currentProfile';
 import register from './features/register';
 import login from './features/login';
+import updateProfile from './features/updateProfile';
+import askQuestion from './features/askQuestion';
 
 const store = configureStore({
 	reducer: {
@@ -17,6 +19,8 @@ const store = configureStore({
 		currentProfile: currentProfile,
 		register: register,
 		login: login,
+		updateProfile: updateProfile,
+		askQuestion: askQuestion,
 	},
 });
 

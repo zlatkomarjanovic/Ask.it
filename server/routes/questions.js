@@ -26,6 +26,20 @@ router.get('/question', async (req, res) => {
 	}
 });
 
+router.post('/ask', async (req, res) => {
+	try {
+		const questions = await pool.query(
+			'INSERT INTO questions (postedby, title ) VALUES ($1, $2)',
+			[req.body.postedby, req.body.title]
+		);
+
+		res.json(questions.rows);
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).json('Server Error');
+	}
+});
+
 router.get('/my-questions', async (req, res) => {
 	try {
 		const questions = await pool.query(
