@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setCurrentProfile } from '../../features/currentProfile';
 import { updateProfile } from '../../features/updateProfile';
-import { currentProfile } from '../../features/currentProfile';
+import { GetCurrentUser } from '../../services/services';
 
 const ProfileLogic = () => {
 	const dispatch = useDispatch();
@@ -16,26 +16,12 @@ const ProfileLogic = () => {
 
 	//useEffect
 	useEffect(() => {
-		getCurrentUser();
+		GetCurrentUser();
 	}, []);
 
 	//setting the inputs
 	const onChange = (e) => {
 		dispatch(updateProfile({ ...inputs2, [e.target.name]: e.target.value }));
-	};
-
-	const getCurrentUser = async () => {
-		try {
-			const response = await fetch('http://localhost:5000/profile', {
-				method: 'GET',
-				headers: { token: localStorage.token },
-			});
-
-			const parseRes = await response.json();
-			dispatch(setCurrentProfile(parseRes));
-		} catch (error) {
-			console.error(error.message);
-		}
 	};
 
 	//submiting the form

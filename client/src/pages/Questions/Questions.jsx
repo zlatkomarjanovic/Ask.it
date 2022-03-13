@@ -4,7 +4,7 @@ import QuestionsLogic from './QuestionsLogic';
 import { useSelector } from 'react-redux';
 
 const Questions = () => {
-	const { fetchQuestions } = QuestionsLogic();
+	const { fetchQuestions, ask, onChange, questionToAsk } = QuestionsLogic();
 	const data = useSelector((state) => state.questions.value);
 	const isAuth = useSelector((state) => state.isAuth.value);
 
@@ -17,11 +17,17 @@ const Questions = () => {
 						<div className='input-group'>
 							<input
 								className='form-control'
+								name='title'
 								type='text'
 								placeholder='Ask... And the community shall answer!'
+								value={questionToAsk.title}
+								onChange={(e) => onChange(e)}
 							/>
 							<span className='input-group-btn'>
-								<button className='btn btn-primary input-group-prepend'>
+								<button
+									onClick={ask}
+									className='btn btn-primary input-group-prepend'
+								>
 									Ask!
 								</button>
 							</span>

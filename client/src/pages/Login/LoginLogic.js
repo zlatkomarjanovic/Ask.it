@@ -38,7 +38,7 @@ const LoginLogic = () => {
 			} else {
 				dispatch(trueFalse(false));
 
-				toast.warning(parseRes);
+				toast.error(parseRes);
 			}
 		} catch (error) {
 			toast.warning(error);

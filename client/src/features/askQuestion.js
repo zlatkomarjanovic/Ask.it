@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const askQuestionSlice = createSlice({
 	name: 'askQuestion',
-	initialState: { value: [] },
+	initialState: { value: {} },
 	reducers: {
 		setAskQuestion: (state, action) => {
 			state.value = action.payload;
