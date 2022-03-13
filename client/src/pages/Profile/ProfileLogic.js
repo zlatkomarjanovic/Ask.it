@@ -12,11 +12,12 @@ const ProfileLogic = () => {
 	const inputs2 = useSelector((state) => state.updateProfile.value);
 
 	const { user_id } = inputs[0];
-	let { ime, prezime, email, password } = inputs2;
+	const { ime, prezime, email, password } = inputs2;
+	console.log(inputs2);
 
 	//useEffect
 	useEffect(() => {
-		GetCurrentUser();
+		setUser();
 	}, []);
 
 	//setting the inputs
@@ -24,18 +25,23 @@ const ProfileLogic = () => {
 		dispatch(updateProfile({ ...inputs2, [e.target.name]: e.target.value }));
 	};
 
+	async function setUser() {
+		const user = await GetCurrentUser();
+		dispatch(setCurrentProfile(user));
+	}
+
 	//submiting the form
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
-			const body = { user_id, ime, prezime, email, password };
-
+			const body = { ime, prezime, email, password, user_id };
+			console.log(body);
 			const response = await fetch('http://localhost:5000/auth/update-user', {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(body),
 			});
-
+			console.log(response);
 			const parseRes = await response.json();
 			localStorage.setItem('token', parseRes.jwtToken);
 

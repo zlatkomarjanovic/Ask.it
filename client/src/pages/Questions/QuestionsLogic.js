@@ -2,56 +2,43 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAskQuestion } from '../../features/askQuestion';
 import { setQuestions } from '../../features/questions';
-import { GetCurrentUser } from '../../services/services';
+import { ask, fetchQuestions, GetCurrentUser } from '../../services/services';
+import { setCurrentProfile } from '../../features/currentProfile';
+import { toast } from 'react-toastify';
 
 const QuestionsLogic = () => {
 	const questionToAsk = useSelector((state) => state.askQuestion.value);
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const dispatch = useDispatch();
-
 	const { title } = questionToAsk;
+	const postedby = currentProfile[0]?.email;
+	const body = { postedby, title };
 
-	const fetchQuestions = async () => {
-		try {
-			const response = await fetch('http://localhost:5000/questions');
+	async function setUser() {
+		const user = await GetCurrentUser();
+		dispatch(setCurrentProfile(user));
+	}
 
-			const parseRes = await response.json();
-			console.log(parseRes.reverse());
-
-			dispatch(setQuestions(parseRes));
-		} catch (error) {
-			console.error(error.message);
-		}
-	};
-
-	const ask = async () => {
-		const postedby = currentProfile[0]?.email;
-		const body = { postedby, title };
-
-		try {
-			await fetch('http://localhost:5000/ask', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			});
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	async function setQuestionList() {
+		const questions = await fetchQuestions();
+		dispatch(setQuestions(questions.reverse()));
+	}
+	async function askTheQuestion() {
+		ask(body);
+	}
 
 	const onChange = (e) => {
 		dispatch(
 			setAskQuestion({ ...questionToAsk, [e.target.name]: e.target.value })
 		);
-		console.log(questionToAsk);
 	};
 
 	useEffect(() => {
-		fetchQuestions();
-		GetCurrentUser();
+		setUser();
+		setQuestionList();
 	}, []);
 
-	return { fetchQuestions, onChange, ask, questionToAsk };
+	return { fetchQuestions, onChange, askTheQuestion, questionToAsk };
 };
 
 export default QuestionsLogic;

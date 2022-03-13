@@ -4,7 +4,7 @@ import QuestionsLogic from './QuestionsLogic';
 import { useSelector } from 'react-redux';
 
 const Questions = () => {
-	const { fetchQuestions, ask, onChange, questionToAsk } = QuestionsLogic();
+	const { askTheQuestion, onChange, questionToAsk } = QuestionsLogic();
 	const data = useSelector((state) => state.questions.value);
 	const isAuth = useSelector((state) => state.isAuth.value);
 
@@ -25,7 +25,7 @@ const Questions = () => {
 							/>
 							<span className='input-group-btn'>
 								<button
-									onClick={ask}
+									onClick={askTheQuestion}
 									className='btn btn-primary input-group-prepend'
 								>
 									Ask!
@@ -39,7 +39,7 @@ const Questions = () => {
 			</div>
 
 			{data.map((question) => (
-				<SingleQuestion key={question.id} question={question} />
+				<SingleQuestion key={question.question_id} question={question} />
 			))}
 		</div>
 	);

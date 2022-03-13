@@ -21,7 +21,11 @@ const SingleQuestion = ({ question }) => {
 						<h5>Posted by {question.postedby}</h5>
 					</td>
 					<td className='col align-items-end'>
-						<button className='btn btn-info right'>Join</button>
+						{isAuth ? (
+							<button className='btn btn-info right'>Join</button>
+						) : (
+							<></>
+						)}
 					</td>
 				</table>
 

@@ -12,13 +12,13 @@ CREATE TABLE users(
 
 CREATE TABLE questions(
 	question_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-	postedBy VARCHAR(255) NOT NULL, 
+	postedBy uuid NOT NULL, 
 	title TEXT NOT NULL, 
     upvotes INT,
     downvotes INT, 
     comments JSONB[],
 	FOREIGN KEY (postedBy)
-		REFERENCES users (email)
+		REFERENCES users (user_id)
 );
 
 --generating some users
