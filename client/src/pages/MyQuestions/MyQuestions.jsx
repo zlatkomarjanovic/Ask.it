@@ -5,14 +5,10 @@ import { SingleQuestion } from '../../components';
 const MyQuestions = () => {
 	const { questions, currentProfile } = MyQuestionsLogic();
 
-	//console.log(questions);
-
 	return (
 		<div className='container'>
-			{console.log(currentProfile)}
-			<h4 className='m-5'>Some of the questions you recently asked!</h4>
+			<h3 className='m-5'>Some of the questions you recently asked!</h3>
 			{questions.map((question) => {
-				console.log(question);
 				return (
 					<>
 						{question.postedbyusr === currentProfile[0].username ? (

@@ -6,28 +6,32 @@ import './SingleQuestion.css';
 
 const SingleQuestion = ({ question }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
-	console.log(question);
+
 	return (
 		<>
-			<div className='container bg-light rounded-box shadow'>
-				<table className='row bg-primary p-3 rounded-table'>
-					<td className='col-1'>
-						<Gravatar
-							email={question.postedbyemail}
-							size={30}
-							className='rounded-circle'
-						/>
-					</td>
-					<td className='col'>
-						<h5>{question.postedbyusr} has asked:</h5>
-					</td>
-					<td className='col align-items-end'>
-						{isAuth ? (
-							<button className='btn btn-info right'>Join</button>
-						) : (
-							<></>
-						)}
-					</td>
+			<div className='container bg-light rounded-box shadow w-100'>
+				<table className='container bg-light rounded-box shadow w-100'>
+					<tbody className='container  w-100'>
+						<tr className='row bg-primary p-3 rounded-table'>
+							<td className='col mr-5'>
+								<Gravatar
+									email={question.postedbyemail}
+									size={30}
+									className='rounded-circle mr-5'
+								/>
+							</td>
+							<td className='col'>
+								<h5 className=''>{question.postedbyusr} has asked:</h5>
+							</td>
+							<td className='col align-items-end'>
+								{isAuth ? (
+									<button className='btn btn-info right'>Join</button>
+								) : (
+									<></>
+								)}
+							</td>
+						</tr>
+					</tbody>
 				</table>
 
 				<div className='p-4'>

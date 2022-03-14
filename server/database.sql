@@ -1,3 +1,7 @@
+-- When installed pgAdmin, these are the commands you want to enter
+-- In order to create tables properly
+-- Then the backend will connect to the database through index.js and routes files
+
 CREATE DATABASE askit; 
 
 --download extension uuid

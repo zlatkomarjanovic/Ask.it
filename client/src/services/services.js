@@ -43,7 +43,7 @@ export async function ask(body) {
 
 export async function updateForm(e, body) {
 	e.preventDefault();
-	console.log(body, e);
+
 	try {
 		const response = await fetch('http://localhost:5000/auth/update-user', {
 			method: 'PUT',
@@ -64,6 +64,44 @@ export async function updateForm(e, body) {
 		toast.error(
 			error.message + '. This is a server error. We are working on fixing this.'
 		);
+		console.error(error.message);
+	}
+}
+
+export async function onSubmitForm(e, body) {
+	e.preventDefault();
+	try {
+		const response = await fetch('http://localhost:5000/auth/register', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body),
+		});
+
+		const parseRes = await response.json();
+		localStorage.setItem('token', parseRes.jwtToken);
+
+		return parseRes;
+	} catch (error) {
+		console.error(error.message);
+		toast.warning(error.message);
+	}
+}
+
+export async function onSubmitLogin(e, body) {
+	e.preventDefault();
+	try {
+		const response = await fetch('http://localhost:5000/auth/login', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body),
+		});
+
+		const parseRes = await response.json();
+
+		localStorage.setItem('token', parseRes.jwtToken);
+		return parseRes;
+	} catch (error) {
+		toast.warning(error);
 		console.error(error.message);
 	}
 }

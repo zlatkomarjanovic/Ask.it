@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import LoginLogic from './LoginLogic';
 
 const Login = () => {
-	const { onSubmitForm, email, password, onChange } = LoginLogic();
+	const { submitTheLogin, email, password, onChange } = LoginLogic();
 
 	return (
 		<>
 			<div className='container'>
 				<h1 className='text-center my-5'>Login</h1>
-				<form onSubmit={onSubmitForm}>
+				<form onSubmit={submitTheLogin}>
 					<input
 						type='email'
 						name='email'

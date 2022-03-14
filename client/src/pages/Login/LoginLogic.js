@@ -2,13 +2,14 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { trueFalse } from '../../features/isAuthenticated';
 import { login } from '../../features/login';
+import { onSubmitLogin } from '../../services/services';
 
 const LoginLogic = () => {
 	const dispatch = useDispatch();
 	const inputs = useSelector((state) => state.login.value);
-
-	//destructuring the inputs
+	const name = useSelector((state) => state.currentProfile.value);
 	const { email, password } = inputs;
+	const body = { email, password };
 
 	//setting the inputs
 	const onChange = (e) => {
@@ -16,37 +17,22 @@ const LoginLogic = () => {
 	};
 
 	//submiting the form
-	const onSubmitForm = async (e) => {
-		e.preventDefault();
-		try {
-			const body = { email, password };
 
-			const response = await fetch('http://localhost:5000/auth/login', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			});
+	async function submitTheLogin(e) {
+		const res = await onSubmitLogin(e, body);
+		if (res.jwtToken) {
+			toast.success(`👋 Well hello there, welcome back!`);
+			localStorage.setItem('token', res.jwtToken);
+			dispatch(trueFalse(true));
+		} else {
+			dispatch(trueFalse(false));
 
-			const parseRes = await response.json();
-
-			localStorage.setItem('token', parseRes.jwtToken);
-
-			if (parseRes.jwtToken) {
-				toast.success('Logged in successfully');
-				localStorage.setItem('token', parseRes.jwtToken);
-				dispatch(trueFalse(true));
-			} else {
-				dispatch(trueFalse(false));
-
-				toast.error(parseRes);
-			}
-		} catch (error) {
-			toast.warning(error);
-			console.error(error.message);
+			toast.error(res);
 		}
-	};
+	}
+
 	//returning the necessary values
-	return { onSubmitForm, email, onChange, password };
+	return { submitTheLogin, email, onChange, password };
 };
 
 export default LoginLogic;

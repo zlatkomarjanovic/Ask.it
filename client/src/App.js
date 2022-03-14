@@ -29,8 +29,16 @@ const App = () => {
 				<div style={{ position: 'relative', minHeight: '100vh' }}>
 					<Routes>
 						<Route exact path='/' element={<Homepage />} />
-						<Route exact path='/my-questions' element={<MyQuestions />} />
-						<Route exact path='/profile' element={<Profile />} />
+						<Route
+							exact
+							path='/my-questions'
+							element={isAuth ? <MyQuestions /> : <Navigate to='/' />}
+						/>
+						<Route
+							exact
+							path='/profile'
+							element={isAuth ? <Profile /> : <Navigate to='/' />}
+						/>
 						<Route exact path='/questions' element={<Questions />} />
 
 						<Route
