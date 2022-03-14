@@ -50,7 +50,6 @@ const Profile = () => {
 			<div>
 				<h4>Recent questions</h4>
 				{data.map((question) => {
-					console.log(question);
 					return (
 						<>
 							{question.postedbyusr === currentProfile[0].username ? (

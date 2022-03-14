@@ -13,7 +13,6 @@ const ProfileLogic = () => {
 
 	const { user_id } = inputs[0];
 	const { ime, prezime, email, password } = inputs2;
-	console.log(inputs2);
 
 	//useEffect
 	useEffect(() => {
@@ -35,13 +34,13 @@ const ProfileLogic = () => {
 		e.preventDefault();
 		try {
 			const body = { ime, prezime, email, password, user_id };
-			console.log(body);
+
 			const response = await fetch('http://localhost:5000/auth/update-user', {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(body),
 			});
-			console.log(response);
+
 			const parseRes = await response.json();
 			localStorage.setItem('token', parseRes.jwtToken);
 
