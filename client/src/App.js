@@ -14,6 +14,8 @@ import {
 	Profile,
 	Questions,
 	Register,
+	QuestionDetails,
+	ErrorPage,
 } from './pages';
 import Footer from './components/Footer/Footer';
 import { useSelector } from 'react-redux';
@@ -40,6 +42,8 @@ const App = () => {
 							element={isAuth ? <Profile /> : <Navigate to='/' />}
 						/>
 						<Route exact path='/questions' element={<Questions />} />
+						<Route exact path='/questions/:id' element={<QuestionDetails />} />
+						<Route exact path='*' element={<ErrorPage />} />
 
 						<Route
 							exact

@@ -4,3 +4,5 @@ export { default as MyQuestions } from './MyQuestions/MyQuestions';
 export { default as Profile } from './Profile/Profile';
 export { default as Questions } from './Questions/Questions';
 export { default as Register } from './Register/Register';
+export { default as QuestionDetails } from './QuestionDetails/QuestionDetails';
+export { default as ErrorPage } from './ErrorPage/ErrorPage';

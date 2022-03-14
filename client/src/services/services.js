@@ -1,5 +1,7 @@
 import { toast } from 'react-toastify';
+//toast is used for those notifications you see when logging in or submiting a question
 
+//Getting a current user
 export async function GetCurrentUser() {
 	try {
 		const response = await fetch('http://localhost:5000/profile', {
@@ -14,6 +16,7 @@ export async function GetCurrentUser() {
 	}
 }
 
+//Fetching Questions
 export async function fetchQuestions() {
 	try {
 		const response = await fetch('http://localhost:5000/questions', {
@@ -27,6 +30,7 @@ export async function fetchQuestions() {
 	}
 }
 
+//Asking a question
 export async function ask(body) {
 	try {
 		await fetch('http://localhost:5000/ask', {
@@ -41,6 +45,7 @@ export async function ask(body) {
 	}
 }
 
+//Updating current user
 export async function updateForm(e, body) {
 	e.preventDefault();
 
@@ -68,6 +73,7 @@ export async function updateForm(e, body) {
 	}
 }
 
+//Submiting register form
 export async function onSubmitForm(e, body) {
 	e.preventDefault();
 	try {
@@ -87,6 +93,7 @@ export async function onSubmitForm(e, body) {
 	}
 }
 
+//Submitting a login form
 export async function onSubmitLogin(e, body) {
 	e.preventDefault();
 	try {

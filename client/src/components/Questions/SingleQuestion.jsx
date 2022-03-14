@@ -3,6 +3,7 @@ import Gravatar from 'react-gravatar';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import './SingleQuestion.css';
+import { NavLink } from 'react-router-dom';
 
 const SingleQuestion = ({ question }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
@@ -10,22 +11,27 @@ const SingleQuestion = ({ question }) => {
 	return (
 		<>
 			<div className='container bg-light rounded-box shadow w-100'>
-				<table className='container bg-light rounded-box shadow w-100'>
+				<table className='container bg-light rounded-box shadow w-100 mb-0'>
 					<tbody className='container  w-100'>
 						<tr className='row bg-primary p-3 rounded-table'>
-							<td className='col mr-5'>
+							<td className='col mr-5 w-2'>
 								<Gravatar
 									email={question.postedbyemail}
-									size={30}
+									size={50}
 									className='rounded-circle mr-5'
 								/>
 							</td>
-							<td className='col'>
-								<h5 className=''>{question.postedbyusr} has asked:</h5>
+							<td className='col w-100'>
+								<h5 className=''> Posted by {question.postedbyusr} </h5>
 							</td>
 							<td className='col align-items-end'>
 								{isAuth ? (
-									<button className='btn btn-info right'>Join</button>
+									<NavLink
+										className='btn btn-info right'
+										to={`/questions/${question.question_id}`}
+									>
+										Join
+									</NavLink>
 								) : (
 									<></>
 								)}
