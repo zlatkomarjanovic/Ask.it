@@ -8,18 +8,19 @@ const RegisterLogic = () => {
 	const inputs = useSelector((state) => state.register.value);
 
 	//destructuring the inputs
-	const { ime, prezime, email, password } = inputs;
+	const { ime, prezime, username, email, password } = inputs;
 
 	//populating the state
 	const onChange = (e) => {
 		dispatch(register({ ...inputs, [e.target.name]: e.target.value }));
+		console.log(inputs);
 	};
 
 	//submiting the form to the backend
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
-			const body = { ime, prezime, email, password };
+			const body = { ime, prezime, username, email, password };
 
 			const response = await fetch('http://localhost:5000/auth/register', {
 				method: 'POST',
@@ -51,6 +52,7 @@ const RegisterLogic = () => {
 		prezime,
 		email,
 		password,
+		username,
 	}; //returning all the necessary values
 };
 

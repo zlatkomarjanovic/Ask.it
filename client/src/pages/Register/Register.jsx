@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RegisterLogic from './RegisterLogic';
 
 const Register = () => {
-	const { onSubmitForm, ime, onChange, prezime, email, password } =
+	const { onSubmitForm, ime, onChange, prezime, email, username, password } =
 		RegisterLogic();
 
 	return (
@@ -24,6 +24,14 @@ const Register = () => {
 					placeholder='Prezime'
 					className='form-control my-3'
 					value={prezime}
+					onChange={(e) => onChange(e)}
+				/>
+				<input
+					type='text'
+					name='username'
+					placeholder='Username'
+					className='form-control my-3'
+					value={username}
 					onChange={(e) => onChange(e)}
 				/>
 				<input

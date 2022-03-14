@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const registerSlice = createSlice({
 	name: 'register',
-	initialState: { value: [{ ime: '', prezime: '', email: '', password: '' }] },
+	initialState: {
+		value: [],
+	},
 	reducers: {
 		register: (state, action) => {
 			state.value = action.payload;

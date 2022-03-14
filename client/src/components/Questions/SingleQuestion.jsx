@@ -6,19 +6,20 @@ import './SingleQuestion.css';
 
 const SingleQuestion = ({ question }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
+	console.log(question);
 	return (
 		<>
 			<div className='container bg-light rounded-box shadow'>
 				<table className='row bg-primary p-3 rounded-table'>
 					<td className='col-1'>
 						<Gravatar
-							email={question.postedby}
+							email={question.postedbyemail}
 							size={30}
 							className='rounded-circle'
 						/>
 					</td>
 					<td className='col'>
-						<h5>Posted by {question.postedby}</h5>
+						<h5>{question.postedbyusr} has asked:</h5>
 					</td>
 					<td className='col align-items-end'>
 						{isAuth ? (

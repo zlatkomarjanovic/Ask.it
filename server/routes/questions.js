@@ -29,8 +29,13 @@ router.get('/question', async (req, res) => {
 router.post('/ask', async (req, res) => {
 	try {
 		const questions = await pool.query(
-			'INSERT INTO questions (postedby, title ) VALUES ($1, $2)',
-			[req.body.postedby, req.body.title]
+			'INSERT INTO questions (postedby, postedbyusr, title, postedbyemail ) VALUES ($1, $2, $3, $4)',
+			[
+				req.body.postedby,
+				req.body.postedbyusr,
+				req.body.title,
+				req.body.postedbyemail,
+			]
 		);
 
 		const newRes = await res.json(questions);

@@ -49,9 +49,23 @@ const Profile = () => {
 
 			<div>
 				<h4>Recent questions</h4>
-				{data.map((question) => (
-					<SingleQuestion key={question.id} question={question} />
-				))}
+				{data.map((question) => {
+					console.log(question);
+					return (
+						<>
+							{question.postedbyusr === currentProfile[0].username ? (
+								<>
+									<SingleQuestion
+										key={question.question_id}
+										question={question}
+									/>
+								</>
+							) : (
+								<></>
+							)}
+						</>
+					);
+				})}
 			</div>
 
 			<div
