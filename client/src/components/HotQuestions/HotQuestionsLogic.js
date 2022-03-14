@@ -1,23 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setQuestions } from '../../features/questions';
-import { fetchQuestions } from '../../services/services';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
-const HotQuestionsLogic = () => {
-	const { loadMore, setLoadMore } = useState(5);
-	const dispatch = useDispatch();
+const TrendingLogic = () => {
+	const [loadMore, setLoadMore] = useState(20);
 	const questions = useSelector((state) => state.questions.value);
 	const newQuestions = questions.slice(0, loadMore);
 
-	async function setQuestionList() {
-		const questions = await fetchQuestions();
-		dispatch(setQuestions(questions.reverse()));
-	}
-
-	useEffect(() => {
-		setQuestionList();
-	}, []);
-	return { newQuestions, setLoadMore };
+	return { newQuestions, setLoadMore, loadMore };
 };
 
-export default HotQuestionsLogic;
+export default TrendingLogic;
