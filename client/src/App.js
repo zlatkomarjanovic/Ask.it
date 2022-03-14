@@ -23,6 +23,7 @@ import AppLogic from './AppLogic';
 
 const App = () => {
 	const isAuth = useSelector((state) => state.isAuth.value);
+
 	const {} = AppLogic();
 	return (
 		<>

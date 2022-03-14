@@ -14,6 +14,9 @@ app.use('/', require('./routes/profile'));
 //question routes
 app.use('/', require('./routes/questions'));
 
+//comments routes
+app.use('/', require('./routes/comments'));
+
 //register and login routes
 app.use('/auth', require('./routes/jwtAuth'));
 

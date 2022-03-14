@@ -9,8 +9,12 @@ const QuestionDetailsLogic = () => {
 	const dispatch = useDispatch();
 	const singleQuestion = useSelector((state) => state.singleQuestion.value);
 	async function getQuestion() {
-		const res = await fetchQuestion(id);
-		dispatch(setSingleQuestion(res));
+		try {
+			const res = await fetchQuestion(id);
+			dispatch(setSingleQuestion(res));
+		} catch (error) {
+			console.error(error.message);
+		}
 	}
 
 	useEffect(() => {

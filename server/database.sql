@@ -32,8 +32,30 @@ CREATE TABLE questions(
 		REFERENCES users (email)
 );
 
+CREATE TABLE comments(
+	comment_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+	commentedOnQuestion uuid NOT NULL, 
+    comment TEXT NOT NULL,
+    commentedBy uuid NOT NULL,
+    commentedByUser VARCHAR(255) NOT NULL,
+	commentedByEmail VARCHAR(255) NULL, 
+    upvotes INT,
+    downvotes INT, 
+	FOREIGN KEY (commentedOnQuestion)
+		REFERENCES questions (question_id),
+    FOREIGN KEY (commentedBy)
+		REFERENCES users (user_id),
+    FOREIGN KEY (commentedByUser)
+		REFERENCES users (username),
+    FOREIGN KEY (commentedByEmail)
+		REFERENCES users (email)
+);
+
 --generating some users
 INSERT INTO users (ime, prezime, email, password) VALUES('zlatko', 'marjanovic', 'business@zlatkomarjanovic.com', 'macaksenad123');
+
+-- generating some comments
+INSERT INTO comments (commentedonquestion, comment, commentedby, commentedbyuser, commentedbyemail) VALUES ('afc068e2-9ad1-45a0-b1a6-1edbfdf93896', 'Some random comment tied to this question', 'b794eda9-13a5-4d13-a630-cd243d042457', 'goldenko', 'zlajaa2000@gmail.com' );
 
 --generating some questions
 INSERT INTO questions (postedBy, title, upvotes, downvotes, comments) VALUES(user.user_id[0], 'Bank of America calls police on "Black Panther" director Ryan Coogler after attempting to withdraw 12.000$ from his own bank account', 2, 2);
