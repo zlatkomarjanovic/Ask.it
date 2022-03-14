@@ -15,16 +15,18 @@ router.get('/comments', async (req, res) => {
 
 router.post('/post-comment', async (req, res) => {
 	try {
-		const comment = await pool.query(
+		const comment = pool.query(
 			'INSERT INTO comments (commentedonquestion, comment, commentedby, commentedbyuser, commentedbyemail) VALUES($1, $2, $3, $4, $5)',
-			[req.body.commentedonquestion],
-			[req.body.comment],
-			[req.body.commentedby],
-			[req.body.commentedbyuser],
-			[req.body.commentedbyemail]
+			[
+				req.body.commentedonquestion,
+				req.body.comment,
+				req.body.commentedby,
+				req.body.commentedbyuser,
+				req.body.commentedbyemail,
+			]
 		);
 
-		res.json(comment.rows);
+		res.json(comment);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json('Server Error');

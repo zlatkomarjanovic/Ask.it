@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { trueFalse } from './features/isAuthenticated';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { GetCurrentUser } from './services/services';
+import { setCurrentProfile } from './features/currentProfile';
 
 const AppLogic = () => {
 	const dispatch = useDispatch();
@@ -23,7 +25,14 @@ const AppLogic = () => {
 		}
 	}
 
-	useEffect(() => {
+	async function setUser() {
+		const user = await GetCurrentUser();
+		dispatch(setCurrentProfile(user));
+		console.log(user);
+	}
+
+	useEffect(async () => {
+		await setUser();
 		isAuthen();
 		toast.configure();
 	});

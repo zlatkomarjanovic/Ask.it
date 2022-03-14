@@ -16,6 +16,7 @@ const QuestionsLogic = () => {
 	const postedbyemail = email;
 	const body = { postedbyusr, postedby, title, postedbyemail };
 
+	console.log(body);
 	async function setUser() {
 		const user = await GetCurrentUser();
 		dispatch(setCurrentProfile(user));
@@ -25,8 +26,8 @@ const QuestionsLogic = () => {
 		const questions = await fetchQuestions();
 		dispatch(setQuestions(questions.reverse()));
 	}
-	async function askTheQuestion() {
-		ask(body);
+	async function askTheQuestion(e) {
+		await ask(e, body);
 	}
 
 	const onChange = (e) => {

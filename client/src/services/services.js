@@ -45,7 +45,8 @@ export async function fetchQuestion(id) {
 }
 
 //Asking a question
-export async function ask(body) {
+export async function ask(e, body) {
+	e.preventDefault();
 	try {
 		await fetch('http://localhost:5000/ask', {
 			method: 'POST',
@@ -122,7 +123,36 @@ export async function onSubmitLogin(e, body) {
 		localStorage.setItem('token', parseRes.jwtToken);
 		return parseRes;
 	} catch (error) {
-		toast.warning(error);
+		toast.error('⚠️ Something went wrong!' + error.message);
 		console.error(error.message);
+	}
+}
+
+//Posting a comment
+export async function sendComment(e, body) {
+	e.preventDefault();
+
+	try {
+		await fetch('http://localhost:5000/post-comment', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body),
+		});
+		toast.success('💬 Commented! Relaod the page to see the changes!');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
+export async function getAllComments() {
+	try {
+		const res = await fetch('http://localhost:5000/comments', {
+			method: 'GET',
+		});
+		return res.json();
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
 	}
 }

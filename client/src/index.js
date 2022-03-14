@@ -12,6 +12,8 @@ import login from './features/login';
 import updateProfile from './features/updateProfile';
 import askQuestion from './features/askQuestion';
 import singleQuestion from './features/singleQuestion';
+import postComment from './features/postComment';
+import comments from './features/comments';
 
 const store = configureStore({
 	reducer: {
@@ -23,6 +25,8 @@ const store = configureStore({
 		updateProfile: updateProfile,
 		askQuestion: askQuestion,
 		singleQuestion: singleQuestion,
+		postComment: postComment,
+		comments: comments,
 	},
 });
 

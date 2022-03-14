@@ -4,37 +4,15 @@ import { useSelector } from 'react-redux';
 import QuestionDetailsLogic from './QuestionDetailsLogic';
 import './QuestionDetails.css';
 
-const fakeComments = [
-	{
-		commentId: '1',
-		commentedOnPost: 'uuidofthepost',
-		comment: 'Lorem ipsum dolor sit amet.',
-		commentedBy: '@goldenko',
-		commentedByEmail: 'zlatkomarjanovic.zm@gmail.com',
-	},
-	{
-		commentId: '2',
-		commentedOnPost: 'uuidofthepost',
-		comment: 'Lorem ipsum dolor sit amet.',
-		commentedByEmail: 'zlajaa2000@gmail.com',
-	},
-
-	{
-		commentId: '3',
-		commentedOnPost: 'uuidofthepost',
-		comment: 'Lorem ipsum dolor sit amet.',
-		commentedByEmail: '123@gmail.com',
-	},
-	{
-		commentId: '4',
-		commentedOnPost: 'uuidofthepost',
-		comment: 'Lorem ipsum dolor sit amet.',
-		commentedByEmail: 'allahisgreat@gmail.com',
-	},
-];
-
 const QuestionDetails = () => {
-	const { singleQuestion } = QuestionDetailsLogic();
+	const {
+		singleQuestion,
+		onSubmitComment,
+		commentToPost,
+		onChange,
+		commentsData,
+		id,
+	} = QuestionDetailsLogic();
 	const isAuth = useSelector((state) => state.isAuth.value);
 	return (
 		<div className='container mt-5'>
@@ -50,26 +28,41 @@ const QuestionDetails = () => {
 
 			<div className='mt-5'>
 				<h4>Comments</h4>
-				{fakeComments.map((comment) => (
-					<div className='bg-light p-5 container my-5'>
-						<Gravatar
-							email={comment.commentedByEmail}
-							className='rounded-circle floatleft'
-						/>
-						<h5 className='pt-3'>{comment.comment}</h5>
-					</div>
-				))}
+				{commentsData.map((comment) => {
+					return (
+						<>
+							{comment.commentedonquestion === id ? (
+								<div className='bg-light p-5 container my-5'>
+									<Gravatar
+										email={comment.commentedbyemail}
+										className='rounded-circle floatleft'
+									/>
+									<h5 className='pt-2'>{comment.comment}</h5>
+									<h6>@{comment.commentedbyuser}</h6>
+								</div>
+							) : (
+								<></>
+							)}
+						</>
+					);
+				})}
 			</div>
 			{isAuth === true ? (
 				<>
 					<div className='input-group'>
 						<input
 							className='form-control'
+							name='comment'
 							type='text'
 							placeholder='Write a comment'
+							value={commentToPost.comment}
+							onChange={(e) => onChange(e)}
 						/>
 						<span className='input-group-btn'>
-							<button className='btn btn-primary input-group-prepend'>
+							<button
+								onClick={onSubmitComment}
+								className='btn btn-primary input-group-prepend'
+							>
 								Comment
 							</button>
 						</span>
