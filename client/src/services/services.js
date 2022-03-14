@@ -30,6 +30,20 @@ export async function fetchQuestions() {
 	}
 }
 
+export async function fetchQuestion(id) {
+	try {
+		const response = await fetch('http://localhost:5000/question', {
+			method: 'GET',
+			headers: { question_id: id },
+		});
+
+		const parseRes = await response.json();
+		return parseRes;
+	} catch (error) {
+		console.error(error.message);
+	}
+}
+
 //Asking a question
 export async function ask(body) {
 	try {

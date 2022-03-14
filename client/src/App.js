@@ -34,15 +34,19 @@ const App = () => {
 						<Route
 							exact
 							path='/my-questions'
-							element={isAuth ? <MyQuestions /> : <Navigate to='/' />}
+							element={isAuth ? <MyQuestions /> : <Navigate to='/login' />}
 						/>
 						<Route
 							exact
 							path='/profile'
-							element={isAuth ? <Profile /> : <Navigate to='/' />}
+							element={isAuth ? <Profile /> : <Navigate to='/login' />}
 						/>
 						<Route exact path='/questions' element={<Questions />} />
-						<Route exact path='/questions/:id' element={<QuestionDetails />} />
+						<Route
+							exact
+							path='/questions/:id'
+							element={isAuth ? <QuestionDetails /> : <Navigate to='/login' />}
+						/>
 						<Route exact path='*' element={<ErrorPage />} />
 
 						<Route
