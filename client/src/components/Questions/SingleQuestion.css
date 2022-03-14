@@ -16,3 +16,8 @@
 	float: right;
 	margin-right: 10px;
 }
+
+.custom-width {
+	width: 7rem;
+	margin: 2px;
+}

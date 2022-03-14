@@ -16,7 +16,6 @@ const QuestionsLogic = () => {
 	const postedbyemail = email;
 	const body = { postedbyusr, postedby, title, postedbyemail };
 
-	console.log(body);
 	async function setUser() {
 		const user = await GetCurrentUser();
 		dispatch(setCurrentProfile(user));

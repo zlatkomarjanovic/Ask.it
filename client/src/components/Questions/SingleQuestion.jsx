@@ -8,10 +8,12 @@ import { NavLink } from 'react-router-dom';
 const SingleQuestion = ({ question }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
 	const currentProfile = useSelector((state) => state.currentProfile.value);
+	const comments = useSelector((state) => state.comments.value);
+
 	return (
 		<>
 			<div className='container bg-light rounded-box shadow w-100'>
-				<table className='container bg-light rounded-box  w-100 mb-0'>
+				<table className='container bg-light rounded-box  w-100 mb-0 '>
 					<tbody className='container  w-100'>
 						<tr className='row bg-primary p-3 rounded-table'>
 							<td className='col mr-5 w-2'>
@@ -29,10 +31,10 @@ const SingleQuestion = ({ question }) => {
 									<>
 										{question.postedbyusr === currentProfile[0].username ? (
 											<>
-												<button className='btn btn-danger mx-3 w-25 shadow'>
+												<button className='btn btn-danger mx-3 custom-width shadow'>
 													Delete
 												</button>
-												<button className='btn btn-warning mx-3 w-25 shadow'>
+												<button className='btn btn-warning mx-3 custom-width shadow'>
 													Edit
 												</button>
 											</>
