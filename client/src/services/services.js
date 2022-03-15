@@ -9,13 +9,10 @@ export async function GetCurrentUser() {
 	try {
 		//proxy
 
-		const response = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}/profile`,
-			{
-				method: 'GET',
-				headers: { token: localStorage.token },
-			}
-		);
+		const response = await fetch(`/profile`, {
+			method: 'GET',
+			headers: { token: localStorage.token },
+		});
 
 		const parseRes = await response.json();
 		return parseRes;
@@ -27,12 +24,9 @@ export async function GetCurrentUser() {
 //Fetching Questions
 export async function fetchQuestions() {
 	try {
-		const response = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}/questions`,
-			{
-				method: 'GET',
-			}
-		);
+		const response = await fetch(`/questions`, {
+			method: 'GET',
+		});
 
 		const parseRes = await response.json();
 		return parseRes;
@@ -43,13 +37,10 @@ export async function fetchQuestions() {
 
 export async function fetchQuestion(id) {
 	try {
-		const response = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}/question`,
-			{
-				method: 'GET',
-				headers: { question_id: id },
-			}
-		);
+		const response = await fetch(`/question`, {
+			method: 'GET',
+			headers: { question_id: id },
+		});
 
 		const parseRes = await response.json();
 		return parseRes;
@@ -62,7 +53,7 @@ export async function fetchQuestion(id) {
 export async function ask(e, body) {
 	e.preventDefault();
 	try {
-		await fetch(`${process.env.REACT_APP_BACKEND_URL}/ask`, {
+		await fetch(`/ask`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -79,14 +70,11 @@ export async function updateForm(e, body) {
 	e.preventDefault();
 
 	try {
-		const response = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}/auth/update-user`,
-			{
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			}
-		);
+		const response = await fetch(`/auth/update-user`, {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body),
+		});
 
 		const parseRes = await response.json();
 		localStorage.setItem('token', parseRes.jwtToken);
@@ -109,14 +97,11 @@ export async function updateForm(e, body) {
 export async function onSubmitForm(e, body) {
 	e.preventDefault();
 	try {
-		const response = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}/auth/register`,
-			{
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			}
-		);
+		const response = await fetch(`/auth/register`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body),
+		});
 
 		const parseRes = await response.json();
 		localStorage.setItem('token', parseRes.jwtToken);
@@ -132,14 +117,11 @@ export async function onSubmitForm(e, body) {
 export async function onSubmitLogin(e, body) {
 	e.preventDefault();
 	try {
-		const response = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}/auth/login`,
-			{
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			}
-		);
+		const response = await fetch(`/auth/login`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body),
+		});
 
 		const parseRes = await response.json();
 
@@ -156,7 +138,7 @@ export async function sendComment(e, body) {
 	e.preventDefault();
 
 	try {
-		await fetch(`${process.env.REACT_APP_BACKEND_URL}/post-comment`, {
+		await fetch(`/post-comment`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -170,7 +152,7 @@ export async function sendComment(e, body) {
 
 export async function getAllComments() {
 	try {
-		const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/comments`, {
+		const res = await fetch(`/comments`, {
 			method: 'GET',
 		});
 		return res.json();
@@ -183,13 +165,10 @@ export async function getAllComments() {
 //Authenticatinf user
 export async function isAuthen() {
 	try {
-		const response = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}/auth/verify`,
-			{
-				method: 'POST',
-				headers: { token: localStorage.token },
-			}
-		);
+		const response = await fetch(`/auth/verify`, {
+			method: 'POST',
+			headers: { token: localStorage.token },
+		});
 
 		const parsedRes = await response.json();
 		return parsedRes;
