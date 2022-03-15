@@ -8,8 +8,8 @@
 		"npm": "8.3.1"
 	},
 	"scripts": {
-		"start": "node index",
-		"heroku-postbild": "cd client && npm install && npm run build"
+		"start": "node index.js",
+		"heroku-postbuild": "cd client && npm install && npm run build"
 	},
 	"author": "",
 	"license": "ISC",
