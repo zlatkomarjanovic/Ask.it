@@ -48,7 +48,6 @@ const App = () => {
 							path='/questions/:id'
 							element={isAuth ? <QuestionDetails /> : <Navigate to='/login' />}
 						/>
-						<Route exact path='*' element={<ErrorPage />} />
 
 						<Route
 							exact
