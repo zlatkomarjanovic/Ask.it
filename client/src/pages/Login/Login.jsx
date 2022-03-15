@@ -30,7 +30,9 @@ const Login = () => {
 					/>
 					<button className='btn btn-info btn-block'>Submit</button>
 				</form>
-				<Link to='/register'>Don't have an account?</Link>
+				<Link to='/register' className='text-center'>
+					<h5>Don't have an account?</h5>
+				</Link>
 			</div>
 		</>
 	);

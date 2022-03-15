@@ -4,9 +4,15 @@ import QuestionsLogic from './QuestionsLogic';
 import { useSelector } from 'react-redux';
 
 const Questions = () => {
-	const { askTheQuestion, onChange, questionToAsk } = QuestionsLogic();
-	const data = useSelector((state) => state.questions.value);
-	const isAuth = useSelector((state) => state.isAuth.value);
+	const {
+		askTheQuestion,
+		onChange,
+		questionToAsk,
+		newQuestions,
+		isAuth,
+		setLoadMore,
+		loadmore,
+	} = QuestionsLogic();
 
 	return (
 		<div className='container p-3'>
@@ -38,9 +44,15 @@ const Questions = () => {
 				)}
 			</div>
 
-			{data.map((question) => (
+			{newQuestions.map((question) => (
 				<SingleQuestion key={question.question_id} question={question} />
 			))}
+			<button
+				onClick={() => setLoadMore(loadmore + 5)}
+				className='btn btn-block btn-primary'
+			>
+				Load more
+			</button>
 		</div>
 	);
 };

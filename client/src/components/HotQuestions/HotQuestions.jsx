@@ -9,7 +9,11 @@ const HotQuestions = () => {
 			<div className='row'>
 				{newQuestions.map((question) => (
 					<div key={question.question_id} className='w-100'>
-						<SingleQuestion key={question.question_id} question={question} />
+						<SingleQuestion
+							key={question.question_id}
+							question={question}
+							color='bg-primary'
+						/>
 					</div>
 				))}
 			</div>

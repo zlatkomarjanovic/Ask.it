@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAskQuestion } from '../../features/askQuestion';
 import { setQuestions } from '../../features/questions';
@@ -6,6 +6,7 @@ import { ask, fetchQuestions, GetCurrentUser } from '../../services/services';
 import { setCurrentProfile } from '../../features/currentProfile';
 
 const QuestionsLogic = () => {
+	const [loadmore, setLoadMore] = useState(20);
 	const questionToAsk = useSelector((state) => state.askQuestion.value);
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const dispatch = useDispatch();
@@ -15,6 +16,9 @@ const QuestionsLogic = () => {
 	const postedby = user_id;
 	const postedbyemail = email;
 	const body = { postedbyusr, postedby, title, postedbyemail };
+	const data = useSelector((state) => state.questions.value);
+	const isAuth = useSelector((state) => state.isAuth.value);
+	const newQuestions = data.slice(0, loadmore);
 
 	async function setUser() {
 		const user = await GetCurrentUser();
@@ -41,7 +45,16 @@ const QuestionsLogic = () => {
 		setQuestionList();
 	}, []);
 
-	return { fetchQuestions, onChange, askTheQuestion, questionToAsk };
+	return {
+		setLoadMore,
+		loadmore,
+		newQuestions,
+		isAuth,
+		fetchQuestions,
+		onChange,
+		askTheQuestion,
+		questionToAsk,
+	};
 };
 
 export default QuestionsLogic;

@@ -9,7 +9,11 @@ const Trending = () => {
 			<div className='row'>
 				{newQuestions.map((question) => (
 					<div key={question.question_id} className='col-sm w-50'>
-						<SingleQuestion key={question.question_id} question={question} />
+						<SingleQuestion
+							key={question.question_id}
+							question={question}
+							color='bg-warning'
+						/>
 					</div>
 				))}
 			</div>

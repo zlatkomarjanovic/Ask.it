@@ -5,75 +5,55 @@ import { useSelector } from 'react-redux';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
 
-const SingleQuestion = ({ question }) => {
+const SingleQuestion = ({ question, color }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const comments = useSelector((state) => state.comments.value);
 
+	console.log(question);
+
 	return (
 		<>
-			<div className='container bg-light rounded-box shadow w-100'>
-				<table className='container bg-light rounded-box  w-100 mb-0 '>
-					<tbody className='container  w-100'>
-						<tr className='row bg-primary p-3 rounded-table'>
-							<td className='col mr-5 w-2'>
-								<Gravatar
-									email={question.postedbyemail}
-									size={50}
-									className='rounded-circle mr-5'
-								/>
-							</td>
-							<td className='col w-100'>
-								<h5 className=''> Posted by {question.postedbyusr} </h5>
-							</td>
-							<td className='col align-items-end'>
-								{isAuth ? (
-									<>
-										{question.postedbyusr === currentProfile[0].username ? (
-											<>
-												<button className='btn btn-danger mx-3 custom-width shadow'>
-													Delete
-												</button>
-												<button className='btn btn-warning mx-3 custom-width shadow'>
-													Edit
-												</button>
-											</>
-										) : (
-											<></>
-										)}
-									</>
-								) : (
-									<></>
-								)}
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<div className='card mb-5 roundedcustom shadow'>
+				<h5 className={`card-header ${color ? color : 'bg-primary'} p-4`}>
+					<Gravatar
+						email={question.postedbyemail}
+						className='rounded-circle mx-3'
+					/>
+					Posted by @{question.postedbyusr}{' '}
+				</h5>
 
-				<div className='p-4'>
-					<div className=''>
-						<h4 className='w-50'>{question.title} ?</h4>
+				<div className='card-body rounded p-4'>
+					<h4 className='card-title'>{question.title} ?</h4>
+					<div className='mt-3 mb-3'>
+						<AiOutlineArrowUp size={25} /> {question.upvotes}
+						<AiOutlineArrowDown size={25} /> {question.downvotes}
 					</div>
 
-					<div className='mt-5'>
-						<div className='mb-5'>
-							<AiOutlineArrowUp size={25} /> {question.upvotes}
-							<AiOutlineArrowDown size={25} /> {question.downvotes}
-						</div>
-
-						{isAuth === true ? (
-							<>
-								<NavLink
-									className='btn btn-info btn-block'
-									to={`/questions/${question.question_id}`}
-								>
-									Join
-								</NavLink>
-							</>
-						) : (
-							<></>
-						)}
-					</div>
+					{isAuth ? (
+						<>
+							<NavLink
+								className='btn btn-info custom-width mx-2'
+								to={`/questions/${question.question_id}`}
+							>
+								Join
+							</NavLink>
+							{question.postedbyusr === currentProfile[0].username ? (
+								<>
+									<button className='btn mx-2 btn-danger custom-width shadow'>
+										Delete
+									</button>
+									<button className='btn mx-2 btn-warning custom-width shadow'>
+										Edit
+									</button>
+								</>
+							) : (
+								<></>
+							)}
+						</>
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 		</>

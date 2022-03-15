@@ -52,7 +52,9 @@ const Register = () => {
 				/>
 				<button className='btn btn-primary btn-block rounded-5'>Submit</button>
 			</form>
-			<Link to='/login'>Already have an account?</Link>
+			<Link to='/login' className='text-center'>
+				<h5>Already have an account?</h5>
+			</Link>
 		</div>
 	);
 };

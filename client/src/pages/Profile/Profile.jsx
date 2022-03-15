@@ -1,6 +1,7 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { SingleQuestion } from '../../components';
 import ProfileLogic from './ProfileLogic';
 
@@ -9,6 +10,7 @@ const Profile = () => {
 		ProfileLogic();
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const data = useSelector((state) => state.questions.value);
+	const newQuestions = data.slice(0, 3);
 
 	return (
 		<div
@@ -49,7 +51,7 @@ const Profile = () => {
 
 			<div>
 				<h4>Recent questions</h4>
-				{data.map((question) => {
+				{newQuestions.map((question) => {
 					return (
 						<>
 							{question.postedbyusr === currentProfile[0].username ? (
@@ -57,6 +59,7 @@ const Profile = () => {
 									<SingleQuestion
 										key={question.question_id}
 										question={question}
+										color='bg-primary'
 									/>
 								</>
 							) : (
@@ -65,6 +68,9 @@ const Profile = () => {
 						</>
 					);
 				})}
+				<NavLink className='btn btn-block btn-primary' to='/my-questions'>
+					My Questions
+				</NavLink>
 			</div>
 
 			<div
