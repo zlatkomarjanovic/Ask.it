@@ -6,25 +6,17 @@ import { toast } from 'react-toastify';
 import { getAllComments, GetCurrentUser } from './services/services';
 import { setCurrentProfile } from './features/currentProfile';
 import { setComments } from './features/comments';
+import { isAuthen } from './services/services';
 
 const AppLogic = () => {
 	const dispatch = useDispatch();
-	async function isAuthen() {
-		try {
-			const response = await fetch('http://localhost:5000/auth/verify', {
-				method: 'POST',
-				headers: { token: localStorage.token },
-			});
 
-			const parsedRes = await response.json();
-
-			parsedRes === true
-				? dispatch(trueFalse(true))
-				: dispatch(trueFalse(false));
-		} catch (error) {
-			console.error(error.message);
-		}
-	}
+	const Authenticate = async () => {
+		const parsedResponse = await isAuthen();
+		parsedResponse === true
+			? dispatch(trueFalse(true))
+			: dispatch(trueFalse(false));
+	};
 
 	async function setUser() {
 		const user = await GetCurrentUser();
@@ -41,9 +33,9 @@ const AppLogic = () => {
 		}
 	}
 
-	useEffect(async () => {
-		await setUser();
-		await isAuthen();
+	useEffect(() => {
+		setUser();
+		Authenticate();
 		getComments();
 		toast.configure();
 	});

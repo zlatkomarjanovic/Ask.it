@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const authSlice = createSlice({
 	name: 'isAuth',
-	initialState: { value: false },
+	initialState: { value: true },
 	reducers: {
 		trueFalse: (state, action) => {
 			state.value = action.payload;

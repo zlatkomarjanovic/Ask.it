@@ -51,17 +51,16 @@ const SingleQuestion = ({ question }) => {
 				</table>
 
 				<div className='p-4'>
-					<div>
-						<h4>{question.title} ?</h4>
+					<div className=''>
+						<h4 className='w-50'>{question.title} ?</h4>
 					</div>
 
-					<div>
-						<div>
+					<div className='mt-5'>
+						<div className='mb-5'>
 							<AiOutlineArrowUp size={25} /> {question.upvotes}
 							<AiOutlineArrowDown size={25} /> {question.downvotes}
 						</div>
-						<h4>Comment 1</h4>
-						<h4>Comment 2</h4>
+
 						{isAuth === true ? (
 							<>
 								<NavLink

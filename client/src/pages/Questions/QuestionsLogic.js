@@ -27,6 +27,7 @@ const QuestionsLogic = () => {
 	}
 	async function askTheQuestion(e) {
 		await ask(e, body);
+		await setQuestionList();
 	}
 
 	const onChange = (e) => {

@@ -53,9 +53,9 @@ export async function ask(e, body) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
 		});
-		toast.success('Question asked! Relaod the page to see the changes!');
+		toast.success('❓ Question asked!');
 	} catch (error) {
-		toast.warning('Something went wrong!');
+		toast.error('⚠️ Something went wrong!');
 		console.error(error);
 	}
 }
@@ -75,7 +75,7 @@ export async function updateForm(e, body) {
 		localStorage.setItem('token', parseRes.jwtToken);
 
 		if (parseRes.jwtToken) {
-			toast.success('Updated successfully!');
+			toast.success('✅ Updated successfully!');
 			localStorage.setItem('token', parseRes.jwtToken);
 		} else {
 			toast.warning(parseRes);
@@ -138,7 +138,7 @@ export async function sendComment(e, body) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
 		});
-		toast.success('💬 Commented! Relaod the page to see the changes!');
+		toast.success('💬 Commented!');
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);
@@ -154,5 +154,20 @@ export async function getAllComments() {
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);
+	}
+}
+
+//Authenticatinf user
+export async function isAuthen() {
+	try {
+		const response = await fetch('http://localhost:5000/auth/verify', {
+			method: 'POST',
+			headers: { token: localStorage.token },
+		});
+
+		const parsedRes = await response.json();
+		return parsedRes;
+	} catch (error) {
+		console.error(error.message);
 	}
 }
