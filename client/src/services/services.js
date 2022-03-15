@@ -1,10 +1,16 @@
 import { toast } from 'react-toastify';
 //toast is used for those notifications you see when logging in or submiting a question
+// Proxy is only used in the development phase. It is ignored in production.
+//So, if there is no http://localhost:5000 then by default it is going to use heroku
+// domain. Remember, this heroku app is just our server serving the build static content
+// and also holding the restful API.
 
 //Getting a current user
 export async function GetCurrentUser() {
 	try {
-		const response = await fetch('http://localhost:5000/profile', {
+		//proxy
+
+		const response = await fetch('/profile', {
 			method: 'GET',
 			headers: { token: localStorage.token },
 		});
@@ -19,7 +25,7 @@ export async function GetCurrentUser() {
 //Fetching Questions
 export async function fetchQuestions() {
 	try {
-		const response = await fetch('http://localhost:5000/questions', {
+		const response = await fetch('/questions', {
 			method: 'GET',
 		});
 
@@ -32,7 +38,7 @@ export async function fetchQuestions() {
 
 export async function fetchQuestion(id) {
 	try {
-		const response = await fetch('http://localhost:5000/question', {
+		const response = await fetch('/question', {
 			method: 'GET',
 			headers: { question_id: id },
 		});
@@ -48,7 +54,7 @@ export async function fetchQuestion(id) {
 export async function ask(e, body) {
 	e.preventDefault();
 	try {
-		await fetch('http://localhost:5000/ask', {
+		await fetch('/ask', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -65,7 +71,7 @@ export async function updateForm(e, body) {
 	e.preventDefault();
 
 	try {
-		const response = await fetch('http://localhost:5000/auth/update-user', {
+		const response = await fetch('/auth/update-user', {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -92,7 +98,7 @@ export async function updateForm(e, body) {
 export async function onSubmitForm(e, body) {
 	e.preventDefault();
 	try {
-		const response = await fetch('http://localhost:5000/auth/register', {
+		const response = await fetch('/auth/register', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -112,7 +118,7 @@ export async function onSubmitForm(e, body) {
 export async function onSubmitLogin(e, body) {
 	e.preventDefault();
 	try {
-		const response = await fetch('http://localhost:5000/auth/login', {
+		const response = await fetch('/auth/login', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -133,7 +139,7 @@ export async function sendComment(e, body) {
 	e.preventDefault();
 
 	try {
-		await fetch('http://localhost:5000/post-comment', {
+		await fetch('/post-comment', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -147,7 +153,7 @@ export async function sendComment(e, body) {
 
 export async function getAllComments() {
 	try {
-		const res = await fetch('http://localhost:5000/comments', {
+		const res = await fetch('/comments', {
 			method: 'GET',
 		});
 		return res.json();
@@ -160,7 +166,7 @@ export async function getAllComments() {
 //Authenticatinf user
 export async function isAuthen() {
 	try {
-		const response = await fetch('http://localhost:5000/auth/verify', {
+		const response = await fetch('/auth/verify', {
 			method: 'POST',
 			headers: { token: localStorage.token },
 		});

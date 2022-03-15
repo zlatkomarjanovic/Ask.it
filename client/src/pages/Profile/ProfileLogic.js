@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setCurrentProfile } from '../../features/currentProfile';
 import { updateProfile } from '../../features/updateProfile';
-import { GetCurrentUser } from '../../services/services';
+import { GetCurrentUser, updateForm } from '../../services/services';
 
 const ProfileLogic = () => {
 	const dispatch = useDispatch();
 
 	const inputs = useSelector((state) => state.currentProfile.value);
 	const inputs2 = useSelector((state) => state.updateProfile.value);
-
 	const { user_id } = inputs[0];
 	const { ime, prezime, email, password } = inputs2;
+	const body = { ime, prezime, email, password, user_id };
 
 	//useEffect
 	useEffect(() => {
@@ -29,32 +29,11 @@ const ProfileLogic = () => {
 		dispatch(setCurrentProfile(user));
 	}
 
-	//submiting the form
-	const onSubmitForm = async (e) => {
-		e.preventDefault();
-		try {
-			const body = { ime, prezime, email, password, user_id };
-
-			const response = await fetch('http://localhost:5000/auth/update-user', {
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body),
-			});
-
-			const parseRes = await response.json();
-			localStorage.setItem('token', parseRes.jwtToken);
-
-			if (parseRes.jwtToken) {
-				toast.success('Updated successfully!');
-				localStorage.setItem('token', parseRes.jwtToken);
-			} else {
-				toast.warning(parseRes);
-			}
-		} catch (error) {
-			toast.warning(error.message);
-			console.error(error.message);
-		}
+	const onSubmitForm = (e, body) => {
+		updateForm(e, body);
 	};
+
+	//submiting the form
 
 	return { onChange, onSubmitForm, ime, prezime, email, password };
 };
