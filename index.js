@@ -10,6 +10,8 @@ const path = require('path');
 //middleware
 app.use(express.json());
 app.use(cors());
+app.options('/', cors());
+app.options('/auth', cors());
 
 if (process.env.NODE_ENV === 'production') {
 	//server static content

@@ -2,8 +2,7 @@ import { toast } from 'react-toastify';
 //toast is used for those notifications you see when logging in or submiting a question
 // Proxy is only used in the development phase. It is ignored in production.
 //So, if there is no http://localhost:5000 then by default it is going to use heroku
-// domain. Remember, this heroku app is just our server serving the build static content
-// and also holding the restful API.
+// domain.
 
 //Getting a current user
 export async function GetCurrentUser() {
