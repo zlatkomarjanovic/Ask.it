@@ -52,7 +52,7 @@ CREATE TABLE comments(
 );
 
 --generating some users
-INSERT INTO users (ime, prezime, email, password) VALUES('zlatko', 'marjanovic', 'business@zlatkomarjanovic.com', 'macaksenad123');
+INSERT INTO users (ime, prezime, email, password, username) VALUES('zlatko', 'marjanovic', 'business@zlatkomarjanovic.com', 'macaksenad123', 'goldenko');
 
 -- generating some comments
 INSERT INTO comments (commentedonquestion, comment, commentedby, commentedbyuser, commentedbyemail) VALUES ('afc068e2-9ad1-45a0-b1a6-1edbfdf93896', 'Some random comment tied to this question', 'b794eda9-13a5-4d13-a630-cd243d042457', 'goldenko', 'zlajaa2000@gmail.com' );
