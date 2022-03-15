@@ -13,10 +13,10 @@ app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
 	//server static content
-	app.use(express.static(path.join(__dirname, '../client/build')));
+	app.use(express.static(path.join(__dirname, '/client/build')));
 }
 
-console.log(path.join(__dirname, '../client/build'));
+console.log(path.join(__dirname, '/client/build'));
 
 //ROUTES
 
@@ -33,7 +33,7 @@ app.use('/', require('./routes/comments'));
 app.use('/auth', require('./routes/jwtAuth'));
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../client/build/index.html'));
+	res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
 app.listen(PORT, () => {

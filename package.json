@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"start": "nodemon index",
-		"heroku-postbild": "cd ../client && npm install && npm run build"
+		"heroku-postbild": "cd ./client && npm install && npm run build"
 	},
 	"author": "",
 	"license": "ISC",
