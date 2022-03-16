@@ -9,7 +9,7 @@ export async function GetCurrentUser() {
 	try {
 		//proxy
 
-		const response = await fetch(`/profile`, {
+		const response = await fetch(`https://askitmop.herokuapp.com/profile`, {
 			method: 'GET',
 			headers: { token: localStorage.token },
 		});
@@ -24,7 +24,7 @@ export async function GetCurrentUser() {
 //Fetching Questions
 export async function fetchQuestions() {
 	try {
-		const response = await fetch(`/questions`, {
+		const response = await fetch(`https://askitmop.herokuapp.com/questions`, {
 			method: 'GET',
 		});
 
@@ -37,7 +37,7 @@ export async function fetchQuestions() {
 
 export async function fetchQuestion(id) {
 	try {
-		const response = await fetch(`/question`, {
+		const response = await fetch(`https://askitmop.herokuapp.com/question`, {
 			method: 'GET',
 			headers: { question_id: id },
 		});
