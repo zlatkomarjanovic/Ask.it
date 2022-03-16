@@ -15,16 +15,16 @@ app.use(cors());
 //ROUTES
 
 //profile
-app.use('/api', require('./routes/profile'));
+app.use('/', require('./routes/profile'));
 
 //question routes
-app.use('/api', require('./routes/questions'));
+app.use('/', require('./routes/questions'));
 
 //comments routes
-app.use('/api', require('./routes/comments'));
+app.use('/', require('./routes/comments'));
 
 //register and login routes
-app.use('/api/auth', require('./routes/jwtAuth'));
+app.use('/auth', require('./routes/jwtAuth'));
 
 app.listen(PORT, () => {
 	console.log(`Server is running on ${PORT}`);
