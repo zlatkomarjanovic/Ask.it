@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -14,16 +15,16 @@ app.use(cors());
 //ROUTES
 
 //profile
-app.use('/', require('./routes/profile'));
+app.use('/api', require('./routes/profile'));
 
 //question routes
-app.use('/', require('./routes/questions'));
+app.use('/api', require('./routes/questions'));
 
 //comments routes
-app.use('/', require('./routes/comments'));
+app.use('/api', require('./routes/comments'));
 
 //register and login routes
-app.use('/auth', require('./routes/jwtAuth'));
+app.use('/api/auth', require('./routes/jwtAuth'));
 
 app.listen(PORT, () => {
 	console.log(`Server is running on ${PORT}`);
