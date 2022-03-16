@@ -53,7 +53,7 @@ export async function fetchQuestion(id) {
 export async function ask(e, body) {
 	e.preventDefault();
 	try {
-		await fetch(`/ask`, {
+		await fetch(`https://askitmop.herokuapp.com/ask`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
