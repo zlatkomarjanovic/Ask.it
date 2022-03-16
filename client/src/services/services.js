@@ -70,11 +70,14 @@ export async function updateForm(e, body) {
 	e.preventDefault();
 
 	try {
-		const response = await fetch(`/auth/update-user`, {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(body),
-		});
+		const response = await fetch(
+			`https://askitmop.herokuapp.com/auth/update-user`,
+			{
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body),
+			}
+		);
 
 		const parseRes = await response.json();
 		localStorage.setItem('token', parseRes.jwtToken);
@@ -97,11 +100,14 @@ export async function updateForm(e, body) {
 export async function onSubmitForm(e, body) {
 	e.preventDefault();
 	try {
-		const response = await fetch(`/auth/register`, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(body),
-		});
+		const response = await fetch(
+			`https://askitmop.herokuapp.com/auth/register`,
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body),
+			}
+		);
 
 		const parseRes = await response.json();
 		localStorage.setItem('token', parseRes.jwtToken);
@@ -117,7 +123,7 @@ export async function onSubmitForm(e, body) {
 export async function onSubmitLogin(e, body) {
 	e.preventDefault();
 	try {
-		const response = await fetch(`/auth/login`, {
+		const response = await fetch(`https://askitmop.herokuapp.com/auth/login`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -138,7 +144,7 @@ export async function sendComment(e, body) {
 	e.preventDefault();
 
 	try {
-		await fetch(`/post-comment`, {
+		await fetch(`https://askitmop.herokuapp.com/post-comment`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
@@ -152,7 +158,7 @@ export async function sendComment(e, body) {
 
 export async function getAllComments() {
 	try {
-		const res = await fetch(`/comments`, {
+		const res = await fetch(`https://askitmop.herokuapp.com/comments`, {
 			method: 'GET',
 		});
 		return res.json();
@@ -165,7 +171,7 @@ export async function getAllComments() {
 //Authenticatinf user
 export async function isAuthen() {
 	try {
-		const response = await fetch(`/auth/verify`, {
+		const response = await fetch(`https://askitmop.herokuapp.com/auth/verify`, {
 			method: 'POST',
 			headers: { token: localStorage.token },
 		});
