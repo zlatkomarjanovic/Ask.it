@@ -52,6 +52,23 @@ export async function fetchQuestion(id) {
 	}
 }
 
+export async function fetchMyQuestions(postedby) {
+	try {
+		const response = await fetch(
+			`${process.env.REACT_APP_BASE_URL}/my-questions`,
+			{
+				method: 'GET',
+				headers: { postedby },
+			}
+		);
+
+		const parseRes = await response.json();
+		return parseRes;
+	} catch (error) {
+		console.error(error.message);
+	}
+}
+
 //Asking a question
 export async function ask(e, body) {
 	e.preventDefault();
@@ -174,7 +191,7 @@ export async function getAllComments() {
 	}
 }
 
-//Authenticatinf user
+//Authenticating user
 export async function isAuthen() {
 	try {
 		const response = await fetch(

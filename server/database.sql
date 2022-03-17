@@ -59,3 +59,9 @@ INSERT INTO comments (commentedonquestion, comment, commentedby, commentedbyuser
 
 --generating some questions
 INSERT INTO questions (postedBy, title, upvotes, downvotes, comments) VALUES(user.user_id[0], 'Bank of America calls police on "Black Panther" director Ryan Coogler after attempting to withdraw 12.000$ from his own bank account', 2, 2);
+
+--inner join for users and questions
+SELECT * FROM users JOIN questions ON users.user_id = questions.postedby
+
+--select all questions for a single user based on ID
+SELECT * FROM questions WHERE postedby='ba2995f2-dfc1-436e-8f9b-c3db7b83aad7'

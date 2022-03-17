@@ -14,6 +14,7 @@ import askQuestion from './features/askQuestion';
 import singleQuestion from './features/singleQuestion';
 import postComment from './features/postComment';
 import comments from './features/comments';
+import myQuestions from './features/myQuestions';
 
 const store = configureStore({
 	reducer: {
@@ -27,6 +28,7 @@ const store = configureStore({
 		singleQuestion: singleQuestion,
 		postComment: postComment,
 		comments: comments,
+		myQuestions: myQuestions,
 	},
 });
 

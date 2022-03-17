@@ -3,27 +3,18 @@ import MyQuestionsLogic from './MyQuestionsLogic';
 import { SingleQuestion } from '../../components';
 
 const MyQuestions = () => {
-	const { newQuestions, currentProfile, setLoadMore, loadMore } =
-		MyQuestionsLogic();
+	const { newQuestions, setLoadMore, loadMore } = MyQuestionsLogic();
 
 	return (
 		<div className='container'>
 			<h3 className='m-5'>Some of the questions you recently asked!</h3>
 			{newQuestions.map((question) => {
 				return (
-					<>
-						{question.postedbyusr === currentProfile[0].username ? (
-							<>
-								<SingleQuestion
-									key={question.question_id}
-									question={question}
-									color='bg-primary'
-								/>
-							</>
-						) : (
-							<></>
-						)}
-					</>
+					<SingleQuestion
+						key={question.question_id}
+						question={question}
+						color='bg-primary'
+					/>
 				);
 			})}
 			<button
