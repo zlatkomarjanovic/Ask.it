@@ -40,11 +40,11 @@ const SingleQuestion = ({ question, color }) => {
 						{comments.map((comment) => (
 							<div key={comment.comment_id}>
 								{comment.commentedonquestion === question.question_id ? (
-									<>
-										<p key={comment.comment_id} className='mx-2'>
+									<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3'>
+										<p key={comment.comment_id} className='mx-4 pt-3'>
 											{comment.comment}
 										</p>
-									</>
+									</div>
 								) : (
 									<></>
 								)}
