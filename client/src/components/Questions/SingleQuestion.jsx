@@ -4,6 +4,7 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
+import { downvote, upvote } from '../../services/services';
 
 const SingleQuestion = ({ question, color }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
@@ -24,15 +25,25 @@ const SingleQuestion = ({ question, color }) => {
 				<div className='card-body rounded p-4'>
 					<h4 className='card-title'>{question.title} ?</h4>
 					<div className='mx-2 d-flex mt-3 mb-3  w-25'>
-						<button className='btn btn-primary p-1 rounded-3'>
+						<button
+							className='btn btn-primary p-1 rounded-3'
+							onClick={async () => await upvote(question.question_id)}
+						>
 							<AiOutlineArrowUp size={20} />
 						</button>
-						<p className='mx-1'>{question.upvotes}</p>
+						<p className='mx-3 bg-primary pt-3 p-3 rounded-3'>
+							{question.upvotes}
+						</p>
 
-						<button className='btn btn-danger p-1 rounded-3 text-light'>
+						<button
+							className='btn btn-danger p-1 rounded-3 text-light'
+							onClick={async () => await downvote(question.question_id)}
+						>
 							<AiOutlineArrowDown size={20} />
 						</button>
-						<p className='mx-3'>{question.downvotes}</p>
+						<p className='mx-3 bg-danger text-white rounded-3 pt-3 p-3'>
+							{question.downvotes}
+						</p>
 					</div>
 
 					<div>
@@ -41,6 +52,16 @@ const SingleQuestion = ({ question, color }) => {
 							<div key={comment.comment_id}>
 								{comment.commentedonquestion === question.question_id ? (
 									<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3'>
+										<div className='d-flex'>
+											<Gravatar
+												size={40}
+												email={comment.commentedbyemail}
+												className='rounded-circle float-left m-4'
+											/>
+											<h5 className='mt-5'>
+												@{comment.commentedbyuser} asnwers:
+											</h5>
+										</div>
 										<p key={comment.comment_id} className='mx-4 pt-3'>
 											{comment.comment}
 										</p>

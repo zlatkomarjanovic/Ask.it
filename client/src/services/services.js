@@ -85,6 +85,32 @@ export async function ask(e, body) {
 	}
 }
 
+//upvote downvote & unupvote undownvote
+export async function upvote(question_id) {
+	try {
+		await fetch(`${process.env.REACT_APP_BASE_URL}/upvote`, {
+			method: 'PUT',
+			headers: { question_id: question_id },
+		});
+		toast.success('👍');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
+export async function downvote(question_id) {
+	try {
+		await fetch(`${process.env.REACT_APP_BASE_URL}/downvote`, {
+			method: 'PUT',
+			headers: { question_id: question_id },
+		});
+		toast.success('👎');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
 //Updating current user
 export async function updateForm(e, body) {
 	e.preventDefault();

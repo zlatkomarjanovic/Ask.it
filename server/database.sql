@@ -23,7 +23,6 @@ CREATE TABLE questions(
 	title TEXT NOT NULL, 
     upvotes INT,
     downvotes INT, 
-    comments JSONB[],
 	FOREIGN KEY (postedBy)
 		REFERENCES users (user_id),
 	FOREIGN KEY (postedbyusr)
@@ -65,3 +64,8 @@ SELECT * FROM users JOIN questions ON users.user_id = questions.postedby
 
 --select all questions for a single user based on ID
 SELECT * FROM questions WHERE postedby='ba2995f2-dfc1-436e-8f9b-c3db7b83aad7'
+
+--UPVOTES & DOWNVOTES 
+UPDATE questions SET upvotes = upvotes+1 WHERE question_id='afc068e2-9ad1-45a0-b1a6-1edbfdf93896'
+--UNUPVOTES & UNDOWNVOTES 
+UPDATE questions SET upvotes = upvotes-1 WHERE question_id='afc068e2-9ad1-45a0-b1a6-1edbfdf93896'

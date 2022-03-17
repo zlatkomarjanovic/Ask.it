@@ -53,7 +53,7 @@ const QuestionDetails = () => {
 									<h6>@{comment.commentedbyuser}</h6>
 								</div>
 							) : (
-								<></>
+								<> </>
 							)}
 						</>
 					);
