@@ -25,9 +25,16 @@ const SingleQuestion = ({ question, color }) => {
 
 				<div className='card-body rounded p-4'>
 					<h4 className='card-title'>{question.title} ?</h4>
-					<div className='mt-3 mb-3'>
-						<AiOutlineArrowUp size={25} /> {question.upvotes}
-						<AiOutlineArrowDown size={25} /> {question.downvotes}
+					<div className='mx-2 d-flex mt-3 mb-3  w-25'>
+						<button className='btn btn-primary p-1 rounded-3'>
+							<AiOutlineArrowUp size={20} />
+						</button>
+						<p className='mx-1'>{question.upvotes}</p>
+
+						<button className='btn btn-danger p-1 rounded-3 text-light'>
+							<AiOutlineArrowDown size={20} />
+						</button>
+						<p className='mx-3'>{question.downvotes}</p>
 					</div>
 
 					{isAuth ? (
