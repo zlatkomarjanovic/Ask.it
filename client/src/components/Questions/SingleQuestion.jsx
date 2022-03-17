@@ -10,8 +10,6 @@ const SingleQuestion = ({ question, color }) => {
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const comments = useSelector((state) => state.comments.value);
 
-	console.log(question);
-
 	return (
 		<>
 			<div className='card mb-5 roundedcustom shadow'>
@@ -37,6 +35,21 @@ const SingleQuestion = ({ question, color }) => {
 						<p className='mx-3'>{question.downvotes}</p>
 					</div>
 
+					<div>
+						<h4 className='mx-2 bg-primary rounded-3 p-2'>Comments</h4>
+						{comments.map((comment) => (
+							<>
+								{comment.commentedonquestion === question.question_id ? (
+									<>
+										<p className='mx-2'>{comment.comment}</p>
+									</>
+								) : (
+									<></>
+								)}
+							</>
+						))}
+					</div>
+
 					{isAuth ? (
 						<>
 							<NavLink
@@ -47,10 +60,10 @@ const SingleQuestion = ({ question, color }) => {
 							</NavLink>
 							{question.postedbyusr === currentProfile[0].username ? (
 								<>
-									<button className='btn mx-2 btn-danger custom-width shadow'>
+									<button className='btn mx-2 btn-danger custom-width'>
 										Delete
 									</button>
-									<button className='btn mx-2 btn-warning custom-width shadow'>
+									<button className='btn mx-2 btn-warning custom-width'>
 										Edit
 									</button>
 								</>

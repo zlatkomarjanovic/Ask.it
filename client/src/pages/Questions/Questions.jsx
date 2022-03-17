@@ -1,7 +1,6 @@
 import React from 'react';
 import { SingleQuestion } from '../../components';
 import QuestionsLogic from './QuestionsLogic';
-import { useSelector } from 'react-redux';
 
 const Questions = () => {
 	const {
