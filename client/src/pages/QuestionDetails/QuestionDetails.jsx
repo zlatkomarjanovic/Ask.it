@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import QuestionDetailsLogic from './QuestionDetailsLogic';
 import './QuestionDetails.css';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
+import { downvote, upvote } from '../../services/services';
 
 const QuestionDetails = () => {
 	const {
@@ -27,15 +28,21 @@ const QuestionDetails = () => {
 				<h5>@{singleQuestion[0]?.postedbyusr}</h5>
 			</div>
 			<div className='mx-2 d-flex mt-3 mb-3  w-25'>
-				<button className='btn btn-primary p-1 rounded-3'>
+				<button
+					className='btn btn-primary custom-button'
+					onClick={async () => await upvote(singleQuestion[0]?.question_id)}
+				>
 					<AiOutlineArrowUp size={20} />
+					<p>{singleQuestion[0]?.upvotes}</p>
 				</button>
-				<p className='mx-1'>{singleQuestion.upvotes}</p>
 
-				<button className='btn btn-danger p-1 rounded-3 text-light'>
+				<button
+					className='btn btn-danger custom-button'
+					onClick={async () => await downvote(singleQuestion[0]?.question_id)}
+				>
 					<AiOutlineArrowDown size={20} />
+					<p>{singleQuestion[0]?.downvotes}</p>
 				</button>
-				<p className='mx-3'>{singleQuestion.downvotes}</p>
 			</div>
 
 			<div className='mt-5'>
