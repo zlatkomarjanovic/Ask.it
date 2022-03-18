@@ -6,7 +6,7 @@ import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
 import { downvote, upvote } from '../../services/services';
 
-const SingleQuestion = ({ question, color }) => {
+const SingleQuestion = ({ question, color, hot }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const comments = useSelector((state) => state.comments.value);
@@ -19,35 +19,41 @@ const SingleQuestion = ({ question, color }) => {
 						email={question.postedbyemail}
 						className='rounded-circle mx-3'
 					/>
-					Posted by @{question.postedbyusr}{' '}
+					Posted by @{question.postedbyusr}
+					{hot ? <>🔥</> : <></>}
 				</h5>
 
 				<div className='card-body rounded p-4'>
-					<h4 className='card-title'>{question.title} ?</h4>
-					<div className='mx-2 d-flex mt-3 mb-3  w-25'>
-						<button
-							className='btn btn-primary custom-button'
-							onClick={async () => await upvote(question.question_id)}
-						>
-							<AiOutlineArrowUp size={20} />
-							<p>{question.upvotes}</p>
-						</button>
+					<h3 className='card-title'>{question.title} ?</h3>
+					{isAuth ? (
+						<div className='mx-2 d-flex mt-3 mb-3  w-25'>
+							<button
+								className='btn btn-primary custom-button'
+								onClick={async () => await upvote(question.question_id)}
+							>
+								<AiOutlineArrowUp size={20} />
+								<p>{question.upvotes}</p>
+							</button>
 
-						<button
-							className='btn btn-danger custom-button'
-							onClick={async () => await downvote(question.question_id)}
-						>
-							<AiOutlineArrowDown size={20} />
-							<p>{question.downvotes}</p>
-						</button>
-					</div>
+							<button
+								className='btn btn-danger custom-button'
+								onClick={async () => await downvote(question.question_id)}
+							>
+								<AiOutlineArrowDown size={20} />
+								<p>{question.downvotes}</p>
+							</button>
+						</div>
+					) : (
+						<></>
+					)}
 
 					<div>
 						<h4 className='mx-2 bg-primary rounded-3 p-2'>Comments</h4>
+
 						{comments.map((comment) => (
 							<div key={comment.comment_id}>
 								{comment.commentedonquestion === question.question_id ? (
-									<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3'>
+									<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3 mw-100'>
 										<div className='d-flex'>
 											<Gravatar
 												size={40}

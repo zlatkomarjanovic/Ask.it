@@ -8,13 +8,20 @@ const HotQuestions = () => {
 		<div className='container mb-5'>
 			<div className='row'>
 				{newQuestions.map((question) => (
-					<div key={question.question_id} className='w-100'>
-						<SingleQuestion
-							key={question.question_id}
-							question={question}
-							color='bg-primary'
-						/>
-					</div>
+					<>
+						{question.upvotes >= 20 ? (
+							<div key={question.question_id} className='w-100'>
+								<SingleQuestion
+									key={question.question_id}
+									question={question}
+									color='bg-primary'
+									hot={true}
+								/>
+							</div>
+						) : (
+							<></>
+						)}
+					</>
 				))}
 			</div>
 			<button

@@ -22,11 +22,11 @@ const Navbar = () => {
 	};
 	return (
 		<>
-			<nav className='navbar navbar-expand-md bg-dark navbar-dark fixed-top'>
-				<div className='navbar-brand'>Askit</div>
+			<nav className='navbar navbar-expand-md bg-dark navbar-dark fixed-top noborder'>
+				<div className='navbar-brand no-brand'>Askit</div>
 
 				<button
-					className='navbar-toggler'
+					className='navbar-toggler ml-auto mx-4'
 					type='button'
 					data-toggle='collapse'
 					data-target='#collapsibleNavbar'
@@ -34,7 +34,10 @@ const Navbar = () => {
 					<span className='navbar-toggler-icon'></span>
 				</button>
 
-				<div className='collapse navbar-collapse' id='collapsibleNavbar'>
+				<div
+					className='col collapse navbar-collapse col-12'
+					id='collapsibleNavbar'
+				>
 					<ul className='navbar-nav'>
 						<li className='nav-item mx-3'>
 							<NavLink className='nav-link h4' to='/'>

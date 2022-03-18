@@ -1,4 +1,8 @@
-.navbar {
+.noborder {
 	border: none;
 	border-radius: 0;
+}
+.no-brand {
+	margin-right: auto;
+	min-height: 1.9em;
 }
