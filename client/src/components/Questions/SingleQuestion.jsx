@@ -26,24 +26,20 @@ const SingleQuestion = ({ question, color }) => {
 					<h4 className='card-title'>{question.title} ?</h4>
 					<div className='mx-2 d-flex mt-3 mb-3  w-25'>
 						<button
-							className='btn btn-primary p-1 rounded-3'
+							className='btn btn-primary custom-button'
 							onClick={async () => await upvote(question.question_id)}
 						>
 							<AiOutlineArrowUp size={20} />
+							<p>{question.upvotes}</p>
 						</button>
-						<p className='mx-3 bg-primary pt-3 p-3 rounded-3'>
-							{question.upvotes}
-						</p>
 
 						<button
-							className='btn btn-danger p-1 rounded-3 text-light'
+							className='btn btn-danger custom-button'
 							onClick={async () => await downvote(question.question_id)}
 						>
 							<AiOutlineArrowDown size={20} />
+							<p>{question.downvotes}</p>
 						</button>
-						<p className='mx-3 bg-danger text-white rounded-3 pt-3 p-3'>
-							{question.downvotes}
-						</p>
 					</div>
 
 					<div>
