@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RegisterLogic from './RegisterLogic';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 const Register = () => {
 	const { submitTheForm, ime, onChange, prezime, email, username, password } =
@@ -47,9 +48,11 @@ const Register = () => {
 					name='password'
 					placeholder='Password'
 					className='form-control my-3'
+					minLength={5}
 					value={password}
 					onChange={(e) => onChange(e)}
 				/>
+				<PasswordStrengthBar password={password} />
 				<button className='btn btn-primary btn-block rounded-5'>Submit</button>
 			</form>
 			<Link to='/login' className='text-center'>

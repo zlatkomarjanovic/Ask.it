@@ -19,15 +19,19 @@ const RegisterLogic = () => {
 
 	//submiting the form to the backend
 	async function submitTheForm(e) {
-		const res = await onSubmitForm(e, body);
-
-		if (res.jwtToken) {
-			toast.success('😊 Registered successfully! Thank you!');
-			localStorage.setItem('token', res.jwtToken);
-			dispatch(trueFalse(true));
+		if (body.password < 5) {
+			alert('Password must have at least 5 characters');
 		} else {
-			dispatch(trueFalse(false));
-			toast.warning(res);
+			const res = await onSubmitForm(e, body);
+
+			if (res.jwtToken) {
+				toast.success('😊 Registered successfully! Thank you!');
+				localStorage.setItem('token', res.jwtToken);
+				dispatch(trueFalse(true));
+			} else {
+				dispatch(trueFalse(false));
+				toast.warning(res);
+			}
 		}
 	}
 
