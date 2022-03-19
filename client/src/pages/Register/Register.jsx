@@ -13,7 +13,7 @@ const Register = () => {
 				<input
 					type='text'
 					name='ime'
-					placeholder='Ime'
+					placeholder='Name'
 					className='form-control my-3'
 					value={ime}
 					onChange={(e) => onChange(e)}
@@ -21,7 +21,7 @@ const Register = () => {
 				<input
 					type='text'
 					name='prezime'
-					placeholder='Prezime'
+					placeholder='Surname'
 					className='form-control my-3'
 					value={prezime}
 					onChange={(e) => onChange(e)}
