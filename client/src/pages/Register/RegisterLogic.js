@@ -10,8 +10,6 @@ const RegisterLogic = () => {
 	const { ime, prezime, username, email, password } = inputs;
 	const body = { ime, prezime, username, email, password };
 
-	//destructuring the inputs
-
 	//populating the state
 	const onChange = (e) => {
 		dispatch(register({ ...inputs, [e.target.name]: e.target.value }));
@@ -19,19 +17,15 @@ const RegisterLogic = () => {
 
 	//submiting the form to the backend
 	async function submitTheForm(e) {
-		if (body.password < 5) {
-			alert('Password must have at least 5 characters');
-		} else {
-			const res = await onSubmitForm(e, body);
+		const res = await onSubmitForm(e, body);
 
-			if (res.jwtToken) {
-				toast.success('😊 Registered successfully! Thank you!');
-				localStorage.setItem('token', res.jwtToken);
-				dispatch(trueFalse(true));
-			} else {
-				dispatch(trueFalse(false));
-				toast.warning(res);
-			}
+		if (res.jwtToken) {
+			toast.success('😊 Registered successfully! Thank you!');
+			localStorage.setItem('token', res.jwtToken);
+			dispatch(trueFalse(true));
+		} else {
+			dispatch(trueFalse(false));
+			toast.warning(res);
 		}
 	}
 

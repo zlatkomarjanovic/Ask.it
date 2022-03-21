@@ -18,6 +18,7 @@ const Register = () => {
 					className='form-control my-3'
 					value={ime}
 					onChange={(e) => onChange(e)}
+					required
 				/>
 				<input
 					type='text'
@@ -26,6 +27,7 @@ const Register = () => {
 					className='form-control my-3'
 					value={prezime}
 					onChange={(e) => onChange(e)}
+					required
 				/>
 				<input
 					type='text'
@@ -34,6 +36,7 @@ const Register = () => {
 					className='form-control my-3'
 					value={username}
 					onChange={(e) => onChange(e)}
+					required
 				/>
 				<input
 					type='email'
@@ -42,6 +45,7 @@ const Register = () => {
 					className='form-control my-3'
 					value={email}
 					onChange={(e) => onChange(e)}
+					required
 				/>
 				<input
 					type='password'
@@ -51,6 +55,7 @@ const Register = () => {
 					minLength={5}
 					value={password}
 					onChange={(e) => onChange(e)}
+					required
 				/>
 				<PasswordStrengthBar password={password} />
 				<button className='btn btn-primary btn-block rounded-5'>Submit</button>
