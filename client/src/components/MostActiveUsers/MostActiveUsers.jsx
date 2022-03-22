@@ -8,7 +8,7 @@ const MostActiveUsers = () => {
 
 	console.log(mostActiveUsersData);
 	return (
-		<div className='container row text-center' align='center'>
+		<div className='mx-auto container row text-center' align='center'>
 			{mostActiveUsersData.map((user) => (
 				<>{user.timescommented >= 0 ? <SingleUser user={user} /> : <></>}</>
 			))}

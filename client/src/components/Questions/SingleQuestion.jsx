@@ -31,7 +31,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 				</h5>
 
 				<div className='card-body rounded p-4'>
-					<h3 className='card-title'>{question.title}?</h3>
+					<h4 className='card-title'>{question.title}?</h4>
 					{isAuth ? (
 						<div className='mx-2 d-flex mt-3 mb-3  w-25'>
 							<button
