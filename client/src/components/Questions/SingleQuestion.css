@@ -29,3 +29,15 @@
 	font-size: 15px;
 	margin-right: 10px;
 }
+
+@media (max-width: 600px) {
+	.res {
+		width: 100% !important;
+	}
+}
+
+@media (max-width: 1000px) {
+	.res {
+		width: 100% !important;
+	}
+}

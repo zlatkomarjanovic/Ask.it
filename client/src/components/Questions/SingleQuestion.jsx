@@ -20,7 +20,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 	const {} = SingleQuestionLogic();
 	return (
 		<>
-			<div className='card mb-5 roundedcustom shadow'>
+			<div className='card mb-5 roundedcustom shadow height'>
 				<h5 className={`card-header ${color ? color : 'bg-primary'} p-4`}>
 					<Gravatar
 						email={question.postedbyemail}
@@ -59,7 +59,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 
 						{filteredComments
 							.map((comment) => (
-								<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3 mw-100'>
+								<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3 mw-100 res'>
 									<div className='d-flex'>
 										<Gravatar
 											size={40}
@@ -81,7 +81,9 @@ const SingleQuestion = ({ question, color, hot }) => {
 								Join to see more!
 							</p>
 						) : (
-							<></>
+							<p className=' bg-primary rounded-3 p-1 px-3 mx-2'>
+								Join to leave more comments!
+							</p>
 						)}
 					</div>
 

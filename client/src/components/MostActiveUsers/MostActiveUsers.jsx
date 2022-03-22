@@ -1,38 +1,16 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
 import MostActiveUsersLogic from './MostActiveUsersLogic';
+import SingleUser from './SingleUser';
 
 const MostActiveUsers = () => {
 	const { mostActiveUsersData } = MostActiveUsersLogic();
 
 	console.log(mostActiveUsersData);
 	return (
-		<div className='container row'>
-			<h6>Some of our most active users</h6>
+		<div className='container row text-center' align='center'>
 			{mostActiveUsersData.map((user) => (
-				<>
-					{user.timescommented >= 0 ? (
-						<div
-							className='card rounded-5 mx-3 my-3 shadow'
-							style={{ width: '20rem' }}
-						>
-							<Gravatar
-								size={110}
-								style={{ objectFit: 'cover' }}
-								className='card-img-top'
-								email={user.email}
-							/>
-							<div class='card-body'>
-								<h5 class='card-title'>
-									{user.ime} {user.prezime}
-								</h5>
-								<p class='card-text'>@{user.username}</p>
-							</div>
-						</div>
-					) : (
-						<></>
-					)}
-				</>
+				<>{user.timescommented >= 0 ? <SingleUser user={user} /> : <></>}</>
 			))}
 		</div>
 	);
