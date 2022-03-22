@@ -11,7 +11,8 @@ CREATE TABLE users(
     prezime VARCHAR(255) NOT NULL, 
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE, 
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    timesCommented INT DEFAULT 0
     
 );
 
@@ -69,3 +70,12 @@ SELECT * FROM questions WHERE postedby='ba2995f2-dfc1-436e-8f9b-c3db7b83aad7'
 UPDATE questions SET upvotes = upvotes+1 WHERE question_id='afc068e2-9ad1-45a0-b1a6-1edbfdf93896'
 --UNUPVOTES & UNDOWNVOTES 
 UPDATE questions SET upvotes = upvotes-1 WHERE question_id='afc068e2-9ad1-45a0-b1a6-1edbfdf93896'
+
+--List of people sa najviše odg, moram modifikovat
+SELECT * FROM users INNER JOIN comments ON user_id = commentedby;
+
+--List of questions sa najvise odg. moram mod 
+SELECT * FROM questions INNER JOIN comments ON comment_id = commentedonquestion;
+
+--commented on question
+SELECT * FROM questions INNER JOIN comments ON questions.question_id = comments.commentedonquestion

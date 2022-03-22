@@ -9,6 +9,7 @@ import { downvote, upvote } from '../../services/services';
 const QuestionDetails = () => {
 	const {
 		singleQuestion,
+		singleComments,
 		onSubmitComment,
 		commentToPost,
 		onChange,
@@ -47,24 +48,16 @@ const QuestionDetails = () => {
 
 			<div className='mt-5'>
 				<h4>Comments</h4>
-				{commentsData.map((comment) => {
-					return (
-						<>
-							{comment.commentedonquestion === id ? (
-								<div className='border w-75 bg-light p-5  my-5'>
-									<Gravatar
-										email={comment.commentedbyemail}
-										className='rounded-circle floatleft'
-									/>
-									<h5 className='pt-2'>{comment.comment}</h5>
-									<h6>@{comment.commentedbyuser}</h6>
-								</div>
-							) : (
-								<> </>
-							)}
-						</>
-					);
-				})}
+				{singleComments.map((comment) => (
+					<div className='border w-75 bg-light p-5  my-5'>
+						<Gravatar
+							email={comment.commentedbyemail}
+							className='rounded-circle floatleft'
+						/>
+						<h5 className='pt-2'>{comment.comment}</h5>
+						<h6>@{comment.commentedbyuser}</h6>
+					</div>
+				))}
 			</div>
 			{isAuth === true ? (
 				<>

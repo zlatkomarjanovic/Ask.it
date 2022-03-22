@@ -4,6 +4,38 @@ import { toast } from 'react-toastify';
 //So, if there is no http://localhost:5000 then by default it is going to use heroku
 // domain.
 
+//Getting commentedon questions
+export async function GetTheComments(question_id) {
+	try {
+		const response = await fetch(
+			`${process.env.REACT_APP_BASE_URL}/commented-on-question`,
+			{
+				method: 'GET',
+				headers: { question_id: question_id },
+			}
+		);
+
+		const parseRes = await response.json();
+		return parseRes;
+	} catch (error) {
+		console.error(error.message);
+	}
+}
+
+//Getting most active users
+export async function GetMostActiveUsers() {
+	try {
+		const response = await fetch(`${process.env.REACT_APP_BASE_URL}/users`, {
+			method: 'GET',
+		});
+
+		const parseRes = await response.json();
+		return parseRes;
+	} catch (error) {
+		console.error(error.message);
+	}
+}
+
 //Getting a current user
 export async function GetCurrentUser() {
 	try {
@@ -211,6 +243,21 @@ export async function getAllComments() {
 			method: 'GET',
 		});
 		return res.json();
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
+//Updating number of times user commented
+export async function updateCommentCounter(currentUser) {
+	try {
+		await fetch(`${process.env.REACT_APP_BASE_URL}/update`, {
+			method: 'PUT',
+			headers: {
+				user_id: currentUser,
+			},
+		});
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);

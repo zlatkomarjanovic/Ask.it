@@ -15,4 +15,17 @@ router.get('/profile', authorize, async (req, res) => {
 	}
 });
 
+//Get all users
+router.get('/users', async (req, res) => {
+	try {
+		const user = await pool.query(
+			'SELECT * FROM users ORDER BY timescommented DESC'
+		);
+
+		res.json(user.rows);
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).json('Server Error');
+	}
+});
 module.exports = router;

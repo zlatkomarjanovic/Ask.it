@@ -5,12 +5,19 @@ import { useSelector } from 'react-redux';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
 import { downvote, upvote } from '../../services/services';
+import SingleQuestionLogic from './SingleQuestionLogic';
 
 const SingleQuestion = ({ question, color, hot }) => {
 	const isAuth = useSelector((state) => state.isAuth.value);
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const comments = useSelector((state) => state.comments.value);
 
+	const result = Array.from(comments);
+	const filteredComments = result.filter(
+		(comment) => comment.commentedonquestion === question.question_id
+	);
+
+	const {} = SingleQuestionLogic();
 	return (
 		<>
 			<div className='card mb-5 roundedcustom shadow'>
@@ -47,32 +54,35 @@ const SingleQuestion = ({ question, color, hot }) => {
 						<></>
 					)}
 
-					<div>
+					<div className=''>
 						<h4 className='mx-2 bg-primary rounded-3 p-2'>Comments</h4>
 
-						{comments.map((comment) => (
-							<div key={comment.comment_id}>
-								{comment.commentedonquestion === question.question_id ? (
-									<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3 mw-100'>
-										<div className='d-flex'>
-											<Gravatar
-												size={40}
-												email={comment.commentedbyemail}
-												className='rounded-circle float-left m-4'
-											/>
-											<h5 className='mt-5'>
-												@{comment.commentedbyuser} asnwers:
-											</h5>
-										</div>
-										<p key={comment.comment_id} className='mx-4 pt-3'>
-											{comment.comment}
-										</p>
+						{filteredComments
+							.map((comment) => (
+								<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3 mw-100'>
+									<div className='d-flex'>
+										<Gravatar
+											size={40}
+											email={comment.commentedbyemail}
+											className='rounded-circle float-left m-4'
+										/>
+										<h5 className='mt-5'>
+											@{comment.commentedbyuser} asnwers:
+										</h5>
 									</div>
-								) : (
-									<></>
-								)}
-							</div>
-						))}
+									<p key={comment.comment_id} className='mx-4 pt-3'>
+										{comment.comment}
+									</p>
+								</div>
+							))
+							.slice(0, 2)}
+						{filteredComments.length >= 2 ? (
+							<p className=' bg-primary rounded-3 p-1 px-3 mx-2'>
+								Join to see more!
+							</p>
+						) : (
+							<></>
+						)}
 					</div>
 
 					{isAuth ? (

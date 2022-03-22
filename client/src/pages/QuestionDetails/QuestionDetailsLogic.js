@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { setSingleQuestion } from '../../features/singleQuestion';
 import {
 	fetchQuestion,
 	getAllComments,
-	GetCurrentUser,
+	GetTheComments,
 	sendComment,
+	updateCommentCounter,
 } from '../../services/services';
 import { setPostComment } from '../../features/postComment';
-import { setCurrentProfile } from '../../features/currentProfile';
+import { setSingleQuestionComments } from '../../features/singleQuestionComments';
 import { setComments } from '../../features/comments';
 
 const QuestionDetailsLogic = () => {
@@ -19,6 +20,9 @@ const QuestionDetailsLogic = () => {
 	const singleQuestion = useSelector((state) => state.singleQuestion.value);
 	const commentToPost = useSelector((state) => state.postComment.value);
 	const commentsData = useSelector((state) => state.comments.value);
+	const singleComments = useSelector(
+		(state) => state.singleQuestionComments.value
+	);
 	const comment = commentToPost.comment;
 	const commentedonquestion = id;
 	const { username, user_id, email } = currentProfile[0];
@@ -62,16 +66,23 @@ const QuestionDetailsLogic = () => {
 
 	async function onSubmitComment(e) {
 		await sendComment(e, body);
+		await updateCommentCounter(currentProfile[0].user_id);
 		await getComments();
 	}
 
+	const setTheseComments = async () => {
+		const dizComments = await GetTheComments(id);
+		dispatch(setSingleQuestionComments(dizComments));
+	};
 	useEffect(() => {
 		getQuestion();
 		getComments();
+		setTheseComments();
 	}, []);
 
 	return {
 		singleQuestion,
+		singleComments,
 		onSubmitComment,
 		commentToPost,
 		onChange,

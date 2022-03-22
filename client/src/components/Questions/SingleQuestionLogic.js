@@ -1,7 +1,5 @@
-import React from 'react';
-
 const SingleQuestionLogic = () => {
-	return <div>SingleQuestionLogic</div>;
+	return {};
 };
 
 export default SingleQuestionLogic;
