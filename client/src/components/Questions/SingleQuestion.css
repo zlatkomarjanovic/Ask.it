@@ -32,12 +32,12 @@
 
 @media (max-width: 600px) {
 	.res {
-		width: 100% !important;
+		width: 99% !important;
 	}
 }
 
 @media (max-width: 1000px) {
 	.res {
-		width: 100% !important;
+		width: 98.5% !important;
 	}
 }
