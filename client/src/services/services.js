@@ -117,6 +117,19 @@ export async function ask(e, body) {
 	}
 }
 
+export async function deleteQuestion(question_id) {
+	try {
+		await fetch(`${process.env.REACT_APP_BASE_URL}/delete-question`, {
+			method: 'DELETE',
+			headers: { question_id: question_id, token: localStorage.token },
+		});
+		toast.success('❓ Question deleted!');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
 //upvote downvote & unupvote undownvote
 export async function upvote(question_id) {
 	try {

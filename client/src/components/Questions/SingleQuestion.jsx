@@ -4,7 +4,7 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
-import { downvote, upvote } from '../../services/services';
+import { deleteQuestion, downvote, upvote } from '../../services/services';
 import SingleQuestionLogic from './SingleQuestionLogic';
 
 const SingleQuestion = ({ question, color, hot }) => {
@@ -97,7 +97,10 @@ const SingleQuestion = ({ question, color, hot }) => {
 							</NavLink>
 							{question.postedbyusr === currentProfile[0].username ? (
 								<>
-									<button className='btn mx-2 btn-danger custom-width'>
+									<button
+										className='btn mx-2 btn-danger custom-width'
+										onClick={() => deleteQuestion(question.question_id)}
+									>
 										Delete
 									</button>
 									<button className='btn mx-2 btn-warning custom-width'>

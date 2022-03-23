@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const pool = require('../db');
+const authorize = require('../middleware/authorize');
 
 router.get('/questions', async (req, res) => {
 	try {
@@ -26,7 +27,7 @@ router.get('/question', async (req, res) => {
 	}
 });
 
-router.delete('/delete-question', async (req, res) => {
+router.delete('/delete-question', authorize, async (req, res) => {
 	try {
 		const questions = await pool.query(
 			`DELETE FROM questions WHERE question_id='${req.headers.question_id}'`

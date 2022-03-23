@@ -47,7 +47,7 @@ router.delete('/delete-comment', authorize, async (req, res) => {
 	try {
 		const comments = await pool.query(
 			'DROP * FROM comments WHERE comment_id = $1',
-			[req.headers.comment_id]
+			[req.headers.comment_id, req.headers.token]
 		);
 
 		const newRes = await res.json(comments);
