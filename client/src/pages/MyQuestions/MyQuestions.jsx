@@ -26,8 +26,9 @@ const MyQuestions = () => {
 					})}
 				</>
 			) : (
-				<div className='container mb-5 text-center'>
+				<div className='container mb-5 text-center '>
 					<img
+						style={{ width: '100%' }}
 						alt='Nothing here bro, go out and live a little'
 						src='https://thelocalswpg.com/images/empty_item.svg'
 					/>

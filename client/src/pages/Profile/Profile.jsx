@@ -68,9 +68,13 @@ const Profile = () => {
 						</>
 					);
 				})}
-				<NavLink className='btn btn-block btn-primary' to='/my-questions'>
-					My Questions
-				</NavLink>
+				{newQuestions.length > 3 ? (
+					<NavLink className='btn btn-block btn-primary' to='/my-questions'>
+						My Questions
+					</NavLink>
+				) : (
+					<></>
+				)}
 			</div>
 
 			<div
