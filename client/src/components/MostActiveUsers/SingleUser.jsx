@@ -18,9 +18,7 @@ const SingleUser = ({ user }) => {
 					<h5 className='card-title'>
 						{user.ime} {user.prezime}
 					</h5>
-					<p className='card-text bg-primary p-2 rounded-3'>
-						@{user.username} 🥇
-					</p>
+					<p className='card-text  p-2  card-text-glass'>@{user.username} 🥇</p>
 				</div>
 			</div>
 		</>

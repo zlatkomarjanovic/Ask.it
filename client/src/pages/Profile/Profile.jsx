@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { SingleQuestion } from '../../components';
 import ProfileLogic from './ProfileLogic';
+import './profile.css';
 
 const Profile = () => {
 	const { onChange, ime, prezime, email, password, onSubmitForm } =
@@ -17,7 +18,7 @@ const Profile = () => {
 			className='container
 		'
 		>
-			<div className='container mt-5 bg-light p-5 rounded mb-5 shadow'>
+			<div className='container mt-5 p-5  mb-5 shadow glass-profile'>
 				<div className='d-flex flex-column align-items-center text-center'>
 					<Gravatar
 						size={120}
@@ -28,13 +29,15 @@ const Profile = () => {
 						<h4>
 							{currentProfile[0]?.ime} {currentProfile[0]?.prezime}
 						</h4>
-						<p className='text-secondary mb-1'>{currentProfile[0]?.email}</p>
-						<p className='text-muted font-size-sm'>
+						<p className='text-light mb-1'>{currentProfile[0]?.email}</p>
+						<p className='text-light font-size-sm'>
 							Note: We are using Globally Recognized Avatar for your profile
 							picture, or, Gravatar for short.
 							<br />
 							<span>
-								<a href='https://en.gravatar.com/'>Click here to learn more.</a>
+								<a className='text-light' href='https://en.gravatar.com/'>
+									Click here to learn more.
+								</a>
 							</span>
 						</p>
 						<button

@@ -35,7 +35,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 					{isAuth ? (
 						<div className='mx-2 d-flex mt-3 mb-3  w-25'>
 							<button
-								className='btn btn-primary custom-button'
+								className='custom-button'
 								onClick={async () => await upvote(question.question_id)}
 							>
 								<AiOutlineArrowUp size={20} />
@@ -43,7 +43,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 							</button>
 
 							<button
-								className='btn btn-danger custom-button'
+								className='custom-button'
 								onClick={async () => await downvote(question.question_id)}
 							>
 								<AiOutlineArrowDown size={20} />
@@ -85,7 +85,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 					{isAuth ? (
 						<>
 							<NavLink
-								className='btn btn-info custom-width mx-2'
+								className='glass-button'
 								to={`/questions/${question.question_id}`}
 							>
 								Join
@@ -93,7 +93,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 							{question.postedbyusr === currentProfile[0].username ? (
 								<>
 									<button
-										className='btn mx-2 btn-danger custom-width'
+										className='glass-button-danger'
 										onClick={() => deleteQuestion(question.question_id)}
 									>
 										Delete
@@ -102,7 +102,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 										type='button'
 										data-toggle='modal'
 										data-target='#exampleModalCenter2'
-										className='btn mx-2 btn-warning custom-width'
+										className='glass-button'
 									>
 										Edit
 									</button>

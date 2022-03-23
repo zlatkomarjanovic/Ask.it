@@ -15,7 +15,7 @@ const Questions = () => {
 
 	return (
 		<div className='container p-3'>
-			<h3 className='mb-5'>Questions</h3>
+			<h3 className='mb-5 text-light'>Questions</h3>
 			<div className='m-5'>
 				{isAuth === true ? (
 					<>

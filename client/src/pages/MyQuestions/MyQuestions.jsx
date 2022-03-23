@@ -7,7 +7,7 @@ const MyQuestions = () => {
 	const { newQuestions, setLoadMore, loadMore } = MyQuestionsLogic();
 
 	return (
-		<div className='container'>
+		<div className='container text-light'>
 			{newQuestions.length > 0 ? (
 				<h3 className='m-5'>Some of the questions you recently asked!</h3>
 			) : (

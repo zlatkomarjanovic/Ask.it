@@ -1,0 +1,21 @@
+.glass-profile {
+	/* From https://css.glass */
+	color: white;
+	width: 100%;
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(12.7px);
+	-webkit-backdrop-filter: blur(12.7px);
+	border: 1px solid rgba(9, 186, 255, 0.3);
+	border-radius: 2rem;
+	background-color: rgba(66, 0, 133, 0.2);
+	background-image: radial-gradient(
+			at 0% 61%,
+			hsla(200, 99%, 47%, 1) 0,
+			transparent 50%
+		),
+		radial-gradient(at 77% 74%, hsla(212, 100%, 55%, 0.2) 0, transparent 40%),
+		radial-gradient(at 68% 11%, hsla(211, 100%, 23%, 0.2) 0, transparent 51%),
+		radial-gradient(at 10% 92%, hsla(302, 90%, 22%, 0.2) 0, transparent 44%),
+		radial-gradient(at 100% 100%, hsla(284, 39%, 60%, 0.2) 0, transparent 51%);
+}
