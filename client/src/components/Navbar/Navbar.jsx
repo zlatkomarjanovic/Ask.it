@@ -4,6 +4,7 @@ import './navbar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { trueFalse } from '../../features/isAuthenticated';
 import { toast } from 'react-toastify';
+import { AiFillQuestionCircle } from 'react-icons/ai';
 
 const Navbar = () => {
 	const dispatch = useDispatch();
@@ -22,8 +23,11 @@ const Navbar = () => {
 	};
 	return (
 		<>
-			<nav className='navbar navbar-expand-md bg-dark navbar-dark fixed-top noborder'>
-				<div className='navbar-brand no-brand'>Askit</div>
+			<nav className='shadow navbar navbar-expand-md nav-backg navbar-dark fixed-top noborder'>
+				<div className='navbar-brand no-brand mb-3'>
+					<AiFillQuestionCircle className='mb-2 mx-3' size={30} />
+					Askit
+				</div>
 
 				<button
 					className='navbar-toggler ml-auto mx-4'
