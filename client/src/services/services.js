@@ -130,6 +130,20 @@ export async function deleteQuestion(question_id) {
 	}
 }
 
+export async function updateQuestion(question_id, title) {
+	try {
+		await fetch(`${process.env.REACT_APP_BASE_URL}/update-question`, {
+			method: 'PUT',
+			headers: { question_id: question_id, token: localStorage.token },
+			body: { title: title },
+		});
+		toast.success('❓ Question deleted!');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
 //upvote downvote & unupvote undownvote
 export async function upvote(question_id) {
 	try {
