@@ -1,17 +1,17 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
-
+import './mau.css';
 const SingleUser = ({ user }) => {
 	return (
 		<>
 			<div
-				className='card rounded-5 mx-3 my-3 shadow'
+				className='card rounded-5 mx-3 my-3 shadow glass-users'
 				style={{ width: '20rem' }}
 			>
 				<Gravatar
 					size={110}
 					style={{ objectFit: 'cover' }}
-					className='card-img-top'
+					className='rounded-circle active-user-img'
 					email={user.email}
 				/>
 				<div className='card-body'>
