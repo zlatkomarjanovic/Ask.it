@@ -26,7 +26,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 						email={question.postedbyemail}
 						className='rounded-circle mx-3'
 					/>
-					Posted by @{question.postedbyusr}
+					@{question.postedbyusr}
 					{hot ? <>🔥</> : <></>}
 				</h5>
 
@@ -59,17 +59,16 @@ const SingleQuestion = ({ question, color, hot }) => {
 
 						{filteredComments
 							.map((comment) => (
-								<div className='border mx-2 w-75 p-2 bg-light rounded-3 mb-3 mw-100 res'>
+								<div className='glass-comment'>
 									<div className='d-flex'>
 										<Gravatar
 											size={40}
 											email={comment.commentedbyemail}
-											className='rounded-circle float-left m-4'
+											className='rounded-circle float-left m-2'
 										/>
-										<h5 className='mt-5'>
-											@{comment.commentedbyuser} asnwers:
-										</h5>
+										<h5 className='mt-4 mx-2'>@{comment.commentedbyuser}</h5>
 									</div>
+									<hr />
 									<p key={comment.comment_id} className='mx-4 pt-3'>
 										{comment.comment}
 									</p>

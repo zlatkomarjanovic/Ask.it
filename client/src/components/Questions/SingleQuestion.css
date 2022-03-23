@@ -3,6 +3,13 @@
 	display: inline-block;
 }
 
+.hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .rounded-box {
 	border-radius: 20px;
 	margin-bottom: 5rem;
@@ -35,8 +42,8 @@
 	background: rgba(155, 195, 233, 0.35);
 	border-radius: 16px;
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	backdrop-filter: blur(7.4px);
-	-webkit-backdrop-filter: blur(7.4px);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	border: 1px solid rgba(155, 195, 233, 0.25);
 }
 
@@ -63,6 +70,26 @@
 		rgba(20, 19, 115, 0.4) 65%,
 		rgba(93, 13, 86, 0.4) 100%
 	);
+}
+.glass-comment {
+	color: white;
+	border: 1px rgb(255, 255, 255);
+	background: rgb(11, 86, 106);
+	padding: 1rem;
+	border-radius: 1rem;
+	background-color: rgba(66, 0, 133, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	background-image: radial-gradient(
+			at 0% 61%,
+			hsla(200, 99%, 47%, 0.2) 0,
+			transparent 50%
+		),
+		radial-gradient(at 77% 74%, hsla(189, 100%, 72%, 0.2) 0, transparent 40%),
+		radial-gradient(at 68% 11%, hsla(211, 100%, 23%, 0.2) 0, transparent 51%),
+		radial-gradient(at 10% 92%, hsla(302, 90%, 22%, 0.2) 0, transparent 44%),
+		radial-gradient(at 100% 100%, hsla(284, 39%, 60%, 0.2) 0, transparent 51%);
+	object-fit: cover;
+	margin-bottom: 10px;
 }
 
 @media (max-width: 600px) {
