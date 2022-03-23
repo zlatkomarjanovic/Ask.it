@@ -55,7 +55,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 					)}
 
 					<div className=''>
-						<h4 className='mx-2 bg-primary rounded-3 p-2'>Comments</h4>
+						<h4 className='glass-comments'>Comments</h4>
 
 						{filteredComments
 							.map((comment) => (
@@ -77,13 +77,9 @@ const SingleQuestion = ({ question, color, hot }) => {
 							))
 							.slice(0, 2)}
 						{filteredComments.length >= 2 ? (
-							<p className=' bg-primary rounded-3 p-1 px-3 mx-2'>
-								Join to see more!
-							</p>
+							<p className=' glass-comments'>Join to see more!</p>
 						) : (
-							<p className=' bg-primary rounded-3 p-1 px-3 mx-2'>
-								Join to leave more comments!
-							</p>
+							<p className=' glass-comments'>Join to leave more comments!</p>
 						)}
 					</div>
 
