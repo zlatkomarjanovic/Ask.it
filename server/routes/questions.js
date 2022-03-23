@@ -26,6 +26,19 @@ router.get('/question', async (req, res) => {
 	}
 });
 
+router.delete('/delete-question', async (req, res) => {
+	try {
+		const questions = await pool.query(
+			`DELETE FROM questions WHERE question_id='${req.headers.question_id}'`
+		);
+
+		res.json(questions.rows);
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).json('Issue with getting a single question');
+	}
+});
+
 router.post('/ask', async (req, res) => {
 	try {
 		await pool.query(

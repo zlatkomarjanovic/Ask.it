@@ -24,12 +24,16 @@ const HotQuestions = () => {
 					</>
 				))}
 			</div>
-			<button
-				onClick={() => setLoadMore(loadMore + 5)}
-				className='btn btn-primary btn-block'
-			>
-				Load More
-			</button>
+			{newQuestions.length > 5 ? (
+				<button
+					onClick={() => setLoadMore(loadMore + 5)}
+					className='btn btn-primary btn-block'
+				>
+					Load More
+				</button>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 };

@@ -46,12 +46,18 @@ const Questions = () => {
 			{newQuestions.map((question) => (
 				<SingleQuestion key={question.question_id} question={question} />
 			))}
-			<button
-				onClick={() => setLoadMore(loadmore + 5)}
-				className='btn btn-block btn-primary'
-			>
-				Load more
-			</button>
+			{newQuestions.length > 5 ? (
+				<button
+					onClick={() => setLoadMore(loadmore + 5)}
+					className='btn btn-block btn-primary'
+				>
+					Load more
+				</button>
+			) : (
+				<div>
+					<h4>You have the honor to ask the first questions!</h4>
+				</div>
+			)}
 		</div>
 	);
 };
