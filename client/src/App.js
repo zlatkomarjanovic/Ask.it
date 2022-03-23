@@ -26,7 +26,7 @@ const App = () => {
 
 	const {} = AppLogic();
 	return (
-		<>
+		<div className='global-bg'>
 			<Router>
 				<Navbar />
 				<div style={{ position: 'relative', minHeight: '100vh' }}>
@@ -65,7 +65,7 @@ const App = () => {
 					<Footer />
 				</div>
 			</Router>
-		</>
+		</div>
 	);
 };
 

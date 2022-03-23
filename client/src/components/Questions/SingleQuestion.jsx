@@ -20,8 +20,8 @@ const SingleQuestion = ({ question, color, hot }) => {
 	const {} = SingleQuestionLogic();
 	return (
 		<>
-			<div className='card mb-5 roundedcustom shadow height'>
-				<h5 className={`card-header ${color ? color : 'bg-primary'} p-4`}>
+			<div className='card mb-5 roundedcustom shadow height card-bg text-light'>
+				<h5 className={`card-header bg-card-gradient p-4`}>
 					<Gravatar
 						email={question.postedbyemail}
 						className='rounded-circle mx-3'

@@ -6,11 +6,11 @@ const Homepage = () => {
 	const {} = HomepageLogic();
 	return (
 		<div className='container'>
-			<h4>🆕 Latest questions</h4>
+			<h4 className='text-light'>🆕 Latest questions</h4>
 			<Trending />
-			<h4>🔥 Hot Questions</h4>
+			<h4 className='text-light'>🔥 Hot Questions</h4>
 			<HotQuestions />
-			<h4>🕴️ Most active users</h4>
+			<h4 className='text-light'>🕴️ Most active users</h4>
 			<MostActiveUsers />
 		</div>
 	);

@@ -30,6 +30,28 @@
 	margin-right: 10px;
 }
 
+.card-bg {
+	/* From https://css.glass */
+	background: rgba(155, 195, 233, 0.35);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(7.4px);
+	-webkit-backdrop-filter: blur(7.4px);
+	border: 1px solid rgba(155, 195, 233, 0.25);
+}
+
+.bg-card-gradient {
+	color: white;
+	border: none;
+	background: rgb(11, 86, 106);
+	background: linear-gradient(
+		90deg,
+		rgba(11, 86, 106, 0.4) 0%,
+		rgba(20, 19, 115, 0.4) 65%,
+		rgba(93, 13, 86, 0.4) 100%
+	);
+}
+
 @media (max-width: 600px) {
 	.res {
 		width: 99% !important;
