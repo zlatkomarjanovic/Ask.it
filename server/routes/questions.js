@@ -36,7 +36,23 @@ router.delete('/delete-question', authorize, async (req, res) => {
 		res.json(questions.rows);
 	} catch (error) {
 		console.error(error.message);
-		res.status(500).json('Issue with getting a single question');
+		res.status(500).json('Issue with getting a single question!');
+	}
+});
+
+router.put('/update-question', authorize, async (req, res) => {
+	try {
+		const update = await pool.query(
+			`UPDATE questions SET title='${req.body.title}' WHERE question_id='${req.headers.question_id}'`
+		);
+		res.json(update.rows);
+	} catch (error) {
+		console.error(error.message);
+		res
+			.status(500)
+			.json(
+				'An issue occured while updating your comment. We are working on fixing this!'
+			);
 	}
 });
 
