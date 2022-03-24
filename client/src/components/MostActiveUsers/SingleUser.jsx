@@ -4,10 +4,7 @@ import './mau.css';
 const SingleUser = ({ user }) => {
 	return (
 		<>
-			<div
-				className='card rounded-5 mx-3 my-3 shadow glass-users'
-				style={{ width: '20rem' }}
-			>
+			<div className='card rounded-5 mx-3 my-3 shadow glass-users justify-content-center width'>
 				<Gravatar
 					size={110}
 					style={{ objectFit: 'cover' }}

@@ -8,7 +8,10 @@ const MostActiveUsers = () => {
 		(user) => user.timescommented >= 0
 	);
 	return (
-		<div className='mx-auto container row text-center mb-5' align='center'>
+		<div
+			className='mx-auto container row text-center mb-5 justify-content-center'
+			align='center'
+		>
 			{newUserData.map((user) => (
 				<SingleUser key={user.user_id} user={user} />
 			))}
