@@ -4,6 +4,24 @@ import { toast } from 'react-toastify';
 //So, if there is no http://localhost:5000 then by default it is going to use heroku
 // domain.
 
+//Updating comment counter
+
+export async function updateCommentCounterQuestions(question_id) {
+	try {
+		const response = await fetch(
+			`${process.env.REACT_APP_BASE_URL}/comment-counter`,
+			{
+				method: 'PUT',
+				headers: { question_id: question_id },
+			}
+		);
+		const parseRes = await response.json();
+		return parseRes;
+	} catch (error) {
+		console.error(error.message);
+	}
+}
+
 //Getting commentedon questions
 export async function GetTheComments(question_id) {
 	try {

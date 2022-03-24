@@ -49,7 +49,7 @@ const Questions = () => {
 			{newQuestions.length > 5 ? (
 				<button
 					onClick={() => setLoadMore(loadmore + 5)}
-					className='btn btn-block btn-primary'
+					className='btn btn-block glass-button-register text-light'
 				>
 					Load more
 				</button>

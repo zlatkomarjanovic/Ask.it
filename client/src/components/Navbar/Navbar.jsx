@@ -33,7 +33,6 @@ const Navbar = () => {
 					className='navbar-toggler ml-auto mx-4'
 					type='button'
 					data-toggle='collapse'
-					data-target='#collapsibleNavbar'
 				>
 					<span className='navbar-toggler-icon'></span>
 				</button>
@@ -43,38 +42,25 @@ const Navbar = () => {
 					id='collapsibleNavbar'
 				>
 					<ul className='navbar-nav'>
-						<li
-							className='nav-item mx-3 mt-3'
-							data-toggle='collapse'
-							data-target='#collapsibleNavbar'
-						>
+						<li className='nav-item mx-3 mt-3'>
 							<NavLink className='nav-link h4' to='/'>
 								Homepage
 							</NavLink>
 						</li>
-						<li
-							className='nav-item mx-3 mt-3'
-							data-toggle='collapse'
-							data-target='#collapsibleNavbar'
-						>
+						<li className='nav-item mx-3 mt-3'>
 							<NavLink className='nav-link h4' to='/questions'>
 								Questions
 							</NavLink>
 						</li>
 						{isAuth ? (
 							<>
-								<li
-									className='nav-item mx-3 mt-3'
-									data-toggle='collapse'
-									data-target='#collapsibleNavbar'
-								>
+								<li className='nav-item mx-3 mt-3'>
 									<NavLink className='nav-link h4' to='/my-questions'>
 										MyQuestions
 									</NavLink>
 								</li>
 								<li
 									className='nav-item mx-3 mt-3'
-									data-toggle='collapse'
 									data-target='#collapsibleNavbar'
 								>
 									<NavLink className='nav-link h4' to='/profile'>
@@ -83,14 +69,9 @@ const Navbar = () => {
 								</li>
 								<li
 									className='nav-item mx-5 float-right mt-3'
-									data-toggle='collapse'
 									data-target='#collapsibleNavbar'
 								>
-									<div
-										className='nav-link h4 float-right'
-										data-toggle='collapse'
-										data-target='#collapsibleNavbar'
-									>
+									<div className='nav-link h4 float-right'>
 										<button
 											className='btn glass-button-register text-light'
 											onClick={(e) => logout(e)}

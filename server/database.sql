@@ -19,9 +19,10 @@ CREATE TABLE users(
 CREATE TABLE questions(
 	question_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
 	postedBy uuid NOT NULL, 
-    postedbyusr VARCHAR(255) NOT NULL,
-    postedbyemail VARCHAR(255) NOT NULL,
+  postedbyusr VARCHAR(255) NOT NULL,
+  postedbyemail VARCHAR(255) NOT NULL,
 	title TEXT NOT NULL, 
+  commentCounter INT DEFAULT 0,
     upvotes INT,
     downvotes INT, 
 	FOREIGN KEY (postedBy)
@@ -79,3 +80,6 @@ SELECT * FROM questions INNER JOIN comments ON comment_id = commentedonquestion;
 
 --commented on question
 SELECT * FROM questions INNER JOIN comments ON questions.question_id = comments.commentedonquestion
+
+--comment counter
+UPDATE questions SET commentcounter = commentcounter+1 WHERE question_id='0687bbb5-5754-4bcb-9265-aa9402e3c266'

@@ -8,6 +8,7 @@ import {
 	GetTheComments,
 	sendComment,
 	updateCommentCounter,
+	updateCommentCounterQuestions,
 } from '../../services/services';
 import { setPostComment } from '../../features/postComment';
 import { setSingleQuestionComments } from '../../features/singleQuestionComments';
@@ -67,6 +68,7 @@ const QuestionDetailsLogic = () => {
 	async function onSubmitComment(e) {
 		await sendComment(e, body);
 		await updateCommentCounter(currentProfile[0].user_id);
+		await updateCommentCounterQuestions(singleQuestion.question_id);
 		await getComments();
 	}
 

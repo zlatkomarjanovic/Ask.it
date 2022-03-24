@@ -170,3 +170,13 @@
 		/* outer white */ -10px 0 80px #f0f,
 		/* outer left magenta */ 10px 0 80px #0ff; /* outer right cyan */
 }
+
+.modal-glass {
+	/* From https://css.glass */
+	background: rgba(155, 195, 233, 0.35);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgba(155, 195, 233, 0.25);
+}

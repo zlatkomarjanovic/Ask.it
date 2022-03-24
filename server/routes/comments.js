@@ -43,6 +43,18 @@ router.post('/post-comment', async (req, res) => {
 	}
 });
 
+router.put('/comment-counter', async (req, res) => {
+	try {
+		const com = await pool.query(
+			`UPDATE questions SET commentcounter = commentcounter+1 WHERE question_id='${req.headers.question_id}'`
+		);
+		res.json(com.rows);
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).json('Something went wrong with updating comment counter');
+	}
+});
+
 router.delete('/delete-comment', authorize, async (req, res) => {
 	try {
 		const comments = await pool.query(
