@@ -24,8 +24,8 @@ const Navbar = () => {
 	return (
 		<>
 			<nav className='shadow navbar navbar-expand-md nav-backg navbar-dark fixed-top noborder'>
-				<div className='navbar-brand no-brand mb-3'>
-					<AiFillQuestionCircle className='mb-2 mx-3' size={30} />
+				<div className='navbar-brand no-brand'>
+					<AiFillQuestionCircle className='mx-2' size={30} />
 					Askit
 				</div>
 
@@ -43,12 +43,12 @@ const Navbar = () => {
 					id='collapsibleNavbar'
 				>
 					<ul className='navbar-nav'>
-						<li className='nav-item mx-3'>
+						<li className='nav-item mx-3 mt-4'>
 							<NavLink className='nav-link h4' to='/'>
 								Homepage
 							</NavLink>
 						</li>
-						<li className='nav-item mx-3'>
+						<li className='nav-item mx-3 mt-4'>
 							<NavLink className='nav-link h4' to='/questions'>
 								Questions
 							</NavLink>
@@ -78,16 +78,18 @@ const Navbar = () => {
 							</>
 						) : (
 							<>
-								<li className='nav-item mx-3'>
+								<li className='nav-item mx-3 mt-2'>
 									<NavLink className='nav-link h4' to='/register'>
-										<button className='btn btn-primary rounded'>
+										<button className='btn glass-button-register text-light'>
 											Register
 										</button>
 									</NavLink>
 								</li>
-								<li className='nav-item  mx-3'>
+								<li className='nav-item  mx-3 mt-2'>
 									<NavLink className='nav-link h4' to='/login'>
-										<button className='btn btn-info '>Login</button>
+										<button className='btn glass-button-register text-light'>
+											Login
+										</button>
 									</NavLink>
 								</li>
 							</>
