@@ -2,6 +2,7 @@ import React from 'react';
 import MyQuestionsLogic from './MyQuestionsLogic';
 import { SingleQuestion } from '../../components';
 import { NavLink } from 'react-router-dom';
+import emptyhere from '../../assets/emptyhere.png';
 
 const MyQuestions = () => {
 	const { newQuestions, setLoadMore, loadMore } = MyQuestionsLogic();
@@ -28,9 +29,9 @@ const MyQuestions = () => {
 			) : (
 				<div className='container mb-5 text-center '>
 					<img
-						style={{ width: '100%' }}
+						style={{ width: '50%' }}
 						alt='Nothing here bro, go out and live a little'
-						src='https://thelocalswpg.com/images/empty_item.svg'
+						src={emptyhere}
 					/>
 					<h1>Well it looks empty in here! Go ask something!</h1>
 				</div>
@@ -39,17 +40,20 @@ const MyQuestions = () => {
 			{newQuestions.length > 5 ? (
 				<button
 					onClick={() => setLoadMore(loadMore + 2)}
-					className='btn btn-block btn-primary p-3'
+					className='btn-block text-center text-light glass-button-register'
 				>
 					Load more
 				</button>
 			) : (
-				<>
+				<div>
 					<h4>Go ask some more!</h4>
-					<NavLink className='btn btn-block btn-primary p-2' to='/questions'>
+					<NavLink
+						className='btn-block text-center text-light glass-button-register'
+						to='/questions'
+					>
 						Questions
 					</NavLink>
-				</>
+				</div>
 			)}
 		</div>
 	);

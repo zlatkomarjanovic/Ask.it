@@ -37,13 +37,10 @@
 }
 .btn-glass:hover {
 	transition: 0.5s ease-in-out;
-	box-shadow: inset 0 0 50px #fff, /* inner white */ inset 10px 0 10px #f0f,
-		/* inner left magenta short */ inset -10px 0 80px #0ff,
-		/* inner right cyan short */ inset 20px 0 10px #f0f,
-		/* inner left magenta broad */ inset -20px 0 500px #0ff,
-		/* inner right cyan broad */ 0 0 20px #fff,
-		/* outer white */ -10px 0 80px #f0f,
-		/* outer left magenta */ 10px 0 20px #0ff; /* outer right cyan */
+	box-shadow: 
+		/* inner left magenta short */ inset -10px 0 10px rgba(0, 255, 255, 0.3),
+		/* outer white */ -10px 0 20px rgba(255, 0, 255, 0.3),
+		/* outer left magenta */ 10px 0 20px rgba(0, 255, 255, 0.3); /* outer right cyan */
 }
 
 ::placeholder {
