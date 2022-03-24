@@ -65,7 +65,7 @@ const Register = () => {
 					minLength={5}
 					className='password-strength'
 				/>
-				<button className='btn btn-primary btn-block rounded-5'>Submit</button>
+				<button className='glass-button-register'>Submit</button>
 			</form>
 			<Link to='/login' className='text-center text-info'>
 				<h5>Already have an account?</h5>
