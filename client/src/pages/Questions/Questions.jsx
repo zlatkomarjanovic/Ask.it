@@ -31,7 +31,7 @@ const Questions = () => {
 							<span className='input-group-btn'>
 								<button
 									onClick={askTheQuestion}
-									className='input-group-prepend btn-glass'
+									className='btn  input-group-prepend glass-button'
 								>
 									Ask!
 								</button>

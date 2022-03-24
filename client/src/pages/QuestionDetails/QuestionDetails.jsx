@@ -63,7 +63,7 @@ const QuestionDetails = () => {
 				<>
 					<div className='input-group w-75'>
 						<input
-							className='form-control'
+							className='glass-register-form-control'
 							name='comment'
 							type='text'
 							placeholder='Write a comment'
@@ -73,7 +73,7 @@ const QuestionDetails = () => {
 						<span className='input-group-btn'>
 							<button
 								onClick={onSubmitComment}
-								className='btn btn-primary input-group-prepend'
+								className='btn  input-group-prepend glass-button'
 							>
 								Comment
 							</button>
