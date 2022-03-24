@@ -6,7 +6,7 @@ const TrendingLogic = () => {
 	const questions = useSelector((state) => state.questions.value);
 	const newQuestions = questions.slice(0, loadMore);
 	const filteredQuestions = Array.from(newQuestions).filter(
-		(question) => question.upvotes >= 20
+		(question) => question.commentcounter >= 20
 	);
 
 	return { filteredQuestions, setLoadMore, loadMore };

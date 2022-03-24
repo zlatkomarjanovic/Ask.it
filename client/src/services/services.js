@@ -275,6 +275,7 @@ export async function sendComment(e, body) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),
 		});
+		await updateCommentCounterQuestions(body.question_id);
 		toast.success('💬 Commented!');
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');

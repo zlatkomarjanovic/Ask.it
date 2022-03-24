@@ -24,7 +24,7 @@ const Navbar = () => {
 	return (
 		<>
 			<nav className='shadow navbar navbar-expand-md nav-backg navbar-dark fixed-top noborder'>
-				<div className='navbar-brand no-brand mb-2'>
+				<div className='navbar-brand no-brand'>
 					<AiFillQuestionCircle className='mx-2' size={30} />
 					Askit
 				</div>
@@ -33,6 +33,7 @@ const Navbar = () => {
 					className='navbar-toggler ml-auto mx-4'
 					type='button'
 					data-toggle='collapse'
+					data-target='#collapsibleNavbar'
 				>
 					<span className='navbar-toggler-icon'></span>
 				</button>
@@ -59,19 +60,13 @@ const Navbar = () => {
 										MyQuestions
 									</NavLink>
 								</li>
-								<li
-									className='nav-item mx-3 mt-3'
-									data-target='#collapsibleNavbar'
-								>
+								<li className='nav-item mx-3 mt-3'>
 									<NavLink className='nav-link h4' to='/profile'>
 										Profile
 									</NavLink>
 								</li>
-								<li
-									className='nav-item mx-5 float-right mt-3'
-									data-target='#collapsibleNavbar'
-								>
-									<div className='nav-link h4 float-right'>
+								<li className='nav-item mx-5 float-right mt-3'>
+									<div className='nav-link h4 right'>
 										<button
 											className='btn glass-button-register text-light'
 											onClick={(e) => logout(e)}
@@ -82,7 +77,7 @@ const Navbar = () => {
 								</li>
 							</>
 						) : (
-							<>
+							<div className='d-flex right'>
 								<li className='nav-item mx-3 mt-2'>
 									<NavLink className='nav-link h4' to='/register'>
 										<button className='btn glass-button-register text-light'>
@@ -97,7 +92,7 @@ const Navbar = () => {
 										</button>
 									</NavLink>
 								</li>
-							</>
+							</div>
 						)}
 					</ul>
 				</div>

@@ -30,13 +30,14 @@ const QuestionDetailsLogic = () => {
 	const commentedby = user_id;
 	const commentedbyuser = username;
 	const commentedbyemail = email;
-
+	const question_id = singleQuestion[0]?.question_id;
 	const body = {
 		commentedonquestion,
 		comment,
 		commentedby,
 		commentedbyuser,
 		commentedbyemail,
+		question_id,
 	};
 
 	async function getQuestion() {
@@ -66,9 +67,10 @@ const QuestionDetailsLogic = () => {
 	};
 
 	async function onSubmitComment(e) {
+		e.preventDefault();
 		await sendComment(e, body);
 		await updateCommentCounter(currentProfile[0].user_id);
-		await updateCommentCounterQuestions(singleQuestion[0].question_id);
+		//await updateCommentCounterQuestions(singleQuestion[0].question_id);
 		await getComments();
 	}
 

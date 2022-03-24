@@ -54,7 +54,7 @@ const Questions = () => {
 					Load more
 				</button>
 			) : (
-				<div>
+				<div className='text-light'>
 					<h4>You have the honor to ask the first questions!</h4>
 				</div>
 			)}
