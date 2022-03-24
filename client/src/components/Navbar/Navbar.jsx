@@ -43,32 +43,32 @@ const Navbar = () => {
 					id='collapsibleNavbar'
 				>
 					<ul className='navbar-nav'>
-						<li className='nav-item mx-3 mt-4'>
+						<li className='nav-item mx-3 mt-3'>
 							<NavLink className='nav-link h4' to='/'>
 								Homepage
 							</NavLink>
 						</li>
-						<li className='nav-item mx-3 mt-4'>
+						<li className='nav-item mx-3 mt-3'>
 							<NavLink className='nav-link h4' to='/questions'>
 								Questions
 							</NavLink>
 						</li>
 						{isAuth ? (
 							<>
-								<li className='nav-item mx-3'>
+								<li className='nav-item mx-3 mt-3'>
 									<NavLink className='nav-link h4' to='/my-questions'>
 										MyQuestions
 									</NavLink>
 								</li>
-								<li className='nav-item mx-3'>
+								<li className='nav-item mx-3 mt-3'>
 									<NavLink className='nav-link h4' to='/profile'>
 										Profile
 									</NavLink>
 								</li>
-								<li className='nav-item mx-5 float-right'>
+								<li className='nav-item mx-5 float-right mt-3'>
 									<div className='nav-link h4 float-right'>
 										<button
-											className='btn btn-info mt-1 float-right'
+											className='btn glass-button-register'
 											onClick={(e) => logout(e)}
 										>
 											Log out
