@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import RegisterLogic from './RegisterLogic';
 import PasswordStrengthBar from 'react-password-strength-bar';
+import './register.css';
 
 const Register = () => {
 	const { submitTheForm, ime, onChange, prezime, email, username, password } =
@@ -9,31 +10,33 @@ const Register = () => {
 
 	return (
 		<div className='container'>
-			<h1 className='text-center my-5'>Register</h1>
-			<form onSubmit={submitTheForm}>
-				<input
-					type='text'
-					name='ime'
-					placeholder='Name'
-					className='form-control my-3'
-					value={ime}
-					onChange={(e) => onChange(e)}
-					required
-				/>
-				<input
-					type='text'
-					name='prezime'
-					placeholder='Surname'
-					className='form-control my-3'
-					value={prezime}
-					onChange={(e) => onChange(e)}
-					required
-				/>
+			<h1 className='text-center my-5 text-light'>Register</h1>
+			<form className='glass-container' onSubmit={submitTheForm}>
+				<div>
+					<input
+						type='text'
+						name='ime'
+						placeholder='Name'
+						className='glass-register-form-control my-3'
+						value={ime}
+						onChange={(e) => onChange(e)}
+						required
+					/>
+					<input
+						type='text'
+						name='prezime'
+						placeholder='Surname'
+						className='glass-register-form-control my-3'
+						value={prezime}
+						onChange={(e) => onChange(e)}
+						required
+					/>
+				</div>
 				<input
 					type='text'
 					name='username'
 					placeholder='Username'
-					className='form-control my-3'
+					className='glass-register-form-control my-3'
 					value={username}
 					onChange={(e) => onChange(e)}
 					required
@@ -42,7 +45,7 @@ const Register = () => {
 					type='email'
 					name='email'
 					placeholder='E-mail'
-					className='form-control my-3'
+					className='glass-register-form-control my-3'
 					value={email}
 					onChange={(e) => onChange(e)}
 					required
@@ -51,7 +54,7 @@ const Register = () => {
 					type='password'
 					name='password'
 					placeholder='Password'
-					className='form-control my-3'
+					className='glass-register-form-control my-3'
 					minLength={5}
 					value={password}
 					onChange={(e) => onChange(e)}

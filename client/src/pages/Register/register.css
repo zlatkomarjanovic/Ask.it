@@ -1,0 +1,30 @@
+.glass-container {
+	/* From https://css.glass */
+	background: rgba(225, 198, 255, 0.21);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(12.7px);
+	-webkit-backdrop-filter: blur(12.7px);
+	border: 1px solid rgba(225, 198, 255, 0.3);
+	padding: 5rem;
+}
+
+.glass-register-form-control {
+	width: 100%;
+	padding: 0.5rem;
+	color: white;
+	border: none;
+	background: rgb(11, 86, 106);
+	padding: 1rem;
+	border-radius: 1rem;
+	background: linear-gradient(
+		90deg,
+		rgba(11, 86, 106, 0.4) 0%,
+		rgba(20, 19, 115, 0.4) 65%,
+		rgba(93, 13, 86, 0.4) 100%
+	);
+	outline: none;
+}
+::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+}

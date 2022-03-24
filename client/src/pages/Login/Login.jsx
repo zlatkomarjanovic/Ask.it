@@ -8,13 +8,13 @@ const Login = () => {
 	return (
 		<>
 			<div className='container'>
-				<h1 className='text-center my-5'>Login</h1>
-				<form onSubmit={submitTheLogin}>
+				<h1 className='text-center my-5 text-light'>Login</h1>
+				<form className='glass-container' onSubmit={submitTheLogin}>
 					<input
 						type='email'
 						name='email'
 						placeholder='E-mail'
-						className={'form-control my-3'}
+						className={'glass-register-form-control my-3'}
 						value={email}
 						onChange={(e) => {
 							onChange(e);
@@ -24,7 +24,7 @@ const Login = () => {
 						type='password'
 						name='password'
 						placeholder='Password'
-						className='form-control my-3'
+						className='glass-register-form-control my-3'
 						value={password}
 						onChange={(e) => onChange(e)}
 					/>
