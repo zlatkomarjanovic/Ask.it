@@ -43,32 +43,56 @@ const Navbar = () => {
 					id='collapsibleNavbar'
 				>
 					<ul className='navbar-nav'>
-						<li className='nav-item mx-3 mt-3'>
+						<li
+							className='nav-item mx-3 mt-3'
+							data-toggle='collapse'
+							data-target='#collapsibleNavbar'
+						>
 							<NavLink className='nav-link h4' to='/'>
 								Homepage
 							</NavLink>
 						</li>
-						<li className='nav-item mx-3 mt-3'>
+						<li
+							className='nav-item mx-3 mt-3'
+							data-toggle='collapse'
+							data-target='#collapsibleNavbar'
+						>
 							<NavLink className='nav-link h4' to='/questions'>
 								Questions
 							</NavLink>
 						</li>
 						{isAuth ? (
 							<>
-								<li className='nav-item mx-3 mt-3'>
+								<li
+									className='nav-item mx-3 mt-3'
+									data-toggle='collapse'
+									data-target='#collapsibleNavbar'
+								>
 									<NavLink className='nav-link h4' to='/my-questions'>
 										MyQuestions
 									</NavLink>
 								</li>
-								<li className='nav-item mx-3 mt-3'>
+								<li
+									className='nav-item mx-3 mt-3'
+									data-toggle='collapse'
+									data-target='#collapsibleNavbar'
+								>
 									<NavLink className='nav-link h4' to='/profile'>
 										Profile
 									</NavLink>
 								</li>
-								<li className='nav-item mx-5 float-right mt-3'>
-									<div className='nav-link h4 float-right'>
+								<li
+									className='nav-item mx-5 float-right mt-3'
+									data-toggle='collapse'
+									data-target='#collapsibleNavbar'
+								>
+									<div
+										className='nav-link h4 float-right'
+										data-toggle='collapse'
+										data-target='#collapsibleNavbar'
+									>
 										<button
-											className='btn glass-button-register'
+											className='btn glass-button-register text-light'
 											onClick={(e) => logout(e)}
 										>
 											Log out
