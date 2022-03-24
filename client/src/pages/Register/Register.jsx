@@ -12,12 +12,12 @@ const Register = () => {
 		<div className='container'>
 			<h1 className='text-center my-5 text-light'>Register</h1>
 			<form className='glass-container' onSubmit={submitTheForm}>
-				<div>
+				<div className='d-flex'>
 					<input
 						type='text'
 						name='ime'
 						placeholder='Name'
-						className='glass-register-form-control my-3'
+						className='glass-register-form-control my-3 margin-right'
 						value={ime}
 						onChange={(e) => onChange(e)}
 						required
@@ -60,10 +60,14 @@ const Register = () => {
 					onChange={(e) => onChange(e)}
 					required
 				/>
-				<PasswordStrengthBar password={password} />
+				<PasswordStrengthBar
+					password={password}
+					minLength={5}
+					className='password-strength'
+				/>
 				<button className='btn btn-primary btn-block rounded-5'>Submit</button>
 			</form>
-			<Link to='/login' className='text-center'>
+			<Link to='/login' className='text-center text-info'>
 				<h5>Already have an account?</h5>
 			</Link>
 		</div>

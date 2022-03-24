@@ -28,3 +28,12 @@
 ::placeholder {
 	color: rgba(255, 255, 255, 0.5);
 }
+
+.margin-right {
+	margin-right: 10px !important;
+}
+
+.password-strength {
+	height: 4rem;
+	color: white;
+}
