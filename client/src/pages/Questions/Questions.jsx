@@ -1,7 +1,7 @@
 import React from 'react';
 import { SingleQuestion } from '../../components';
 import QuestionsLogic from './QuestionsLogic';
-
+import './questions.css';
 const Questions = () => {
 	const {
 		askTheQuestion,
@@ -21,7 +21,7 @@ const Questions = () => {
 					<>
 						<div className='input-group'>
 							<input
-								className='form-control'
+								className='glass-form-control'
 								name='title'
 								type='text'
 								placeholder='Ask... And the community shall answer!'
@@ -31,7 +31,7 @@ const Questions = () => {
 							<span className='input-group-btn'>
 								<button
 									onClick={askTheQuestion}
-									className='btn btn-primary input-group-prepend'
+									className='input-group-prepend btn-glass'
 								>
 									Ask!
 								</button>

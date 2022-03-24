@@ -53,7 +53,7 @@ const Profile = () => {
 			</div>
 
 			<div>
-				<h4>Recent questions</h4>
+				<h4 className='text-light'>Recent questions</h4>
 				{newQuestions.map((question) => {
 					return (
 						<>
