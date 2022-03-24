@@ -18,17 +18,17 @@ const QuestionDetails = () => {
 	} = QuestionDetailsLogic();
 	const isAuth = useSelector((state) => state.isAuth.value);
 	return (
-		<div className='container mt-5'>
-			<div className='border bg-light p-5 shadow'>
+		<div className='container mt-5 text-light'>
+			<div className='p-5 shadow glass-container'>
 				<Gravatar
 					email={singleQuestion[0]?.postedbyemail}
 					size={100}
 					className='rounded-circle floatleft'
 				/>
-				<h2>{singleQuestion[0]?.title}?</h2>
 				<h5>@{singleQuestion[0]?.postedbyusr}</h5>
+				<h2>{singleQuestion[0]?.title}?</h2>
 			</div>
-			<div className='mx-2 d-flex mt-3 mb-3  w-25'>
+			<div className='mx-2 d-flex mt-3 mb-3 w-25'>
 				<button
 					className='btn btn-primary custom-button'
 					onClick={async () => await upvote(singleQuestion[0]?.question_id)}
@@ -49,13 +49,13 @@ const QuestionDetails = () => {
 			<div className='mt-5'>
 				<h4>Comments</h4>
 				{singleComments.map((comment) => (
-					<div className='border w-75 bg-light p-5  my-5'>
+					<div className='w-75 p-5  my-5 glass-container'>
 						<Gravatar
 							email={comment.commentedbyemail}
 							className='rounded-circle floatleft'
 						/>
-						<h5 className='pt-2'>{comment.comment}</h5>
 						<h6>@{comment.commentedbyuser}</h6>
+						<h5 className='pt-2'>{comment.comment}</h5>
 					</div>
 				))}
 			</div>

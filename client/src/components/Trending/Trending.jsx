@@ -8,12 +8,8 @@ const Trending = () => {
 		<div className='container mb-5'>
 			<div className='row'>
 				{newQuestions.map((question) => (
-					<div key={question.question_id} className='col-sm w-50'>
-						<SingleQuestion
-							key={question.question_id}
-							question={question}
-							color='bg-warning'
-						/>
+					<div key={question.question_id} className='col'>
+						<SingleQuestion key={question.question_id} question={question} />
 					</div>
 				))}
 			</div>
