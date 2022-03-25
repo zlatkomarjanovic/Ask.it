@@ -42,7 +42,7 @@ const Profile = () => {
 						</p>
 						<button
 							type='button'
-							className='btn btn-primary'
+							className='btn glass-button-register text-light mt-4 mb-4'
 							data-toggle='modal'
 							data-target='#exampleModalCenter'
 						>
