@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const pool = require('../db');
 const authorize = require('../middleware/authorize');
 
@@ -59,14 +60,12 @@ router.put('/update-question', authorize, async (req, res) => {
 router.post('/ask', async (req, res) => {
 	try {
 		await pool.query(
-			'INSERT INTO questions (postedby, postedbyusr, title, postedbyemail, upvotes, downvotes) VALUES ($1, $2, $3, $4, $5, $6)',
+			'INSERT INTO questions (postedby, postedbyusr, title, postedbyemail) VALUES ($1, $2, $3, $4)',
 			[
 				req.body.postedby,
 				req.body.postedbyusr,
 				req.body.title,
 				req.body.postedbyemail,
-				0,
-				0,
 			]
 		);
 	} catch (error) {
@@ -91,26 +90,64 @@ router.get('/my-questions', async (req, res) => {
 
 router.put('/upvote', async (req, res) => {
 	try {
-		const response = await pool.query(
-			'UPDATE questions SET upvotes = upvotes+1 WHERE question_id=$1',
-			[req.headers.question_id]
-		);
-		res.json(response);
+		const username = req.headers.username;
+		const question_id = req.headers.question_id;
+
+		const data = (
+			await pool.query('SELECT * FROM questions WHERE question_id=$1', [
+				req.headers.question_id,
+			])
+		).rows[0];
+
+		if (!data.upvotes && !data.downvotes.includes(username)) {
+			const upvotes = [username];
+			let query = 'UPDATE questions SET upvotes=$1 WHERE question_id=$2';
+
+			const response = pool.query(query, [upvotes, question_id]);
+
+			res.json(response);
+		} else if (
+			!data.upvotes.includes(username) &&
+			!data.downvotes.includes(username)
+		) {
+			const upvotes = [...data.upvotes, username];
+			query = 'UPDATE questions SET upvotes=$1 WHERE question_id=$2';
+			const response = pool.query(query, [upvotes, question_id]);
+			res.json(response);
+		} else {
+			res.json('Already upvoted!');
+		}
 	} catch (error) {
-		console.error(error.message);
-		res.status(500).json('Issue with upvoting!');
+		console.error(error);
 	}
 });
 router.put('/downvote', async (req, res) => {
 	try {
-		const response = await pool.query(
-			'UPDATE questions SET downvotes = downvotes+1 WHERE question_id=$1',
-			[req.headers.question_id]
-		);
-		res.json(response);
+		const username = req.headers.username;
+		const question_id = req.headers.question_id;
+		let query = 'SELECT * FROM questions WHERE question_id=$1';
+		const data = (await pool.query(query, [req.headers.question_id])).rows[0];
+
+		if (!data.downvotes && !data.upvotes.includes(username)) {
+			const downvotes = [username];
+			query = 'UPDATE questions SET downvotes=$1 WHERE question_id=$2';
+
+			const response = pool.query(query, [downvotes, question_id]);
+
+			res.json(response);
+		} else if (
+			!data.downvotes.includes(username) &&
+			!data.upvotes.includes(username)
+		) {
+			const downvotes = [...data.downvotes, username];
+			query = 'UPDATE questions SET downvotes=$1 WHERE question_id=$2';
+			const response = pool.query(query, [downvotes, question_id]);
+			res.json(response);
+		} else {
+			res.json('Already downvoted!');
+		}
 	} catch (error) {
-		console.error(error.message);
-		res.status(500).json('Issue with downvoting!');
+		console.error(error);
 	}
 });
 router.put('/unupvote', async (req, res) => {

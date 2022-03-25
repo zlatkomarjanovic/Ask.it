@@ -163,26 +163,28 @@ export async function updateQuestion(question_id, title) {
 }
 
 //upvote downvote & unupvote undownvote
-export async function upvote(question_id) {
+export async function upvote(question_id, username) {
 	try {
-		await fetch(`${process.env.REACT_APP_BASE_URL}/upvote`, {
+		const response = await fetch(`${process.env.REACT_APP_BASE_URL}/upvote`, {
 			method: 'PUT',
-			headers: { question_id: question_id },
+			headers: { question_id: question_id, username },
 		});
-		toast.success('👍');
+		const parseRes = await response.json();
+		toast.info(parseRes);
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);
 	}
 }
 
-export async function downvote(question_id) {
+export async function downvote(question_id, username) {
 	try {
-		await fetch(`${process.env.REACT_APP_BASE_URL}/downvote`, {
+		const response = await fetch(`${process.env.REACT_APP_BASE_URL}/downvote`, {
 			method: 'PUT',
-			headers: { question_id: question_id },
+			headers: { question_id: question_id, username: username },
 		});
-		toast.success('👎');
+		const parseRes = await response.json();
+		toast.info(parseRes);
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);

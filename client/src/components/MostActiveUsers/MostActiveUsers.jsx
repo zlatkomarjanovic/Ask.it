@@ -3,10 +3,8 @@ import MostActiveUsersLogic from './MostActiveUsersLogic';
 import SingleUser from './SingleUser';
 import './mau.css';
 const MostActiveUsers = () => {
-	const { mostActiveUsersData } = MostActiveUsersLogic();
-	const newUserData = Array.from(mostActiveUsersData).filter(
-		(user) => user.timescommented >= 0
-	);
+	const { newUserData } = MostActiveUsersLogic();
+
 	return (
 		<div
 			className='mx-auto container row text-center mb-5 justify-content-center'

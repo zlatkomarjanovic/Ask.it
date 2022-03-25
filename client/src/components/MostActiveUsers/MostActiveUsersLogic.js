@@ -9,6 +9,10 @@ const MostActiveUsersLogic = () => {
 		(state) => state.mostActiveUsers.value
 	);
 
+	const newUserData = Array.from(mostActiveUsersData).filter(
+		(user) => user.timescommented >= 20
+	);
+
 	async function setUsers() {
 		const user = await GetMostActiveUsers();
 
@@ -19,7 +23,7 @@ const MostActiveUsersLogic = () => {
 		setUsers();
 	}, []);
 
-	return { mostActiveUsersData };
+	return { mostActiveUsersData, newUserData };
 };
 
 export default MostActiveUsersLogic;

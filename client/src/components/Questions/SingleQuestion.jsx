@@ -16,6 +16,7 @@ const SingleQuestion = ({ question, color, hot }) => {
 	const filteredComments = result.filter(
 		(comment) => comment.commentedonquestion === question.question_id
 	);
+	console.log(currentProfile);
 
 	const {} = SingleQuestionLogic();
 	return (
@@ -36,18 +37,33 @@ const SingleQuestion = ({ question, color, hot }) => {
 						<div className='mx-2 d-flex mt-3 mb-3  w-25'>
 							<button
 								className='custom-button'
-								onClick={async () => await upvote(question.question_id)}
+								onClick={async () =>
+									await upvote(question.question_id, currentProfile[0].username)
+								}
 							>
 								<AiOutlineArrowUp size={20} />
-								<p>{question.upvotes}</p>
+								<p>
+									{question.upvotes?.length !== null
+										? question.upvotes?.length
+										: 0}
+								</p>
 							</button>
 
 							<button
 								className='custom-button'
-								onClick={async () => await downvote(question.question_id)}
+								onClick={async () =>
+									await downvote(
+										question.question_id,
+										currentProfile[0].username
+									)
+								}
 							>
 								<AiOutlineArrowDown size={20} />
-								<p>{question.downvotes}</p>
+								<p>
+									{question.downvotes?.length !== null
+										? question.downvotes?.length
+										: 0}
+								</p>
 							</button>
 						</div>
 					) : (
@@ -80,6 +96,13 @@ const SingleQuestion = ({ question, color, hot }) => {
 						) : (
 							<p className=' glass-comments'>Join to leave more comments!</p>
 						)}
+						<p className='mx-2'>
+							Upvoted by:{' '}
+							{question.upvotes
+								?.map((upvote) => <p className='d-inline'>{upvote}, </p>)
+								.slice(0, 3)}
+							... and others
+						</p>
 					</div>
 
 					{isAuth ? (

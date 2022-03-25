@@ -23,8 +23,8 @@ CREATE TABLE questions(
   postedbyemail VARCHAR(255) NOT NULL,
 	title TEXT NOT NULL, 
   commentCounter INT DEFAULT 0,
-    upvotes INT,
-    downvotes INT, 
+  upvotes text[],
+  downvotes text[], 
 	FOREIGN KEY (postedBy)
 		REFERENCES users (user_id),
 	FOREIGN KEY (postedbyusr)
@@ -36,12 +36,12 @@ CREATE TABLE questions(
 CREATE TABLE comments(
 	comment_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
 	commentedOnQuestion uuid NOT NULL, 
-    comment TEXT NOT NULL,
-    commentedBy uuid NOT NULL,
-    commentedByUser VARCHAR(255) NOT NULL,
+  comment TEXT NOT NULL,
+  commentedBy uuid NOT NULL,
+  commentedByUser VARCHAR(255) NOT NULL,
 	commentedByEmail VARCHAR(255) NULL, 
-    upvotes INT,
-    downvotes INT, 
+  upvotes text[],
+  downvotes text[],
 	FOREIGN KEY (commentedOnQuestion)
 		REFERENCES questions (question_id),
     FOREIGN KEY (commentedBy)

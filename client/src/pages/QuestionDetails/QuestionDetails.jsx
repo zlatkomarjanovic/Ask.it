@@ -13,8 +13,6 @@ const QuestionDetails = () => {
 		onSubmitComment,
 		commentToPost,
 		onChange,
-		commentsData,
-		id,
 	} = QuestionDetailsLogic();
 	const isAuth = useSelector((state) => state.isAuth.value);
 	return (
@@ -34,7 +32,7 @@ const QuestionDetails = () => {
 					onClick={async () => await upvote(singleQuestion[0]?.question_id)}
 				>
 					<AiOutlineArrowUp size={20} />
-					<p>{singleQuestion[0]?.upvotes}</p>
+					<p>{singleQuestion[0]?.upvotes?.length}</p>
 				</button>
 
 				<button
@@ -42,7 +40,7 @@ const QuestionDetails = () => {
 					onClick={async () => await downvote(singleQuestion[0]?.question_id)}
 				>
 					<AiOutlineArrowDown size={20} />
-					<p>{singleQuestion[0]?.downvotes}</p>
+					<p>{singleQuestion[0]?.downvotes?.length}</p>
 				</button>
 			</div>
 
