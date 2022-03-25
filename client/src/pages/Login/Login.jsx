@@ -28,7 +28,7 @@ const Login = () => {
 						value={password}
 						onChange={(e) => onChange(e)}
 					/>
-					<button className='glass-button-register'>Submit</button>
+					<button className='glass-button-register mt-3'>Submit</button>
 				</form>
 				<Link to='/register' className='text-center text-info'>
 					<h5>Don't have an account?</h5>
