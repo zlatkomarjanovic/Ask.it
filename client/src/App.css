@@ -14,3 +14,13 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background-color: rgba(42, 4, 113);
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgb(149, 150, 169, 0.5);
+}
