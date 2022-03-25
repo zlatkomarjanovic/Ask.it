@@ -36,7 +36,7 @@ router.post('/post-comment', async (req, res) => {
 			]
 		);
 
-		res.json(comment);
+		return res.json(comment.rows[0]);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json('Server Error');

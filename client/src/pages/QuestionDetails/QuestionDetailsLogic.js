@@ -70,7 +70,6 @@ const QuestionDetailsLogic = () => {
 		e.preventDefault();
 		await sendComment(e, body);
 		await updateCommentCounter(currentProfile[0].user_id);
-		//await updateCommentCounterQuestions(singleQuestion[0].question_id);
 		await getComments();
 	}
 
@@ -91,6 +90,7 @@ const QuestionDetailsLogic = () => {
 		commentToPost,
 		onChange,
 		commentsData,
+		currentProfile,
 		id,
 	};
 };
