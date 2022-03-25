@@ -59,7 +59,7 @@ router.put('/update-question', authorize, async (req, res) => {
 
 router.post('/ask', async (req, res) => {
 	try {
-		await pool.query(
+		const response = await pool.query(
 			'INSERT INTO questions (postedby, postedbyusr, title, postedbyemail) VALUES ($1, $2, $3, $4)',
 			[
 				req.body.postedby,
@@ -68,6 +68,8 @@ router.post('/ask', async (req, res) => {
 				req.body.postedbyemail,
 			]
 		);
+
+		return res.json(response);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json('Issue with asking a question!');
@@ -99,17 +101,14 @@ router.put('/upvote', async (req, res) => {
 			])
 		).rows[0];
 
-		if (!data.upvotes && !data.downvotes.includes(username)) {
+		if (!data.upvotes) {
 			const upvotes = [username];
 			let query = 'UPDATE questions SET upvotes=$1 WHERE question_id=$2';
 
 			const response = pool.query(query, [upvotes, question_id]);
 
 			res.json(response);
-		} else if (
-			!data.upvotes.includes(username) &&
-			!data.downvotes.includes(username)
-		) {
+		} else if (!data.upvotes.includes(username)) {
 			const upvotes = [...data.upvotes, username];
 			query = 'UPDATE questions SET upvotes=$1 WHERE question_id=$2';
 			const response = pool.query(query, [upvotes, question_id]);
@@ -128,17 +127,14 @@ router.put('/downvote', async (req, res) => {
 		let query = 'SELECT * FROM questions WHERE question_id=$1';
 		const data = (await pool.query(query, [req.headers.question_id])).rows[0];
 
-		if (!data.downvotes && !data.upvotes.includes(username)) {
+		if (!data.downvotes) {
 			const downvotes = [username];
 			query = 'UPDATE questions SET downvotes=$1 WHERE question_id=$2';
 
 			const response = pool.query(query, [downvotes, question_id]);
 
 			res.json(response);
-		} else if (
-			!data.downvotes.includes(username) &&
-			!data.upvotes.includes(username)
-		) {
+		} else if (!data.downvotes.includes(username)) {
 			const downvotes = [...data.downvotes, username];
 			query = 'UPDATE questions SET downvotes=$1 WHERE question_id=$2';
 			const response = pool.query(query, [downvotes, question_id]);
