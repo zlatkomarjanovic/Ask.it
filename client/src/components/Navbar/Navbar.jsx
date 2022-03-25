@@ -23,7 +23,7 @@ const Navbar = () => {
 	};
 	return (
 		<>
-			<nav className='shadow navbar navbar-expand-md nav-backg navbar-dark fixed-top noborder'>
+			<nav className='shadow navbar navbar-expand-md nav-backg navbar-dark fixed-top noborder text-decoration-none'>
 				<div className='navbar-brand no-brand'>
 					<AiFillQuestionCircle className='mx-2' size={30} />
 					Askit
@@ -44,24 +44,33 @@ const Navbar = () => {
 				>
 					<ul className='navbar-nav'>
 						<li className='nav-item mx-3 mt-3'>
-							<NavLink className='nav-link h4' to='/'>
+							<NavLink className='nav-link h4 text-decoration-none' to='/'>
 								Homepage
 							</NavLink>
 						</li>
 						<li className='nav-item mx-3 mt-3'>
-							<NavLink className='nav-link h4' to='/questions'>
+							<NavLink
+								className='nav-link h4 text-decoration-none'
+								to='/questions'
+							>
 								Questions
 							</NavLink>
 						</li>
 						{isAuth ? (
 							<>
 								<li className='nav-item mx-3 mt-3'>
-									<NavLink className='nav-link h4' to='/my-questions'>
+									<NavLink
+										className='nav-link h4 text-decoration-none'
+										to='/my-questions'
+									>
 										MyQuestions
 									</NavLink>
 								</li>
 								<li className='nav-item mx-3 mt-3'>
-									<NavLink className='nav-link h4' to='/profile'>
+									<NavLink
+										className='nav-link h4 text-decoration-none'
+										to='/profile'
+									>
 										Profile
 									</NavLink>
 								</li>
@@ -79,14 +88,20 @@ const Navbar = () => {
 						) : (
 							<div className='d-flex right'>
 								<li className='nav-item mx-3 mt-2'>
-									<NavLink className='nav-link h4' to='/register'>
+									<NavLink
+										className='nav-link h4 text-decoration-none'
+										to='/register'
+									>
 										<button className='btn glass-button-register text-light'>
 											Register
 										</button>
 									</NavLink>
 								</li>
 								<li className='nav-item  mx-3 mt-2'>
-									<NavLink className='nav-link h4' to='/login'>
+									<NavLink
+										className='nav-link h4 text-decoration-none'
+										to='/login'
+									>
 										<button className='btn glass-button-register text-light'>
 											Login
 										</button>
