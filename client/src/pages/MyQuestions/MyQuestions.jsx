@@ -46,12 +46,11 @@ const MyQuestions = () => {
 				</button>
 			) : (
 				<div>
-					<h4>Go ask some more!</h4>
 					<NavLink
 						className='btn-block text-center text-light glass-button-register'
 						to='/questions'
 					>
-						Questions
+						I want to ask!
 					</NavLink>
 				</div>
 			)}

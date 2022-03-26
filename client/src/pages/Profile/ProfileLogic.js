@@ -18,7 +18,7 @@ const ProfileLogic = () => {
 	//useEffect
 	useEffect(() => {
 		setUser();
-	}, []);
+	}, [currentProfile[0]]);
 
 	//setting the inputs
 	const onChange = (e) => {
