@@ -4,7 +4,7 @@ import { trueFalse } from '../../features/isAuthenticated';
 import { register } from '../../features/register';
 import { onSubmitForm } from '../../services/services';
 
-const RegisterLogic = () => {
+const RegisterFormLogic = () => {
 	const dispatch = useDispatch();
 	const inputs = useSelector((state) => state.register.value);
 	const { ime, prezime, username, email, password } = inputs;
@@ -40,4 +40,4 @@ const RegisterLogic = () => {
 	}; //returning all the necessary values
 };
 
-export default RegisterLogic;
+export default RegisterFormLogic;

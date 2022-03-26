@@ -4,7 +4,7 @@ import { trueFalse } from '../../features/isAuthenticated';
 import { login } from '../../features/login';
 import { onSubmitLogin } from '../../services/services';
 
-const LoginLogic = () => {
+const LoginFormLogic = () => {
 	const dispatch = useDispatch();
 	const inputs = useSelector((state) => state.login.value);
 	const { email, password } = inputs;
@@ -34,4 +34,4 @@ const LoginLogic = () => {
 	return { submitTheLogin, email, onChange, password };
 };
 
-export default LoginLogic;
+export default LoginFormLogic;

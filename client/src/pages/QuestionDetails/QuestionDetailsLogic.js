@@ -25,6 +25,7 @@ const QuestionDetailsLogic = () => {
 	const singleComments = useSelector(
 		(state) => state.singleQuestionComments.value
 	);
+	const simpleValue = singleComments[0];
 	const comment = commentToPost.comment;
 	const commentedonquestion = id;
 	const { username, user_id, email } = currentProfile[0];
@@ -71,7 +72,6 @@ const QuestionDetailsLogic = () => {
 		e.preventDefault();
 		await sendComment(e, body);
 		await updateCommentCounter(currentProfile[0].user_id);
-		await getComments();
 	}
 
 	const setTheseComments = async () => {
@@ -82,7 +82,7 @@ const QuestionDetailsLogic = () => {
 		getQuestion();
 		getComments();
 		setTheseComments();
-	}, [singleComments[0]]);
+	}, [simpleValue]);
 
 	return {
 		singleQuestion,
