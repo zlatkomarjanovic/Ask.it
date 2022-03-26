@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setQuestions } from '../../features/questions';
 import { fetchQuestions } from '../../services/services';
 
-const TrendingLogic = () => {
+const HomepageLogic = () => {
 	const dispatch = useDispatch();
 	const questions = useSelector((state) => state.questions.value);
 	const newQuestions = questions.slice(0, 4);
@@ -19,4 +19,4 @@ const TrendingLogic = () => {
 	return { newQuestions };
 };
 
-export default TrendingLogic;
+export default HomepageLogic;

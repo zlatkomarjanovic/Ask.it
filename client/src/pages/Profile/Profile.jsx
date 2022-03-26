@@ -25,11 +25,14 @@ const Profile = () => {
 						email={currentProfile[0]?.email}
 						className='rounded-circle'
 					/>
-					<div className='mt-3'>
-						<h4>
+					<div>
+						<h2>
 							{currentProfile[0]?.ime} {currentProfile[0]?.prezime}
-						</h4>
-						<p className='text-light mb-1'>{currentProfile[0]?.email}</p>
+						</h2>
+						<h5 className='text-light mb-4'>
+							{currentProfile[0]?.email} | @{currentProfile[0]?.username}
+						</h5>
+
 						<p className='text-light font-size-sm'>
 							Note: We are using Globally Recognized Avatar for your profile
 							picture, or, Gravatar for short.
@@ -72,7 +75,10 @@ const Profile = () => {
 					);
 				})}
 				{newQuestions.length > 3 ? (
-					<NavLink className='btn btn-block btn-primary' to='/my-questions'>
+					<NavLink
+						className='btn btn-block glass-register-button'
+						to='/my-questions'
+					>
 						My Questions
 					</NavLink>
 				) : (

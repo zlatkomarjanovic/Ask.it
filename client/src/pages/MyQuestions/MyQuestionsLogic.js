@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProfile } from '../../features/currentProfile';
-import { setQuestions } from '../../features/questions';
-import {
-	fetchMyQuestions,
-	fetchQuestions,
-	GetCurrentUser,
-} from '../../services/services';
+import { fetchMyQuestions, GetCurrentUser } from '../../services/services';
 import { setMyQuestions } from '../../features/myQuestions';
 
 const MyQuestionsLogic = () => {
@@ -29,7 +24,7 @@ const MyQuestionsLogic = () => {
 
 	useEffect(() => {
 		getMyQuestions(currentProfile[0].user_id);
-	}, [currentProfile]);
+	}, []);
 	return {
 		newQuestions,
 		currentProfile,

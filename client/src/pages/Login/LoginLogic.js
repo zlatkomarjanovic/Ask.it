@@ -7,7 +7,6 @@ import { onSubmitLogin } from '../../services/services';
 const LoginLogic = () => {
 	const dispatch = useDispatch();
 	const inputs = useSelector((state) => state.login.value);
-	const name = useSelector((state) => state.currentProfile.value);
 	const { email, password } = inputs;
 	const body = { email, password };
 
