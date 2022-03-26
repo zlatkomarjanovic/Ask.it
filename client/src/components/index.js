@@ -11,3 +11,7 @@ export { default as Comments } from './Partials/Comments';
 export { default as SendComment } from './Partials/SendComment';
 export { default as LoginForm } from './Register&Login/LoginForm';
 export { default as RegisterForm } from './Register&Login/RegisterForm';
+export { default as EditProfileModal } from './Profile/EditProfileModal';
+export { default as ProfileCard } from './Profile/ProfileCard';
+export { default as RecentQuestions } from './Profile/RecentQuestions';
+export { default as Ask } from './Questions/Ask';

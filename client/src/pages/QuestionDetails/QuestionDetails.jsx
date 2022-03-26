@@ -3,7 +3,6 @@ import QuestionDetailsLogic from './QuestionDetailsLogic';
 import './QuestionDetails.css';
 import { downvote, upvote } from '../../services/services';
 import {
-	Comment,
 	Comments,
 	SendComment,
 	SingleQuestionPost,

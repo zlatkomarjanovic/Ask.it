@@ -1,9 +1,11 @@
 import React from 'react';
 import ProfileLogic from './ProfileLogic';
 import './profile.css';
-import ProfileCard from '../../components/Profile/ProfileCard';
-import RecentQuestions from '../../components/Profile/RecentQuestions';
-import EditProfileModal from '../../components/Profile/EditProfileModal';
+import {
+	EditProfileModal,
+	ProfileCard,
+	RecentQuestions,
+} from '../../components';
 
 const Profile = () => {
 	const {

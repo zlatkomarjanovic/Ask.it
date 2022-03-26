@@ -1,5 +1,5 @@
 import React from 'react';
-import { SingleQuestion } from '../../components';
+import { Ask, SingleQuestion } from '../../components';
 import QuestionsLogic from './QuestionsLogic';
 import './questions.css';
 const Questions = () => {
@@ -16,32 +16,12 @@ const Questions = () => {
 	return (
 		<div className='container p-3'>
 			<h3 className='mb-5 text-light'>Questions</h3>
-			<div className='m-5'>
-				{isAuth === true ? (
-					<>
-						<div className='input-group'>
-							<input
-								className='glass-form-control'
-								name='title'
-								type='text'
-								placeholder='Ask... And the community shall answer!'
-								value={questionToAsk.title}
-								onChange={(e) => onChange(e)}
-							/>
-							<span className='input-group-btn'>
-								<button
-									onClick={askTheQuestion}
-									className='btn  input-group-prepend glass-button'
-								>
-									Ask!
-								</button>
-							</span>
-						</div>
-					</>
-				) : (
-					<></>
-				)}
-			</div>
+			<Ask
+				isAuth={isAuth}
+				questionToAsk={questionToAsk}
+				onChange={onChange}
+				askTheQuestion={askTheQuestion}
+			/>
 
 			{newQuestions.map((question) => (
 				<SingleQuestion key={question.question_id} question={question} />
