@@ -22,7 +22,7 @@ const QuestionsLogic = () => {
 
 	async function setUser() {
 		const user = await GetCurrentUser();
-		dispatch(setCurrentProfile());
+		dispatch(setCurrentProfile(user));
 	}
 
 	async function setQuestionList() {

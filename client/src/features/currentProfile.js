@@ -2,7 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const currentProfile = createSlice({
 	name: 'currentProfile',
-	initialState: { value: [{ ime: '', prezime: '', email: '', password: '' }] },
+	initialState: {
+		value: [
+			{
+				user_id: '',
+				username: '',
+				ime: '',
+				prezime: '',
+				email: '',
+				password: '',
+			},
+		],
+	},
 	reducers: {
 		setCurrentProfile: (state, action) => {
 			state.value = action.payload;
