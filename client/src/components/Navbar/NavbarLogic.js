@@ -1,9 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { trueFalse } from '../../features/isAuthenticated';
 
 const NavbarLogic = () => {
-	const dispatch = useDispatch;
+	const dispatch = useDispatch();
+	const isAuth = useSelector((state) => state.isAuth.value);
+
 	const logout = async (e) => {
 		e.preventDefault();
 		try {
@@ -15,7 +17,8 @@ const NavbarLogic = () => {
 			toast.warning(err.message);
 		}
 	};
-	return { logout };
+
+	return { logout, isAuth, dispatch };
 };
 
 export default NavbarLogic;

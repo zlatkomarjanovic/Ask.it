@@ -1,24 +1,18 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
 import { deleteQuestion, downvote, upvote } from '../../services/services';
 import SingleQuestionLogic from './SingleQuestionLogic';
 
-const SingleQuestion = ({ question, color, hot }) => {
-	const isAuth = useSelector((state) => state.isAuth.value);
-	const currentProfile = useSelector((state) => state.currentProfile.value);
-	const comments = useSelector((state) => state.comments.value);
+const SingleQuestion = ({ question, hot }) => {
+	const { isAuth, currentProfile, result } = SingleQuestionLogic();
 
-	const result = Array.from(comments);
 	const filteredComments = result.filter(
 		(comment) => comment.commentedonquestion === question.question_id
 	);
-	console.log(currentProfile);
 
-	const {} = SingleQuestionLogic();
 	return (
 		<>
 			<div className='card mb-5 roundedcustom shadow height card-bg text-light'>

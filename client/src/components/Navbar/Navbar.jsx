@@ -1,26 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './navbar.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { trueFalse } from '../../features/isAuthenticated';
-import { toast } from 'react-toastify';
 import { AiFillQuestionCircle } from 'react-icons/ai';
+import NavbarLogic from './NavbarLogic';
 
 const Navbar = () => {
-	const dispatch = useDispatch();
-	const isAuth = useSelector((state) => state.isAuth.value);
+	const { isAuth, logout } = NavbarLogic();
 
-	const logout = async (e) => {
-		e.preventDefault();
-		try {
-			localStorage.removeItem('token');
-			dispatch(trueFalse(false));
-			toast.info('Logged out successfully!');
-		} catch (err) {
-			console.error(err.message);
-			toast.warning(err.message);
-		}
-	};
 	return (
 		<>
 			<nav className='shadow navbar navbar-expand-md nav-backg navbar-dark fixed-top noborder text-decoration-none'>
