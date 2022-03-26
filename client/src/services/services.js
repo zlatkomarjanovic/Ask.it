@@ -4,8 +4,7 @@ import { toast } from 'react-toastify';
 //So, if there is no http://localhost:5000 then by default it is going to use heroku
 // domain.
 
-//Updating comment counter
-
+// Updating comment counter
 export async function updateCommentCounterQuestions(question_id) {
 	try {
 		const response = await fetch(
@@ -22,7 +21,7 @@ export async function updateCommentCounterQuestions(question_id) {
 	}
 }
 
-//Getting commentedon questions
+// Getting commentedon questions
 export async function GetTheComments(question_id) {
 	try {
 		const response = await fetch(
@@ -57,8 +56,6 @@ export async function GetMostActiveUsers() {
 //Getting a current user
 export async function GetCurrentUser() {
 	try {
-		//proxy
-
 		const response = await fetch(`${process.env.REACT_APP_BASE_URL}/profile`, {
 			method: 'GET',
 			headers: { token: localStorage.token },
@@ -162,7 +159,7 @@ export async function updateQuestion(question_id, title) {
 	}
 }
 
-//upvote downvote & unupvote undownvote
+//upvote downvote
 export async function upvote(question_id, username) {
 	try {
 		const response = await fetch(`${process.env.REACT_APP_BASE_URL}/upvote`, {
@@ -190,10 +187,10 @@ export async function downvote(question_id, username) {
 		console.error(error);
 	}
 }
+
 //Updating current user
 export async function updateForm(e, body) {
 	e.preventDefault();
-
 	try {
 		const response = await fetch(
 			`${process.env.REACT_APP_BASE_URL}/auth/update-user`,
@@ -285,6 +282,7 @@ export async function sendComment(e, body) {
 	}
 }
 
+//Getting all comments
 export async function getAllComments() {
 	try {
 		const res = await fetch(`${process.env.REACT_APP_BASE_URL}/comments`, {

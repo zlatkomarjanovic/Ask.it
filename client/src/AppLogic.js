@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { trueFalse } from './features/isAuthenticated';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ import { isAuthen } from './services/services';
 
 const AppLogic = () => {
 	const dispatch = useDispatch();
+	const isAuth = useSelector((state) => state.isAuth.value);
 
 	const Authenticate = async () => {
 		const parsedResponse = await isAuthen();
@@ -39,7 +40,7 @@ const AppLogic = () => {
 		getComments();
 		toast.configure();
 	});
-	return { isAuthen };
+	return { isAuthen, isAuth };
 };
 
 export default AppLogic;

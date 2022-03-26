@@ -17,6 +17,7 @@ import { setComments } from '../../features/comments';
 const QuestionDetailsLogic = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
+	const isAuth = useSelector((state) => state.isAuth.value);
 	const currentProfile = useSelector((state) => state.currentProfile.value);
 	const singleQuestion = useSelector((state) => state.singleQuestion.value);
 	const commentToPost = useSelector((state) => state.postComment.value);
@@ -92,6 +93,7 @@ const QuestionDetailsLogic = () => {
 		commentsData,
 		currentProfile,
 		id,
+		isAuth,
 	};
 };
 

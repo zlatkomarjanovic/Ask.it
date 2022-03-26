@@ -18,13 +18,10 @@ import {
 	ErrorPage,
 } from './pages';
 import Footer from './components/Footer/Footer';
-import { useSelector } from 'react-redux';
 import AppLogic from './AppLogic';
 
 const App = () => {
-	const isAuth = useSelector((state) => state.isAuth.value);
-
-	const {} = AppLogic();
+	const { isAuth } = AppLogic();
 	return (
 		<div className='global-bg'>
 			<Router>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
-import { useSelector } from 'react-redux';
 import QuestionDetailsLogic from './QuestionDetailsLogic';
 import './QuestionDetails.css';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
@@ -14,8 +13,9 @@ const QuestionDetails = () => {
 		commentToPost,
 		onChange,
 		currentProfile,
+		isAuth,
 	} = QuestionDetailsLogic();
-	const isAuth = useSelector((state) => state.isAuth.value);
+
 	return (
 		<div className='container mt-5 text-light'>
 			<div className='p-5 shadow glass-container'>
