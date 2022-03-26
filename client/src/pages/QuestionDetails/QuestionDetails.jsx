@@ -58,7 +58,10 @@ const QuestionDetails = () => {
 			<div className='mt-5'>
 				<h4>Comments</h4>
 				{singleComments.map((comment) => (
-					<div className='w-75 p-5  my-5 glass-container'>
+					<div
+						key={comment.comment_id}
+						className='w-75 p-5  my-5 glass-container'
+					>
 						<Gravatar
 							email={comment.commentedbyemail}
 							className='rounded-circle floatleft'

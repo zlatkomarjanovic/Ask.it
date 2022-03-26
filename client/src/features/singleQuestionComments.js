@@ -2,7 +2,20 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const singleQuestionComments = createSlice({
 	name: 'singleQuestionComments',
-	initialState: { value: [{}] },
+	initialState: {
+		value: [
+			{
+				comment_id: '',
+				commentedonquestion: '',
+				comment: '',
+				commentedby: '',
+				commentedbyuser: '',
+				commentedbyemail: '',
+				upvotes: [],
+				downvotes: [],
+			},
+		],
+	},
 	reducers: {
 		setSingleQuestionComments: (state, action) => {
 			state.value = action.payload;
