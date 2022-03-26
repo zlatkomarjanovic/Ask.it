@@ -26,11 +26,11 @@ CREATE TABLE questions(
   upvotes text[],
   downvotes text[], 
 	FOREIGN KEY (postedBy)
-		REFERENCES users (user_id) ON DELETE CASCADE,
+		REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (postedbyusr)
-		REFERENCES users (username) ON DELETE CASCADE,
+		REFERENCES users (username) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (postedbyemail)
-		REFERENCES users (email) ON DELETE CASCADE
+		REFERENCES users (email) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE comments(
@@ -43,13 +43,13 @@ CREATE TABLE comments(
   upvotes text[],
   downvotes text[],
 	FOREIGN KEY (commentedOnQuestion)
-		REFERENCES questions (question_id) ON DELETE CASCADE,
+		REFERENCES questions (question_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (commentedBy)
-		REFERENCES users (user_id) ON DELETE CASCADE,
+		REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (commentedByUser)
-		REFERENCES users (username) ON DELETE CASCADE,
+		REFERENCES users (username) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (commentedByEmail)
-		REFERENCES users (email) ON DELETE CASCADE
+		REFERENCES users (email) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 --generating some users

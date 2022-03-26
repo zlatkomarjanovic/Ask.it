@@ -2,7 +2,7 @@ import React from 'react';
 
 const SendComment = ({ isAuth, commentToPost, onSubmitComment, onChange }) => {
 	return (
-		<div>
+		<div className='mb-5'>
 			{isAuth === true ? (
 				<>
 					<div className='input-group w-75'>
