@@ -7,7 +7,6 @@ const EditProfileModal = ({
 	prezime,
 	password,
 	email,
-	username,
 	onSubmitForm,
 	body,
 }) => {

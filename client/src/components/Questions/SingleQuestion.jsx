@@ -115,14 +115,7 @@ const SingleQuestion = ({ question, hot }) => {
 									>
 										Delete
 									</button>
-									<button
-										type='button'
-										data-toggle='modal'
-										data-target='#exampleModalCenter2'
-										className='glass-button'
-									>
-										Edit
-									</button>
+									<button className='glass-button'>Edit</button>
 								</>
 							) : (
 								<></>
@@ -131,51 +124,6 @@ const SingleQuestion = ({ question, hot }) => {
 					) : (
 						<></>
 					)}
-				</div>
-			</div>
-
-			<div
-				className='modal fade'
-				id='exampleModalCenter2'
-				role='dialog'
-				aria-labelledby='exampleModalCenterTitle'
-				aria-hidden='true'
-			>
-				<div className='modal-dialog modal-dialog-centered' role='document'>
-					<div className='modal-content'>
-						<div className='modal-header'>
-							<h5 className='modal-title' id='exampleModalLongTitle'>
-								Edit the question "{question.title}"
-							</h5>
-						</div>
-						<div className='modal-body'>
-							<form>
-								<input
-									type='text'
-									name='question'
-									placeholder={question.title}
-									className='form-control my-3'
-								/>
-
-								<button
-									type='button'
-									className='btn btn-primary btn-block'
-									data-dismiss='modal'
-								>
-									Save changes
-								</button>
-							</form>
-						</div>
-						<div className='modal-footer'>
-							<button
-								type='button'
-								className='btn btn-secondary'
-								data-dismiss='modal'
-							>
-								Close
-							</button>
-						</div>
-					</div>
 				</div>
 			</div>
 		</>

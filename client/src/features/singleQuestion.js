@@ -2,7 +2,20 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const singleQuestionSlice = createSlice({
 	name: 'singleQuestion',
-	initialState: { value: {} },
+	initialState: {
+		value: [
+			{
+				question_id: '',
+				postedby: '',
+				postedbyusr: '',
+				postedbyemail: '',
+				title: '',
+				commentcounter: '',
+				upvotes: [],
+				downvotes: [],
+			},
+		],
+	},
 	reducers: {
 		setSingleQuestion: (state, action) => {
 			state.value = action.payload;
