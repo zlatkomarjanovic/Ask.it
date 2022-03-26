@@ -1,17 +1,22 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { SingleQuestion } from '../../components';
 import ProfileLogic from './ProfileLogic';
 import './profile.css';
 
 const Profile = () => {
-	const { onChange, ime, prezime, email, password, onSubmitForm } =
-		ProfileLogic();
-	const currentProfile = useSelector((state) => state.currentProfile.value);
-	const data = useSelector((state) => state.questions.value);
-	const newQuestions = data.slice(0, 3);
+	const {
+		onChange,
+		ime,
+		prezime,
+		email,
+		password,
+		onSubmitForm,
+		currentProfile,
+		newQuestions,
+		body,
+	} = ProfileLogic();
 
 	return (
 		<div
@@ -135,7 +140,7 @@ const Profile = () => {
 									className='form-control my-3'
 								/>
 								<button
-									onClick={onSubmitForm}
+									onClick={(e) => onSubmitForm(e, body)}
 									type='button'
 									className='btn btn-primary btn-block'
 									data-dismiss='modal'

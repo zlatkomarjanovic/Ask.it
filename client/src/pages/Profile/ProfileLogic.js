@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import { setCurrentProfile } from '../../features/currentProfile';
 import { updateProfile } from '../../features/updateProfile';
 import { GetCurrentUser, updateForm } from '../../services/services';
 
 const ProfileLogic = () => {
 	const dispatch = useDispatch();
-
+	const currentProfile = useSelector((state) => state.currentProfile.value);
+	const data = useSelector((state) => state.questions.value);
+	const newQuestions = data.slice(0, 3);
 	const inputs = useSelector((state) => state.currentProfile.value);
 	const inputs2 = useSelector((state) => state.updateProfile.value);
 	const { user_id } = inputs[0];
@@ -29,13 +30,25 @@ const ProfileLogic = () => {
 		dispatch(setCurrentProfile(user));
 	}
 
-	const onSubmitForm = (e, body) => {
-		updateForm(e, body);
+	const onSubmitForm = async (e, body) => {
+		await updateForm(e, body);
+		await setUser();
 	};
 
 	//submiting the form
 
-	return { onChange, onSubmitForm, ime, prezime, email, password };
+	return {
+		onChange,
+		onSubmitForm,
+		ime,
+		prezime,
+		email,
+		password,
+		currentProfile,
+		data,
+		newQuestions,
+		body,
+	};
 };
 
 export default ProfileLogic;
