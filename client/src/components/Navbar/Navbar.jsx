@@ -25,7 +25,7 @@ const Navbar = () => {
 		<>
 			<nav className='shadow navbar navbar-expand-md nav-backg navbar-dark fixed-top noborder text-decoration-none'>
 				<div className='navbar-brand no-brand'>
-					<AiFillQuestionCircle className='mx-2' size={30} />
+					<AiFillQuestionCircle className='mx-2 mb-2' size={30} />
 					Askit
 				</div>
 
