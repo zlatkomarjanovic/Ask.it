@@ -82,7 +82,7 @@ const QuestionDetailsLogic = () => {
 		getQuestion();
 		getComments();
 		setTheseComments();
-	}, []);
+	}, [singleComments[0]]);
 
 	return {
 		singleQuestion,
