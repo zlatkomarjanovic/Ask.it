@@ -5,6 +5,7 @@ import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
 import { deleteQuestion, downvote, upvote } from '../../services/services';
 import SingleQuestionLogic from './SingleQuestionLogic';
+import EditQuestionModal from '../Partials/EditQuestionModal';
 
 const SingleQuestion = ({ question, hot }) => {
 	const { isAuth, currentProfile, result } = SingleQuestionLogic();
@@ -115,7 +116,14 @@ const SingleQuestion = ({ question, hot }) => {
 									>
 										Delete
 									</button>
-									<button className='glass-button'>Edit</button>
+									<button
+										type='button'
+										className='btn glass-button text-light'
+										data-toggle='modal'
+										data-target='#exampleModalCenter2'
+									>
+										Edit
+									</button>
 								</>
 							) : (
 								<></>
@@ -126,6 +134,7 @@ const SingleQuestion = ({ question, hot }) => {
 					)}
 				</div>
 			</div>
+			<EditQuestionModal />
 		</>
 	);
 };
