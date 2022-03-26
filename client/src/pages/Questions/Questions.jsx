@@ -2,6 +2,36 @@ import React from 'react';
 import { Ask, SingleQuestion } from '../../components';
 import QuestionsLogic from './QuestionsLogic';
 import './questions.css';
+
+const QuestionsRender = ({ newQuestions }) => {
+	return (
+		<>
+			{newQuestions.map((question) => (
+				<SingleQuestion key={question.question_id} question={question} />
+			))}
+		</>
+	);
+};
+
+const Button = ({ newQuestions, setLoadMore, loadmore }) => {
+	return (
+		<>
+			{newQuestions.length > 5 ? (
+				<button
+					onClick={() => setLoadMore(loadmore + 5)}
+					className='btn btn-block glass-button-register text-light'
+				>
+					Load more
+				</button>
+			) : (
+				<div className='text-light'>
+					<h4>You have the honor to ask the first questions!</h4>
+				</div>
+			)}
+		</>
+	);
+};
+
 const Questions = () => {
 	const {
 		askTheQuestion,
@@ -22,22 +52,12 @@ const Questions = () => {
 				onChange={onChange}
 				askTheQuestion={askTheQuestion}
 			/>
-
-			{newQuestions.map((question) => (
-				<SingleQuestion key={question.question_id} question={question} />
-			))}
-			{newQuestions.length > 5 ? (
-				<button
-					onClick={() => setLoadMore(loadmore + 5)}
-					className='btn btn-block glass-button-register text-light'
-				>
-					Load more
-				</button>
-			) : (
-				<div className='text-light'>
-					<h4>You have the honor to ask the first questions!</h4>
-				</div>
-			)}
+			<QuestionsRender newQuestions={newQuestions} />
+			<Button
+				newQuestions={newQuestions}
+				setLoadMore={setLoadMore}
+				loadmore={loadmore}
+			/>
 		</div>
 	);
 };
