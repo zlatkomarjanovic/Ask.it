@@ -18,6 +18,7 @@ const Profile = () => {
 		currentProfile,
 		newQuestions,
 		body,
+		deleteMyProfile,
 	} = ProfileLogic();
 
 	return (
@@ -25,7 +26,10 @@ const Profile = () => {
 			className='container
 		'
 		>
-			<ProfileCard currentProfile={currentProfile} />
+			<ProfileCard
+				currentProfile={currentProfile}
+				deleteMyProfile={deleteMyProfile}
+			/>
 			<RecentQuestions
 				newQuestions={newQuestions}
 				currentProfile={currentProfile}

@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProfile } from '../../features/currentProfile';
+import { trueFalse } from '../../features/isAuthenticated';
 import { updateProfile } from '../../features/updateProfile';
 import {
+	deleteUser,
 	fetchQuestions,
 	GetCurrentUser,
 	updateForm,
@@ -39,6 +41,12 @@ const ProfileLogic = () => {
 		await setUser();
 	};
 
+	const deleteMyProfile = async (user_id) => {
+		localStorage.removeItem('token');
+		dispatch(trueFalse(false));
+		await deleteUser(user_id);
+	};
+
 	//submiting the form
 
 	return {
@@ -52,6 +60,7 @@ const ProfileLogic = () => {
 		data,
 		newQuestions,
 		body,
+		deleteMyProfile,
 	};
 };
 

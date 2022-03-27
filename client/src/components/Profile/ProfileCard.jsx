@@ -3,7 +3,7 @@ import Gravatar from 'react-gravatar';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { deleteUser } from '../../services/services';
 
-const ProfileCard = ({ currentProfile }) => {
+const ProfileCard = ({ currentProfile, deleteMyProfile }) => {
 	return (
 		<div className='container mt-5 p-5  mb-5 shadow glass-profile'>
 			<div className='d-flex flex-column align-items-center text-center'>
@@ -40,7 +40,7 @@ const ProfileCard = ({ currentProfile }) => {
 							<AiFillEdit className='mx-3' size={30} />
 						</button>
 						<button
-							onClick={() => deleteUser(currentProfile[0]?.user_id)}
+							onClick={() => deleteMyProfile(currentProfile[0]?.user_id)}
 							type='button'
 							className='btn btn-block glass-button-danger text-light mt-4'
 						>

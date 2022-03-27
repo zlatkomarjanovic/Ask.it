@@ -336,7 +336,6 @@ export async function isAuthen() {
 //Deleting a user
 export async function deleteUser(user_id) {
 	try {
-		localStorage.removeItem('token');
 		await fetch(`${process.env.REACT_APP_BASE_URL}/delete-profile`, {
 			method: 'DELETE',
 			headers: { user_id: user_id, token: localStorage.token },
