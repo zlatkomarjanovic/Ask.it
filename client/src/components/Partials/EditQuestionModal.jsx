@@ -1,6 +1,9 @@
 import React from 'react';
+import PartialsLogic from './PartialsLogic';
 
-const EditQuestionModal = () => {
+const EditQuestionModal = ({ question_id }) => {
+	const { onChange, onSubmit, title } = PartialsLogic();
+
 	return (
 		<div
 			className='modal fade'
@@ -18,12 +21,20 @@ const EditQuestionModal = () => {
 					</div>
 					<div className='modal-body'>
 						<form>
-							<input type='text' name='ime' className='form-control my-3' />
+							<input
+								value={title}
+								onChange={(e) => onChange(e)}
+								placeholder='Edit question...'
+								type='text'
+								name='title'
+								className='form-control my-3'
+							/>
 
 							<button
 								type='button'
 								className='btn btn-primary btn-block'
 								data-dismiss='modal'
+								onClick={(e) => onSubmit(e, question_id)}
 							>
 								Save changes
 							</button>

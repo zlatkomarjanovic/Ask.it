@@ -44,8 +44,9 @@ router.delete('/delete-question', authorize, async (req, res) => {
 router.put('/update-question', authorize, async (req, res) => {
 	try {
 		const update = await pool.query(
-			`UPDATE questions SET title='${req.body.title}' WHERE question_id='${req.headers.question_id}'`
+			`UPDATE questions SET title='${req.headers.title}' WHERE question_id='${req.headers.question_id}' RETURNING *;`
 		);
+
 		res.json(update.rows);
 	} catch (error) {
 		console.error(error.message);

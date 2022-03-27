@@ -31,13 +31,13 @@ const Profile = () => {
 				currentProfile={currentProfile}
 			/>
 			<EditProfileModal
-				currentProfile={currentProfile}
 				onChange={onChange}
+				onSubmitForm={onSubmitForm}
+				currentProfile={currentProfile}
 				ime={ime}
 				prezime={prezime}
 				password={password}
 				email={email}
-				onSubmitForm={onSubmitForm}
 				body={body}
 			/>
 		</div>

@@ -17,6 +17,7 @@ import comments from './features/comments';
 import myQuestions from './features/myQuestions';
 import mostActiveUsers from './features/mostActiveUsers';
 import singleQuestionComments from './features/singleQuestionComments';
+import updateQuestion from './features/updateQuestion';
 
 const store = configureStore({
 	reducer: {
@@ -33,6 +34,7 @@ const store = configureStore({
 		myQuestions: myQuestions,
 		mostActiveUsers: mostActiveUsers,
 		singleQuestionComments: singleQuestionComments,
+		updateQuestion: updateQuestion,
 	},
 });
 

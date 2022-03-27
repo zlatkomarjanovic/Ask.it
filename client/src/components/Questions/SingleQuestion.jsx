@@ -3,12 +3,18 @@ import Gravatar from 'react-gravatar';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
-import { deleteQuestion, downvote, upvote } from '../../services/services';
+import {
+	deleteQuestion,
+	downvote,
+	updateQuestion,
+	upvote,
+} from '../../services/services';
 import SingleQuestionLogic from './SingleQuestionLogic';
 import EditQuestionModal from '../Partials/EditQuestionModal';
 
 const SingleQuestion = ({ question, hot }) => {
-	const { isAuth, currentProfile, result } = SingleQuestionLogic();
+	const { isAuth, currentProfile, result, onChange, onSubmit } =
+		SingleQuestionLogic();
 
 	const filteredComments = result.filter(
 		(comment) => comment.commentedonquestion === question.question_id
@@ -134,7 +140,11 @@ const SingleQuestion = ({ question, hot }) => {
 					)}
 				</div>
 			</div>
-			<EditQuestionModal />
+			<EditQuestionModal
+				onChange={onChange}
+				onSubmit={onSubmit}
+				question_id={question.question_id}
+			/>
 		</>
 	);
 };

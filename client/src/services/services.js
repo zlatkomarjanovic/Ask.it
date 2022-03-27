@@ -149,10 +149,14 @@ export async function updateQuestion(question_id, title) {
 	try {
 		await fetch(`${process.env.REACT_APP_BASE_URL}/update-question`, {
 			method: 'PUT',
-			headers: { question_id: question_id, token: localStorage.token },
-			body: { title: title },
+			headers: {
+				question_id: question_id,
+				token: localStorage.token,
+				title: title,
+			},
 		});
-		toast.success('❓ Question deleted!');
+
+		toast.success('❓ Question updated!');
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);
