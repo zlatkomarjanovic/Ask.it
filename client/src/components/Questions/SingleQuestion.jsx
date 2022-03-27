@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import Gravatar from 'react-gravatar';
-import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
+import {
+	AiFillDelete,
+	AiFillEdit,
+	AiOutlineArrowDown,
+	AiOutlineArrowUp,
+} from 'react-icons/ai';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
 import { deleteQuestion, downvote, upvote } from '../../services/services';
@@ -117,7 +122,7 @@ const SingleQuestion = ({ question, hot }) => {
 										className='glass-button-danger'
 										onClick={() => deleteQuestion(question.question_id)}
 									>
-										Delete
+										<AiFillDelete className='mx-3' size={20} />
 									</button>
 									<button
 										type='button'
@@ -125,7 +130,7 @@ const SingleQuestion = ({ question, hot }) => {
 										data-toggle='modal'
 										data-target='#exampleModalCenter2'
 									>
-										Edit
+										<AiFillEdit className='mx-3' size={20} />
 									</button>
 								</>
 							) : (

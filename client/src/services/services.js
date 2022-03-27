@@ -1,3 +1,4 @@
+import { AiOutlineLogout } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 //toast is used for those notifications you see when logging in or submiting a question
 // Proxy is only used in the development phase. It is ignored in production.
@@ -329,5 +330,20 @@ export async function isAuthen() {
 		return parsedRes;
 	} catch (error) {
 		console.error(error.message);
+	}
+}
+
+//Deleting a user
+export async function deleteUser(user_id) {
+	try {
+		localStorage.removeItem('token');
+		await fetch(`${process.env.REACT_APP_BASE_URL}/delete-profile`, {
+			method: 'DELETE',
+			headers: { user_id: user_id, token: localStorage.token },
+		});
+		toast.success('😔 We are sorry to see you go...');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
 	}
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { deleteUser } from '../../services/services';
 
 const ProfileCard = ({ currentProfile }) => {
 	return (
@@ -28,14 +30,23 @@ const ProfileCard = ({ currentProfile }) => {
 							</a>
 						</span>
 					</p>
-					<button
-						type='button'
-						className='btn glass-button-register text-light mt-4 mb-4'
-						data-toggle='modal'
-						data-target='#exampleModalCenter'
-					>
-						Edit
-					</button>
+					<div className='d-flex'>
+						<button
+							type='button'
+							className=' mx-4 btn glass-button-register text-light mt-4 text-center'
+							data-toggle='modal'
+							data-target='#exampleModalCenter'
+						>
+							<AiFillEdit className='mx-3' size={30} />
+						</button>
+						<button
+							onClick={() => deleteUser(currentProfile[0]?.user_id)}
+							type='button'
+							className='btn btn-block glass-button-danger text-light mt-4'
+						>
+							<AiFillDelete className='mx-3' size={30} />
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
