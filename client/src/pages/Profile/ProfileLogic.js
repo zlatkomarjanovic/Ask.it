@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProfile } from '../../features/currentProfile';
 import { updateProfile } from '../../features/updateProfile';
-import { GetCurrentUser, updateForm } from '../../services/services';
+import {
+	fetchQuestions,
+	GetCurrentUser,
+	updateForm,
+} from '../../services/services';
 
 const ProfileLogic = () => {
 	const dispatch = useDispatch();
@@ -18,7 +22,7 @@ const ProfileLogic = () => {
 	//useEffect
 	useEffect(() => {
 		setUser();
-	}, [currentProfile[0]]);
+	}, []);
 
 	//setting the inputs
 	const onChange = (e) => {

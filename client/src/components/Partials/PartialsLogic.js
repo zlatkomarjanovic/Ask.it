@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUpdateQuestion } from '../../features/updateQuestion';
 import { updateQuestion } from '../../services/services';
@@ -5,8 +6,6 @@ import { updateQuestion } from '../../services/services';
 const PartialsLogic = () => {
 	const dispatch = useDispatch();
 	const { title } = useSelector((state) => state.updateQuestion.value);
-
-	console.log(title);
 
 	const onChange = (e) => {
 		e.preventDefault();

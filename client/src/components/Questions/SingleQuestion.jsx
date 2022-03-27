@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Gravatar from 'react-gravatar';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 import './SingleQuestion.css';
 import { NavLink } from 'react-router-dom';
-import {
-	deleteQuestion,
-	downvote,
-	updateQuestion,
-	upvote,
-} from '../../services/services';
+import { deleteQuestion, downvote, upvote } from '../../services/services';
 import SingleQuestionLogic from './SingleQuestionLogic';
 import EditQuestionModal from '../Partials/EditQuestionModal';
 
@@ -43,11 +38,11 @@ const SingleQuestion = ({ question, hot }) => {
 								}
 							>
 								<AiOutlineArrowUp size={20} />
-								<p>
+								<>
 									{question.upvotes?.length !== null
 										? question.upvotes?.length
 										: 0}
-								</p>
+								</>
 							</button>
 
 							<button
@@ -60,11 +55,11 @@ const SingleQuestion = ({ question, hot }) => {
 								}
 							>
 								<AiOutlineArrowDown size={20} />
-								<p>
+								<>
 									{question.downvotes?.length !== null
 										? question.downvotes?.length
 										: 0}
-								</p>
+								</>
 							</button>
 						</div>
 					) : (
@@ -76,7 +71,7 @@ const SingleQuestion = ({ question, hot }) => {
 
 						{filteredComments
 							.map((comment) => (
-								<div className='glass-comment'>
+								<div key={comment.comment_id} className='glass-comment'>
 									<div className='d-flex'>
 										<Gravatar
 											size={40}
@@ -86,9 +81,7 @@ const SingleQuestion = ({ question, hot }) => {
 										<h5 className='mt-4 mx-2'>@{comment.commentedbyuser}</h5>
 									</div>
 									<hr />
-									<p key={comment.comment_id} className='mx-4 pt-3'>
-										{comment.comment}
-									</p>
+									<p className='mx-4 pt-3'>{comment.comment}</p>
 								</div>
 							))
 							.slice(0, 2)}
@@ -97,13 +90,17 @@ const SingleQuestion = ({ question, hot }) => {
 						) : (
 							<p className=' glass-comments'>Join to leave more comments!</p>
 						)}
-						<p className='mx-2'>
+						<div className='mx-2 mb-4'>
 							Upvoted by:{' '}
 							{question.upvotes
-								?.map((upvote) => <p className='d-inline'>{upvote}, </p>)
+								?.map((upvote) => (
+									<p key={upvote} className='d-inline'>
+										{upvote},{' '}
+									</p>
+								))
 								.slice(0, 3)}
 							... and others
-						</p>
+						</div>
 					</div>
 
 					{isAuth ? (
