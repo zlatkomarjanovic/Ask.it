@@ -3,9 +3,16 @@
 	"name": "Ask.it Ministry of programming task",
 	"icons": [
 		{
-			"src": "/images/favicon.png",
+			"src": "/images/logo.png",
+			"sizes": "1080x1080'",
 			"type": "image/png",
-			"sizes": "1024*1024'"
+			"purpose": "any"
+		},
+		{
+			"src": "/images/favicon.png",
+			"sizes": "1080x1080",
+			"type": "image/png",
+			"purpose": "any"
 		}
 	],
 	"start_url": ".",
