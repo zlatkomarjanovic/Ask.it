@@ -13,7 +13,7 @@
 		<script src="jquery-3.5.1.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-		<link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+		<link rel="icon" type="image/png" href="./images/logo.png" />
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
@@ -29,13 +29,27 @@
 		<meta name="theme-color" content="#000000" />
 		<meta
 			name="description"
-			content="Web site created using create-react-app for MOP."
+			content="Askit is a social network designed for those who want to send their questions out in the world!"
 		/>
+		<link rel="apple-touch.icon" href="./images/logo.png" />
+		<link rel="manifest" href="./manifest.json" />
 
-		<title>Askit</title>
+		<title>
+			Askit - Social network where you can get answers for any question!
+		</title>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
 		<div id="root"></div>
+		<script>
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', () => {
+					navigator.serviceWorker
+						.register('./serviceworker.js')
+						.then((reg) => console.log('Success: ', reg.scope))
+						.catch((err) => console.log('Failure: ', err));
+				});
+			}
+		</script>
 	</body>
 </html>

@@ -147,29 +147,5 @@ router.put('/downvote', async (req, res) => {
 		console.error(error);
 	}
 });
-router.put('/unupvote', async (req, res) => {
-	try {
-		const response = await pool.query(
-			'UPDATE questions SET upvotes = upvotes-1 WHERE question_id=$1',
-			[req.headers.question_id]
-		);
-		res.json(response);
-	} catch (error) {
-		console.error(error.message);
-		res.status(500).json('Issue with unupvoting!');
-	}
-});
-router.put('/undownvote', async (req, res) => {
-	try {
-		const response = await pool.query(
-			'UPDATE questions SET downvotes = downvotes-1 WHERE question_id=$1',
-			[req.headers.postedby]
-		);
-		res.json(response);
-	} catch (error) {
-		console.error(error.message);
-		res.status(500).json('Issue with undownvoting!');
-	}
-});
 
 module.exports = router;

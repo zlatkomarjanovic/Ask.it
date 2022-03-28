@@ -97,4 +97,61 @@ router.get('/commented-on-question', async (req, res) => {
 	}
 });
 
+router.put('/upvote-comment', async (req, res) => {
+	try {
+		const username = req.headers.username;
+		const question_id = req.headers.question_id;
+
+		const data = (
+			await pool.query('SELECT * FROM comments WHERE comment_id=$1', [
+				req.headers.comment_id,
+			])
+		).rows[0];
+
+		if (!data.upvotes) {
+			const upvotes = [username];
+			let query = 'UPDATE comments SET upvotes=$1 WHERE comment_id=$2';
+
+			const response = pool.query(query, [upvotes, comment_id]);
+
+			res.json(response);
+		} else if (!data.upvotes.includes(username)) {
+			const upvotes = [...data.upvotes, username];
+			query = 'UPDATE comments SET upvotes=$1 WHERE comment_id=$2';
+			const response = pool.query(query, [upvotes, comment_id]);
+			res.json(response);
+		} else {
+			res.json('Already upvoted!');
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+router.put('/downvote-comment', async (req, res) => {
+	try {
+		const username = req.headers.username;
+		const comment_id = req.headers.comment_id;
+		let query = 'SELECT * FROM comments WHERE comment_id=$1';
+		const data = (await pool.query(query, [req.headers.comment_id])).rows[0];
+
+		if (!data.downvotes) {
+			const downvotes = [username];
+			query = 'UPDATE comments SET downvotes=$1 WHERE comment_id=$2';
+
+			const response = pool.query(query, [downvotes, comment_id]);
+
+			res.json(response);
+		} else if (!data.downvotes.includes(username)) {
+			const downvotes = [...data.downvotes, username];
+			query = 'UPDATE comments SET downvotes=$1 WHERE comment_id=$2';
+			const response = pool.query(query, [downvotes, comment_id]);
+			res.json(response);
+		} else {
+			res.json('Already downvoted!');
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+
 module.exports = router;

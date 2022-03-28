@@ -1,0 +1,15 @@
+{
+	"short_name": "Askitmop",
+	"name": "Ask.it Ministry of programming task",
+	"icons": [
+		{
+			"src": "/images/favicon.png",
+			"type": "image/png",
+			"sizes": "1024*1024'"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#340380",
+	"background_color": "#8380AF"
+}
