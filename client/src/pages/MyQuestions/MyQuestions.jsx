@@ -2,7 +2,7 @@ import React from 'react';
 import MyQuestionsLogic from './MyQuestionsLogic';
 import { SingleQuestion } from '../../components';
 import { NavLink } from 'react-router-dom';
-import emptyhere from '../../assets/emptyhere.png';
+import emptyhere from '../../assets/emptyhere.webp';
 
 const MyQuestions = () => {
 	const { newQuestions, setLoadMore, loadMore } = MyQuestionsLogic();

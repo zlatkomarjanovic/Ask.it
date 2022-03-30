@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import imgsrc from '../../assets/404.png';
+import imgsrc from '../../assets/404.webp';
 const ErrorPage = () => {
 	return (
 		<div className='container glass-container text-center'>
