@@ -31,3 +31,6 @@ instantly take place when pushed.
 - Go back to root folder
 - cd server
 - npm install
+- run "pg:psql" to open postgres from terminal
+- run "CREATE EXTENSION "uuid-ossp";" to create uuid-ossp extension
+- copy & paste first 4 commands from database.sql to pgAdmin query tool
