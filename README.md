@@ -34,3 +34,6 @@ instantly take place when pushed.
 - run "pg:psql" to open postgres from terminal
 - run "CREATE EXTENSION "uuid-ossp";" to create uuid-ossp extension
 - copy & paste first 4 commands from database.sql to pgAdmin query tool
+- You will also have to install nodemon globally - "npm install -g nodemon"
+- In server folder run: "nodemon index"
+- In client folder run: "npm start"
