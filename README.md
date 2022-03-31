@@ -37,3 +37,8 @@ instantly take place when pushed.
 - You will also have to install nodemon globally - "npm install -g nodemon"
 - In server folder run: "nodemon index"
 - In client folder run: "npm start"
+
+### Deployment:
+
+- This project is deployed on Heroku and Netlify.
+- Heroku is used for database and node.js code and Netlify for the front-end.
