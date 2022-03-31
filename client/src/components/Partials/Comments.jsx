@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Comment from '../Comments/Comment';
 
 const Comments = ({ singleComments }) => {

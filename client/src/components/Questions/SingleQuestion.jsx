@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Gravatar from 'react-gravatar';
 import {
 	AiFillDelete,
@@ -68,7 +68,7 @@ const SingleQuestion = ({ question, hot }) => {
 							</button>
 						</div>
 					) : (
-						<></>
+						<>Login to upvote/downvote</>
 					)}
 
 					<div className=''>
