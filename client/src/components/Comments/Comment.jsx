@@ -6,7 +6,7 @@ import { downvoteComment, upvoteComment } from '../../services/services';
 
 const Comment = ({ comment }) => {
 	const currentProfile = useSelector((state) => state.currentProfile.value);
-
+	console.log(comment);
 	return (
 		<>
 			<div key={comment.comment_id} className='w-75 p-5 my-4 glass-container'>

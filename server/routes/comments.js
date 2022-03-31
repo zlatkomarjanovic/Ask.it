@@ -100,7 +100,7 @@ router.get('/commented-on-question', async (req, res) => {
 router.put('/upvote-comment', async (req, res) => {
 	try {
 		const username = req.headers.username;
-		const comment_id = req.headers.question_id;
+		const comment_id = req.headers.comment_id;
 
 		const data = (
 			await pool.query('SELECT * FROM comments WHERE comment_id=$1', [
