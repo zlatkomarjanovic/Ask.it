@@ -1,4 +1,5 @@
 import React from 'react';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 const EditProfileModal = ({
 	currentProfile,
@@ -54,10 +55,16 @@ const EditProfileModal = ({
 							<input
 								onChange={(e) => onChange(e)}
 								value={password}
+								minLength={5}
 								type='password'
 								name='password'
 								placeholder='Password'
 								className='form-control my-3'
+							/>
+							<PasswordStrengthBar
+								password={password}
+								minLength={5}
+								className='password-strength'
 							/>
 							<button
 								onClick={(e) => onSubmitForm(e, body)}
@@ -68,6 +75,7 @@ const EditProfileModal = ({
 								Save changes
 							</button>
 						</form>
+						<p className='text-secondary'>*All fields must be filled!</p>
 					</div>
 					<div className='modal-footer'>
 						<button
