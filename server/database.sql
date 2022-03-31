@@ -23,8 +23,8 @@ CREATE TABLE questions(
   postedbyemail VARCHAR(255) NOT NULL,
 	title TEXT NOT NULL, 
   commentCounter INT DEFAULT 0,
-  upvotes text[],
-  downvotes text[], 
+  upvotes text[] ,
+  downvotes text[] , 
 	FOREIGN KEY (postedBy)
 		REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (postedbyusr)
@@ -40,8 +40,8 @@ CREATE TABLE comments(
   commentedBy uuid NOT NULL,
   commentedByUser VARCHAR(255) NOT NULL,
 	commentedByEmail VARCHAR(255) NULL, 
-  upvotes text[],
-  downvotes text[],
+  upvotes text[] ,
+  downvotes text[] ,
 	FOREIGN KEY (commentedOnQuestion)
 		REFERENCES questions (question_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (commentedBy)

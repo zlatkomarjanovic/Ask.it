@@ -25,7 +25,7 @@ const HotQuestions = () => {
 		<div className='container mb-5'>
 			<div className='row'>
 				{filteredQuestions.map((question) => (
-					<div key={question.question_id} className='w-100'>
+					<div key={question.question_id} className='col'>
 						<SingleQuestion
 							key={question.question_id}
 							question={question}
@@ -35,7 +35,6 @@ const HotQuestions = () => {
 					</div>
 				))}
 			</div>
-			<Button />
 		</div>
 	);
 };
