@@ -100,7 +100,7 @@ router.get('/commented-on-question', async (req, res) => {
 router.put('/upvote-comment', async (req, res) => {
 	try {
 		const username = req.headers.username;
-		const question_id = req.headers.question_id;
+		const comment_id = req.headers.question_id;
 
 		const data = (
 			await pool.query('SELECT * FROM comments WHERE comment_id=$1', [
@@ -151,6 +151,36 @@ router.put('/downvote-comment', async (req, res) => {
 		}
 	} catch (error) {
 		console.error(error);
+	}
+});
+
+router.put('/update-comment', authorize, async (req, res) => {
+	try {
+		const update = await pool.query(
+			`UPDATE comments SET comment='${req.headers.comment}' WHERE comment_id='${req.headers.comment_id}' RETURNING *;`
+		);
+
+		res.json(update.rows);
+	} catch (error) {
+		console.error(error.message);
+		res
+			.status(500)
+			.json(
+				'An issue occured while updating your comment. We are working on fixing this!'
+			);
+	}
+});
+
+router.delete('/delete-comment', authorize, async (req, res) => {
+	try {
+		const comments = await pool.query(
+			`DELETE FROM comments WHERE comment_id='${req.headers.comment_id}'`
+		);
+
+		res.json(comments.rows);
+	} catch (error) {
+		console.error(error.message);
+		res.status(500).json('Issue with getting a single question!');
 	}
 });
 

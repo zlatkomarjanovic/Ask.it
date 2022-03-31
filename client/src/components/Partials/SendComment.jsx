@@ -16,7 +16,7 @@ const SendComment = ({ isAuth, commentToPost, onSubmitComment, onChange }) => {
 						/>
 						<span className='input-group-btn'>
 							<button
-								onClick={onSubmitComment}
+								onClick={(e) => onSubmitComment(e)}
 								className='btn  input-group-prepend glass-button'
 							>
 								Comment

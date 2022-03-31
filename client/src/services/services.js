@@ -1,4 +1,3 @@
-import { AiOutlineLogout } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 //toast is used for those notifications you see when logging in or submiting a question
 // Proxy is only used in the development phase. It is ignored in production.
@@ -280,6 +279,7 @@ export async function sendComment(e, body) {
 			body: JSON.stringify(body),
 		});
 		await updateCommentCounterQuestions(body.question_id);
+
 		toast.success('💬 Commented!');
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
@@ -341,6 +341,41 @@ export async function deleteUser(user_id) {
 			headers: { user_id: user_id, token: localStorage.token },
 		});
 		toast.success('😔 We are sorry to see you go...');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
+//Upvote & Downvote comments
+export async function upvoteComment(comment_id, username) {
+	try {
+		const response = await fetch(
+			`${process.env.REACT_APP_BASE_URL}/upvote-comment`,
+			{
+				method: 'PUT',
+				headers: { comment_id: comment_id, username },
+			}
+		);
+		const parseRes = await response.json();
+		toast.info(parseRes);
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
+export async function downvoteComment(comment_id, username) {
+	try {
+		const response = await fetch(
+			`${process.env.REACT_APP_BASE_URL}/downvote-comment`,
+			{
+				method: 'PUT',
+				headers: { comment_id: comment_id, username: username },
+			}
+		);
+		const parseRes = await response.json();
+		toast.info(parseRes);
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);

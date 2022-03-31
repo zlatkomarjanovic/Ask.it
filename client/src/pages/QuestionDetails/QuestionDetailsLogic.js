@@ -8,7 +8,6 @@ import {
 	GetTheComments,
 	sendComment,
 	updateCommentCounter,
-	updateCommentCounterQuestions,
 } from '../../services/services';
 import { setPostComment } from '../../features/postComment';
 import { setSingleQuestionComments } from '../../features/singleQuestionComments';
@@ -25,7 +24,7 @@ const QuestionDetailsLogic = () => {
 	const singleComments = useSelector(
 		(state) => state.singleQuestionComments.value
 	);
-	const simpleValue = singleComments[0];
+
 	const comment = commentToPost.comment;
 	const commentedonquestion = id;
 	const { username, user_id, email } = currentProfile[0];
@@ -82,7 +81,7 @@ const QuestionDetailsLogic = () => {
 		getQuestion();
 		getComments();
 		setTheseComments();
-	}, [simpleValue]);
+	}, []);
 
 	return {
 		singleQuestion,
