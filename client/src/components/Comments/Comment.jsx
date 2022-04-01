@@ -1,23 +1,39 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
-import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
+import {
+	AiFillDelete,
+	AiFillEdit,
+	AiOutlineArrowDown,
+	AiOutlineArrowUp,
+} from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { downvoteComment, upvoteComment } from '../../services/services';
+import './Comment.css';
 
-const Comment = ({ comment }) => {
-	const currentProfile = useSelector((state) => state.currentProfile.value);
-	console.log(comment);
+const EditDelete = () => {
 	return (
 		<>
-			<div key={comment.comment_id} className='w-75 p-5 my-4 glass-container'>
-				<Gravatar
-					email={comment.commentedbyemail}
-					className='rounded-circle floatleft'
-				/>
-				<h6>@{comment.commentedbyuser}</h6>
-				<h5 className='pt-2'>{comment.comment}</h5>
-			</div>
+			<button
+				type='button'
+				className='btn glass-button-register text-light mt-4 text-center cstm'
+				data-toggle='modal'
+				data-target='#exampleModalCenter'
+			>
+				<AiFillEdit className='mx-3' size={15} />
+			</button>
+			<button
+				type='button'
+				className='btn btn-block glass-button-danger text-light mt-4 cstm'
+			>
+				<AiFillDelete className='mx-3' size={15} />
+			</button>
+		</>
+	);
+};
 
+const UpvoteAndDownvote = ({ comment, currentProfile }) => {
+	return (
+		<>
 			<div className='mx-2 d-flex w-25 mb-5'>
 				<button
 					className='custom-button'
@@ -44,6 +60,26 @@ const Comment = ({ comment }) => {
 					</>
 				</button>
 			</div>
+		</>
+	);
+};
+
+const Comment = ({ comment }) => {
+	const currentProfile = useSelector((state) => state.currentProfile.value);
+
+	return (
+		<>
+			<div key={comment.comment_id} className='w-75 p-5 my-4 glass-container'>
+				<Gravatar
+					email={comment.commentedbyemail}
+					className='rounded-circle floatleft'
+				/>
+				<h6>@{comment.commentedbyuser}</h6>
+				<h5 className='pt-2'>{comment.comment}</h5>
+				<EditDelete />
+			</div>
+
+			<UpvoteAndDownvote comment={comment} currentProfile={currentProfile} />
 		</>
 	);
 };
