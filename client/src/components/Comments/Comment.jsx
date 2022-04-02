@@ -9,6 +9,7 @@ import {
 import { useSelector } from 'react-redux';
 import { downvoteComment, upvoteComment } from '../../services/services';
 import './Comment.css';
+import EditCommentModal from './EditCommentModal';
 
 const EditDelete = () => {
 	return (
@@ -17,7 +18,7 @@ const EditDelete = () => {
 				type='button'
 				className='btn glass-button-register text-light mt-4 text-center cstm'
 				data-toggle='modal'
-				data-target='#exampleModalCenter'
+				data-target='#EditCommentModal'
 			>
 				<AiFillEdit className='mx-3' size={15} />
 			</button>
@@ -78,8 +79,8 @@ const Comment = ({ comment }) => {
 				<h5 className='pt-2'>{comment.comment}</h5>
 				<EditDelete />
 			</div>
-
 			<UpvoteAndDownvote comment={comment} currentProfile={currentProfile} />
+			<EditCommentModal comment_id={comment.comment_id} />
 		</>
 	);
 };
