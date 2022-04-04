@@ -82,7 +82,11 @@ const Comment = ({ comment }) => {
 				/>
 				<h6>@{comment.commentedbyuser}</h6>
 				<h5 className='pt-2'>{comment.comment}</h5>
-				<EditDelete comment_id={comment.comment_id} />
+				{comment.commentedbyuser === currentProfile[0].username ? (
+					<EditDelete comment_id={comment.comment_id} />
+				) : (
+					<></>
+				)}
 			</div>
 			<UpvoteAndDownvote comment={comment} currentProfile={currentProfile} />
 			<EditCommentModal
