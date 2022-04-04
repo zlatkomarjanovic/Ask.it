@@ -1,6 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import CommentLogic from './CommentLogic';
 
-const EditCommentModal = ({ onChange, onSubmit, comment, comment_id }) => {
+const EditCommentModal = ({ comment_id }) => {
+	const { onChange, onSubmit, comment } = CommentLogic();
+
 	return (
 		<div
 			className='modal fade'
@@ -12,8 +16,11 @@ const EditCommentModal = ({ onChange, onSubmit, comment, comment_id }) => {
 			<div className='modal-dialog modal-dialog-centered' role='document'>
 				<div className='modal-content'>
 					<div className='modal-header'>
-						<h5 className='modal-title' id='exampleModalLongTitle'>
-							Edit your question
+						<h5
+							className='modal-title text-secondary'
+							id='exampleModalLongTitle'
+						>
+							Edit your comment
 						</h5>
 					</div>
 					<div className='modal-body'>
@@ -21,9 +28,9 @@ const EditCommentModal = ({ onChange, onSubmit, comment, comment_id }) => {
 							<input
 								value={comment}
 								onChange={(e) => onChange(e)}
-								placeholder='Edit question...'
+								placeholder='Edit your comment...'
 								type='text'
-								name='title'
+								name='comment'
 								className='form-control my-3'
 							/>
 

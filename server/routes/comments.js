@@ -58,12 +58,12 @@ router.put('/comment-counter', async (req, res) => {
 router.delete('/delete-comment', authorize, async (req, res) => {
 	try {
 		const comments = await pool.query(
-			'DROP * FROM comments WHERE comment_id = $1',
-			[req.headers.comment_id, req.headers.token]
+			'DELETE FROM comments WHERE comment_id = $1',
+			[req.headers.comment_id]
 		);
 
 		const newRes = await res.json(comments);
-		console.log(newRes);
+		res.json(newRes);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json('Server Error');

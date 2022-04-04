@@ -145,6 +145,19 @@ export async function deleteQuestion(question_id) {
 	}
 }
 
+export async function deleteComment(comment_id) {
+	try {
+		await fetch(`${process.env.REACT_APP_BASE_URL}/delete-comment`, {
+			method: 'DELETE',
+			headers: { comment_id: comment_id, token: localStorage.token },
+		});
+		toast.success('❓ Comment deleted!');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
 export async function updateQuestion(question_id, title) {
 	try {
 		await fetch(`${process.env.REACT_APP_BASE_URL}/update-question`, {
@@ -157,6 +170,24 @@ export async function updateQuestion(question_id, title) {
 		});
 
 		toast.success('❓ Question updated!');
+	} catch (error) {
+		toast.error('⚠️ Something went wrong!');
+		console.error(error);
+	}
+}
+
+export async function updateComment(comment_id, comment) {
+	try {
+		await fetch(`${process.env.REACT_APP_BASE_URL}/update-comment`, {
+			method: 'PUT',
+			headers: {
+				comment_id: comment_id,
+				token: localStorage.token,
+				comment: comment,
+			},
+		});
+
+		toast.success('❓ Comment updated!');
 	} catch (error) {
 		toast.error('⚠️ Something went wrong!');
 		console.error(error);

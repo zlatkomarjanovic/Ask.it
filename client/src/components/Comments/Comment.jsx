@@ -7,24 +7,29 @@ import {
 	AiOutlineArrowUp,
 } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
-import { downvoteComment, upvoteComment } from '../../services/services';
+import {
+	deleteComment,
+	downvoteComment,
+	upvoteComment,
+} from '../../services/services';
 import './Comment.css';
 import EditCommentModal from './EditCommentModal';
 
-const EditDelete = () => {
+const EditDelete = ({ comment_id }) => {
 	return (
 		<>
 			<button
 				type='button'
-				className='btn glass-button-register text-light mt-4 text-center cstm'
+				className='cstm'
 				data-toggle='modal'
 				data-target='#EditCommentModal'
 			>
 				<AiFillEdit className='mx-3' size={15} />
 			</button>
 			<button
+				onClick={async () => await deleteComment(comment_id)}
 				type='button'
-				className='btn btn-block glass-button-danger text-light mt-4 cstm'
+				className='cstmdngr'
 			>
 				<AiFillDelete className='mx-3' size={15} />
 			</button>
@@ -77,10 +82,13 @@ const Comment = ({ comment }) => {
 				/>
 				<h6>@{comment.commentedbyuser}</h6>
 				<h5 className='pt-2'>{comment.comment}</h5>
-				<EditDelete />
+				<EditDelete comment_id={comment.comment_id} />
 			</div>
 			<UpvoteAndDownvote comment={comment} currentProfile={currentProfile} />
-			<EditCommentModal comment_id={comment.comment_id} />
+			<EditCommentModal
+				comment_id={comment.comment_id}
+				comment={comment.comment}
+			/>
 		</>
 	);
 };
